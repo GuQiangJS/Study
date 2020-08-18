@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/Study/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Study/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Study/images/icons8-whale-32.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Study/images/icons8-whale-16.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/Study/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Study/',
+    scheme: 'Mist',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="编程,Python,机器学习,sklearn.preprocessing.MinMaxScaler,sklearn.preprocessing.StandardScaler">
+<meta property="og:type" content="website">
+<meta property="og:title" content="机器学习手记">
+<meta property="og:url" content="https://guqiangjs.github.io/Study/archives/机器学习手记.html">
+<meta property="og:site_name" content="大蓝鲸">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-11T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习手记">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guqiangjs.github.io/Study/archives/机器学习手记.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>机器学习手记 | 大蓝鲸</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Study/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大蓝鲸</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/Study/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/Study/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/Study/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives menu-item-active">
+    <a href="/Study/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">机器学习手记</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description"><!—more—-></div>
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h3 id="什么是机器学习"><a href="#什么是机器学习" class="headerlink" title="什么是机器学习"></a>什么是机器学习</h3><blockquote><p>经常引用的英文定义是：A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" target="_blank" rel="noopener">机器学习</a></cite></footer></blockquote>
+<h3 id="机器学习的分类"><a href="#机器学习的分类" class="headerlink" title="机器学习的分类"></a>机器学习的分类</h3><blockquote><ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="noopener">监督学习</a> , 其中数据带有一个附加属性，即我们想要预测的结果值（ <a href="http://sklearn.apachecn.org/cn/0.19.0/supervised_learning.html#supervised-learning" target="_blank" rel="noopener">点击此处</a> 转到 scikit-learn 监督学习页面）。这个问题可以是:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Classification_in_machine_learning" target="_blank" rel="noopener">分类</a> : 样本属于两个或更多个类，我们想从已经标记的数据中学习如何预测未标记数据的类别。 分类问题的一个例子是手写数字识别，其目的是将每个输入向量分配给有限数目的离散类别之一。 我们通常把分类视作监督学习的一个离散形式（区别于连续形式），从有限的类别中，给每个样本贴上正确的标签。</li>
+<li><a href="https://en.wikipedia.org/wiki/Regression_analysis" target="_blank" rel="noopener">回归</a> : 如果期望的输出由一个或多个连续变量组成，则该任务称为 <em>回归</em> 。 回归问题的一个例子是利用历史数据判断未来天气温度数据。</li>
+</ul>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Unsupervised_learning" target="_blank" rel="noopener">无监督学习</a>, 其中训练数据由没有任何相应目标值的一组输入向量x组成。这种问题的目标可能是在数据中发现彼此类似的示例所聚成的组，这种问题称为 <a href="https://en.wikipedia.org/wiki/Cluster_analysis" target="_blank" rel="noopener">聚类</a> , 或者，确定输入空间内的数据分布，称为 <a href="https://en.wikipedia.org/wiki/Density_estimation" target="_blank" rel="noopener">密度估计</a> ，又或从高维数据投影数据空间缩小到二维或三维以进行 <em>可视化</em> （<a href="http://sklearn.apachecn.org/cn/0.19.0/unsupervised_learning.html#unsupervised-learning" target="_blank" rel="noopener">点击此处</a> 转到 scikit-learn 无监督学习页面）。</p>
+</li>
+</ul>
+<footer><cite><a href="http://sklearn.apachecn.org/cn/0.19.0/tutorial/basic/tutorial.html" target="_blank" rel="noopener">机器学习：问题设置</a></cite></footer></blockquote>
+<h3 id="选择正确的评估器-estimator"><a href="#选择正确的评估器-estimator" class="headerlink" title="选择正确的评估器(estimator)"></a><a href="http://sklearn.apachecn.org/cn/0.19.0/tutorial/machine_learning_map/index.html#" target="_blank" rel="noopener">选择正确的评估器(estimator)</a></h3><h3 id="垃圾进——垃圾出"><a href="#垃圾进——垃圾出" class="headerlink" title="垃圾进——垃圾出"></a>垃圾进——垃圾出</h3><blockquote><p>著名的“垃圾进——垃圾出”概念100%适用于机器学习的任何任务。在高质量数据上训练的简单模型，表现优于在未清理的数据上训练的复杂多模型集成。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E5%9E%83%E5%9C%BE%E8%BF%9B%EF%BC%8C%E5%9E%83%E5%9C%BE%E5%87%BA" target="_blank" rel="noopener">垃圾进，垃圾出</a></cite></footer></blockquote>
+<h3 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h3><p>网上中文资料对于 <em>归一化</em>，<em>标准化</em> 的解释比较混乱。<a href="https://en.wikipedia.org/wiki/Feature_scaling" target="_blank" rel="noopener">Feature scaling</a> 看英文版本较好。下面是我自己整理的解释。</p>
+<p>首先是个人对于这两个定义的理解：</p>
+<ul>
+<li>归一化首先确定最大最小的范围，使得数据在范围内缩放。</li>
+<li>标准化首先确定中间值，然后向两侧发散。</li>
+</ul>
+<h4 id="正则化-归一化（Normalization）"><a href="#正则化-归一化（Normalization）" class="headerlink" title="正则化/归一化（Normalization）"></a>正则化/归一化（Normalization）</h4><h5 id="Rescaling-min-max-normalization-重新缩放（min-max-正则化）"><a href="#Rescaling-min-max-normalization-重新缩放（min-max-正则化）" class="headerlink" title="Rescaling (min-max normalization) 重新缩放（min-max 正则化）"></a>Rescaling (min-max normalization) 重新缩放（min-max 正则化）</h5><p>把数据变为（0，1）之间的小数。主要是为了方便数据处理，因为<strong>将数据映射到0～1范围之内</strong>，可以使处理过程更加便捷、快速。</p>
+<p>${x}’=\frac{x-min\left ( x \right )}{max\left ( x \right )-min\left ( x \right )}$</p>
+<figure class="highlight python"><figcaption><span>MinMaxScaler</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html" target="_blank" rel="noopener">sklearn.preprocessing.MinMaxScaler</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = [[<span class="number">-1</span>, <span class="number">2</span>], [<span class="number">-0.5</span>, <span class="number">6</span>], [<span class="number">0</span>, <span class="number">10</span>], [<span class="number">1</span>, <span class="number">18</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = MinMaxScaler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.fit(data))</span><br><span class="line">MinMaxScaler(copy=<span class="keyword">True</span>, feature_range=(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.data_max_)</span><br><span class="line">[ <span class="number">1.</span> <span class="number">18.</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.transform(data))</span><br><span class="line">[[<span class="number">0.</span>   <span class="number">0.</span>  ]</span><br><span class="line"> [<span class="number">0.25</span> <span class="number">0.25</span>]</span><br><span class="line"> [<span class="number">0.5</span>  <span class="number">0.5</span> ]</span><br><span class="line"> [<span class="number">1.</span>   <span class="number">1.</span>  ]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.transform([[<span class="number">2</span>, <span class="number">2</span>]]))</span><br><span class="line">[[<span class="number">1.5</span> <span class="number">0.</span> ]]</span><br></pre></td></tr></table></figure>
+<h5 id="Mean-normalization-均值归一化"><a href="#Mean-normalization-均值归一化" class="headerlink" title="Mean normalization 均值归一化"></a>Mean normalization 均值归一化</h5><p>${x}’=\frac{x-average\left ( x \right )}{max\left ( x \right )-min\left ( x \right )}$</p>
+<h4 id="标准化（Standardization）"><a href="#标准化（Standardization）" class="headerlink" title="标准化（Standardization）"></a>标准化（Standardization）</h4><p>特征标准化使得数据中每个特征的值具有<strong>零均值</strong>（当减去分子中的平均值时）和<strong>单位方差</strong>。</p>
+<blockquote>
+<p>使得不同度量之间的特征具有可比性。同时不改变原始数据的分布。</p>
+</blockquote>
+<p>${x}’=\frac{x - \bar{x}}{\sigma}$</p>
+<p>其中 $\bar {x}={\text{average}}(x)$， $\sigma$ 是标准差。</p>
+<figure class="highlight python"><figcaption><span>StandardScaler</span><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler" target="_blank" rel="noopener">sklearn.preprocessing.StandardScaler</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = [[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.fit(data))</span><br><span class="line">StandardScaler(copy=<span class="keyword">True</span>, with_mean=<span class="keyword">True</span>, with_std=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.mean_)</span><br><span class="line">[<span class="number">0.5</span> <span class="number">0.5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.transform(data))</span><br><span class="line">[[<span class="number">-1.</span> <span class="number">-1.</span>]</span><br><span class="line"> [<span class="number">-1.</span> <span class="number">-1.</span>]</span><br><span class="line"> [ <span class="number">1.</span>  <span class="number">1.</span>]</span><br><span class="line"> [ <span class="number">1.</span>  <span class="number">1.</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(scaler.transform([[<span class="number">2</span>, <span class="number">2</span>]]))</span><br><span class="line">[[<span class="number">3.</span> <span class="number">3.</span>]]</span><br></pre></td></tr></table></figure>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gu Qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/Study/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/Study/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/Study/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guqiangjs" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是机器学习"><span class="nav-number">1.</span> <span class="nav-text">什么是机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习的分类"><span class="nav-number">2.</span> <span class="nav-text">机器学习的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择正确的评估器-estimator"><span class="nav-number">3.</span> <span class="nav-text">选择正确的评估器(estimator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾进——垃圾出"><span class="nav-number">4.</span> <span class="nav-text">垃圾进——垃圾出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征缩放"><span class="nav-number">5.</span> <span class="nav-text">特征缩放</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则化-归一化（Normalization）"><span class="nav-number">5.1.</span> <span class="nav-text">正则化/归一化（Normalization）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Rescaling-min-max-normalization-重新缩放（min-max-正则化）"><span class="nav-number">5.1.1.</span> <span class="nav-text">Rescaling (min-max normalization) 重新缩放（min-max 正则化）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mean-normalization-均值归一化"><span class="nav-number">5.1.2.</span> <span class="nav-text">Mean normalization 均值归一化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准化（Standardization）"><span class="nav-number">5.2.</span> <span class="nav-text">标准化（Standardization）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gu Qiang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/Study/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/Study/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/Study/js/src/post-details.js?v=6.2.0"></script>
+
+
+	
+	<style type="text/css">
+	  .no-before::before {
+		content: "";
+		padding: 0px;
+	  }
+	  .no-before{
+	  font-weight: bold;
+	  font-style: normal;
+	  }
+	  </style>
+	<script type="text/javascript">
+	$("cite").each(function(index){
+		if($(this).prev().length==0 && $(this)[0].children.length==1)
+		{
+			$(this)[0].className='no-before';
+		}
+	});
+	</script> 
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style type="text/css">.MathJax_Display {display:inline!important;}</style>
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

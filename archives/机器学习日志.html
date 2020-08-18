@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/Study/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Study/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Study/images/icons8-whale-32.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Study/images/icons8-whale-16.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/Study/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Study/',
+    scheme: 'Mist',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="编程,Python,机器学习,mlcourse.ai,忽略警告,svg格式,matplotlib,图形,seaborn,中位数,PCA,梯度下降,驻点,鞍点,损失函数,分类,决策树,K邻居,香农熵,基尼不纯度（基尼不确定性）,sklearn.tree.DecisionTreeClassifier,sklearn.neighbors.KNeighborsClassifier,sklearn.ensemble.RandomForestClassifier,sklearn.model_selection.GridSearchCV,sklearn.model_selection.cross_val_score,sklearn.pipeline.Pipeline,简单移动平均,指数平均移动,加权平均移动">
+<meta property="og:type" content="website">
+<meta property="og:title" content="mlcourse.ai 机器学习日志">
+<meta property="og:url" content="https://guqiangjs.github.io/Study/archives/机器学习日志.html">
+<meta property="og:site_name" content="大蓝鲸">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/20181129134038.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/20181120095220.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1542761704983.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Saddle_point.png/220px-Saddle_point.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Stationary_vs_inflection_pts.svg/350px-Stationary_vs_inflection_pts.svg.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/X_cubed_%28narrow%29.svg/220px-X_cubed_%28narrow%29.svg.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/220px-Weighted_moving_average_weights_N%3D15.png">
+<meta property="og:updated_time" content="2020-08-18T01:47:08.269Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mlcourse.ai 机器学习日志">
+<meta name="twitter:image" content="https://guqiangjs.github.io/Study/archives/20181129134038.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guqiangjs.github.io/Study/archives/机器学习日志.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>mlcourse.ai 机器学习日志 | 大蓝鲸</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Study/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大蓝鲸</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/Study/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/Study/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/Study/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives menu-item-active">
+    <a href="/Study/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">mlcourse.ai 机器学习日志</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description"><!—more—-></div>
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <p>参加了 <a href="https://mlcourse.ai/" target="_blank" rel="noopener">mlcourse.ai</a> 的<strong>开放式机器学习课程</strong> <a href="https://github.com/Yorko" target="_blank" rel="noopener">Yorko</a>/<a href="https://github.com/Yorko/mlcourse.ai" target="_blank" rel="noopener"><strong>mlcourse.ai</strong></a>。以下为每周的学习内容。</p>
+<p>因为之前不太清楚相关规则和内容，前几周的内容都是后面补充的。</p>
+<h3 id="第一周-使用Pandas进行探索性数据分析"><a href="#第一周-使用Pandas进行探索性数据分析" class="headerlink" title="第一周 使用Pandas进行探索性数据分析"></a>第一周 使用Pandas进行探索性数据分析</h3><h4 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h4><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic01_pandas_data_analysis/topic1_pandas_data_analysis.ipynb" target="_blank" rel="noopener">简易教程</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic01_pandas_data_analysis/topic1_pandas_data_analysis_zh-cn.ipynb" target="_blank" rel="noopener">简易教程 机翻中文</a></li>
+</ul>
+<p>教程中演示了 <code>pandas</code> 的一些常用的方法。包含 读取数据、数据类型转换、排序、<code>describe</code>、索引、定位、<code>apply</code>、分组、<code>crosstab</code>、<code>pivot_table</code>等。以及少量的 <code>matplotlib</code> 的使用。</p>
+<h4 id="教程内提供的相关网站链接"><a href="#教程内提供的相关网站链接" class="headerlink" title="教程内提供的相关网站链接"></a>教程内提供的相关网站链接</h4><ul>
+<li><a href="http://pandas.pydata.org/pandas-docs/stable/index.html" target="_blank" rel="noopener">pandas官方文档</a></li>
+<li><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">pandas官方提供的10分钟入门</a> 常用的 <code>pandas</code> 语法都包含了，也是个速查的入口。</li>
+<li><a href="https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">pandas主要功能速查pdf</a> <strong>好东西</strong></li>
+<li><a href="http://www.scipy-lectures.org/index.html" target="_blank" rel="noopener">scipy-lectures.org</a> 关于<code>pandas</code>、<code>numpy</code>、<code>matplotlib</code>和<code>scikit-learn</code>的教程</li>
+</ul>
+<h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment01_pandas_uci_adult.ipynb" target="_blank" rel="noopener">任务-使用Pandas进行探索性数据分析</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment01_pandas_uci_adult_zh-cn.ipynb" target="_blank" rel="noopener">任务-使用Pandas进行探索性数据分析 - 机翻中文，包含我自己的答案</a></li>
+</ul>
+<p>主要是之前教程部分的练习。</p>
+<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic01_pandas_data_analysis/topic1_practice_pandas_titanic.ipynb" target="_blank" rel="noopener">实践 分析“泰坦尼克号”乘客</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic01_pandas_data_analysis/topic1_practice_pandas_titanic_zh-cn.ipynb" target="_blank" rel="noopener">实践 分析“泰坦尼克号”乘客 - 机翻中文，包含我自己的答案</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic01_pandas_data_analysis/topic1_practice_pandas_titanic_solution.ipynb" target="_blank" rel="noopener">实践 分析“泰坦尼克号”乘客 包含官方答案</a></li>
+</ul>
+<hr>
+<h3 id="第二周-Python中的可视化数据分析"><a href="#第二周-Python中的可视化数据分析" class="headerlink" title="第二周 Python中的可视化数据分析"></a>第二周 Python中的可视化数据分析</h3><h4 id="教程-1"><a href="#教程-1" class="headerlink" title="教程"></a>教程</h4><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic02_visual_data_analysis/topic2_visual_data_analysis.ipynb" target="_blank" rel="noopener">第1部分：可视化：从简单分布到降维</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic02_visual_data_analysis/topic2_visual_data_analysis_zh-cn.ipynb" target="_blank" rel="noopener">第1部分：可视化：从简单分布到降维 - 机翻中文</a></li>
+</ul>
+<p>通过使用图形来分析电信用户流失的可能性来讲述了单变量可视化，多变量可视化、降维（PCA、t-SNE）</p>
+<p><a href="https://medium.com/d-d-mag/%E6%B7%BA%E8%AB%87%E5%85%A9%E7%A8%AE%E9%99%8D%E7%B6%AD%E6%96%B9%E6%B3%95-pca-%E8%88%87-t-sne-d4254916925b" target="_blank" rel="noopener">淺談降維方法中的 PCA 與 t-SNE</a></p>
+<h4 id="教程内提供的相关网站链接-1"><a href="#教程内提供的相关网站链接-1" class="headerlink" title="教程内提供的相关网站链接"></a>教程内提供的相关网站链接</h4><ul>
+<li>这是我们使用的库的官方文档：<a href="https://matplotlib.org/contents.html" target="_blank" rel="noopener"><code>matplotlib</code></a>，<a href="https://seaborn.pydata.org/introduction.html" target="_blank" rel="noopener"><code>seaborn</code></a>和<a href="https://pandas.pydata.org/pandas-docs/stable/" target="_blank" rel="noopener"><code>pandas</code></a>。</li>
+<li>使用<code>seaborn</code>创建的示例图表的<a href="http://seaborn.pydata.org/examples/index.html" target="_blank" rel="noopener">gallery</a>是一个非常好的资源。</li>
+<li>另请参阅<code>scikit-learn</code>中关于Manifold Learning的<a href="http://scikit-learn.org/stable/modules/manifold.html" target="_blank" rel="noopener">documentation</a>。</li>
+<li>高效的t-SNE实施<a href="https://github.com/DmitryUlyanov/Multicore-TSNE" target="_blank" rel="noopener">Multicore-TSNE</a>。</li>
+<li><code>如何有效使用t-SNE</code>，<a href="https://distill.pub/2016/misread-tsne/" target="_blank" rel="noopener">Distill.pub</a>。</li>
+</ul>
+<hr>
+<ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic02_visual_data_analysis/topic2_additional_seaborn_matplotlib_plotly.ipynb" target="_blank" rel="noopener">第2部分：Seaborn，Matplotlib和Plotly库概述</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic02_visual_data_analysis/topic2_additional_seaborn_matplotlib_plotly_zh-cn.ipynb" target="_blank" rel="noopener">第2部分：Seaborn，Matplotlib和Plotly库概述 - 机翻中文</a></li>
+</ul>
+<p>通过示例简单描述了<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html" target="_blank" rel="noopener">pandas.DataFrame.plot</a>，</p>
+<h4 id="Seaborn"><a href="#Seaborn" class="headerlink" title="Seaborn"></a><a href="https://seaborn.pydata.org/api.html" target="_blank" rel="noopener">Seaborn</a></h4><p><img src="20181129134038.png" alt="20181129134038"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 禁止在python运行时显示警告信息</span></span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用svg格式绘图，会更清晰</span></span><br><span class="line">%config InlineBackend.figure_format = <span class="string">'svg'</span></span><br></pre></td></tr></table></figure>
+<h4 id="Plotly-github"><a href="#Plotly-github" class="headerlink" title="Plotly github"></a><a href="https://plot.ly/python/" target="_blank" rel="noopener">Plotly</a> <a href="https://github.com/plotly/documentation/tree/source-design-merge/_posts/python/" target="_blank" rel="noopener">github</a></h4><p>可交互式图形库。</p>
+<p><img src="20181120095220.png" alt="20181120095220"></p>
+<h4 id="任务-1"><a href="#任务-1" class="headerlink" title="任务"></a>任务</h4><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment02_analyzing_cardiovascular_desease_data.ipynb" target="_blank" rel="noopener">任务 - 分析心血管疾病数据</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment02_analyzing_cardiovascular_desease_data_zh-cn.ipynb" target="_blank" rel="noopener">任务 - 分析心血管疾病数据 - 机翻中文，包含我自己的答案</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment02_analyzing_cardiovascular_desease_data_solution.ipynb" target="_blank" rel="noopener">任务 - 分析心血管疾病数据 包含官方答案</a></li>
+</ul>
+<blockquote><p><strong>中位数</strong>（又称<strong>中值</strong>，英语：Median），<a href="https://zh.wikipedia.org/wiki/%E7%B5%B1%E8%A8%88%E5%AD%B8" target="_blank" rel="noopener">统计学</a>中的专有名词，代表一个样本、种群或<a href="https://zh.wikipedia.org/wiki/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83" target="_blank" rel="noopener">概率分布</a>中的一个数值，其可将数值集合划分为相等的上下两部分。对于有限的数集，可以通过把所有观察值高低排序后找出正中间的一个作为中位数。如果观察值有偶数个，则中位数不唯一，通常取最中间的两个数值的<a href="https://zh.wikipedia.org/wiki/%E5%B9%B3%E5%9D%87%E6%95%B0" target="_blank" rel="noopener">平均数</a>作为中位数。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E4%BD%8D%E6%95%B8" target="_blank" rel="noopener">中位数</a></cite></footer></blockquote>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E7%9A%AE%E5%B0%94%E9%80%8A%E7%A7%AF%E7%9F%A9%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0" target="_blank" rel="noopener">皮尔逊积矩相关系数</a></li>
+<li><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.corr.html" target="_blank" rel="noopener">pandas.DataFrame.corr</a> - 计算列的成对相关性</li>
+</ul>
+<p><img src="1542761704983.png" alt="1542761704983"></p>
+<hr>
+<ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic02_visual_data_analysis/topic2_practice_visual_titanic.ipynb" target="_blank" rel="noopener">实践 分析“泰坦尼克号”乘客</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic02_visual_data_analysis/topic2_practice_visual_titanic_zh-cn.ipynb" target="_blank" rel="noopener">实践 分析“泰坦尼克号”乘客 - 机翻中文，包含我自己的答案</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic02_visual_data_analysis/topic2_practice_visual_titanic_solution.ipynb" target="_blank" rel="noopener">实践 分析“泰坦尼克号”乘客 包含官方答案</a></li>
+</ul>
+<p>主要实践了部分 <code>seaborn</code> 的绘图方法。</p>
+<h4 id="实践-1"><a href="#实践-1" class="headerlink" title="实践"></a>实践</h4><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_fall2018/assignment2_USA_flights.ipynb" target="_blank" rel="noopener">任务 - 美国航班的探索性数据分析（EDA）（使用Pandas，Matplotlib和Seaborn）</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_fall2018/assignment2_USA_flights_zh-cn.ipynb" target="_blank" rel="noopener">任务 - 美国航班的探索性数据分析（EDA）（使用Pandas，Matplotlib和Seaborn） - 机翻中文，包含我自己的答案</a></li>
+</ul>
+<hr>
+<h3 id="第三周-分类，决策树和k个最近邻居"><a href="#第三周-分类，决策树和k个最近邻居" class="headerlink" title="第三周 分类，决策树和k个最近邻居"></a>第三周 分类，决策树和k个最近邻居</h3><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic03_decision_trees_kNN/topic3_decision_trees_kNN.ipynb" target="_blank" rel="noopener">主题3.分类，决策树和k个最近邻居</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic03_decision_trees_kNN/topic3_decision_trees_kNN_zh-cn.ipynb" target="_blank" rel="noopener">主题3.分类，决策树和k个最近邻居 - 机翻中文</a></li>
+</ul>
+<blockquote><p><strong>C4.5算法</strong>是由<a href="https://zh.wikipedia.org/w/index.php?title=Ross_Quinlan&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">Ross Quinlan</a>开发的用于产生<a href="https://zh.wikipedia.org/wiki/%E5%86%B3%E7%AD%96%E6%A0%91" target="_blank" rel="noopener">决策树</a>的算法。该算法是对Ross Quinlan之前开发的<a href="https://zh.wikipedia.org/wiki/ID3%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">ID3算法</a>的一个扩展。C4.5算法产生的决策树可以被用作分类目的，因此该算法也可以用于<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E8%AE%A1%E5%88%86%E7%B1%BB" target="_blank" rel="noopener">统计分类</a>。</p>
+<p>C4.5算法与ID3算法一样使用了<a href="https://zh.wikipedia.org/wiki/%E4%BF%A1%E6%81%AF%E7%86%B5" target="_blank" rel="noopener">信息熵</a>的概念，并和ID3一样通过学习数据来建立决策树。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/C4.5%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">C4.5算法</a></cite></footer></blockquote>
+<blockquote><p><strong>熵最好理解为不确定性的量度而不是确定性的量度，因为越随机的信源的熵越大。</strong></p>
+<p>当取自有限的样本时，熵的公式可以表示为：</p>
+<p>$\mathrm{H}\left ( X \right )=-\sum_{i}^{ }P\left ( x_{i} \right )\log_{b}P\left ( x_{i} \right )$</p>
+<p>在这里 $b$ 是<a href="https://zh.wikipedia.org/wiki/%E5%B0%8D%E6%95%B8" target="_blank" rel="noopener">对数</a>所使用的<a href="https://zh.wikipedia.org/wiki/%E5%BA%95%E6%95%B0_(%E5%AF%B9%E6%95%B0" target="_blank" rel="noopener">底</a>)，通常是2,自然常数<a href="https://zh.wikipedia.org/wiki/E_(%E6%95%B0%E5%AD%A6%E5%B8%B8%E6%95%B0" target="_blank" rel="noopener">e</a>)，或是10。当<em>b</em> = 2，熵的单位是<a href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83" target="_blank" rel="noopener">bit</a>；当<em>b</em> = e，熵的单位是<a href="https://zh.wikipedia.org/wiki/%E5%A5%88%E7%89%B9_(%E5%8D%95%E4%BD%8D" target="_blank" rel="noopener">nat</a>)；而当 $b$ = 10,熵的单位是Hart。</p>
+<p><strong>在信息世界，熵越高，则能传输越多的信息，熵越低，则意味着传输的信息越少。</strong></p>
+<p><strong>范例：</strong></p>
+<p>如英语有26个字母，假如每个字母在文章中出现次数平均的话，每个字母的讯息量为：</p>
+<p>$I_{e}=-\log _{2}{1 \over 26}=4.7$</p>
+<p>以日文五十音平假名作为相对范例，假设每个平假名日语文字在文章中出现的概率相等，每个平假名日语文字可携带的信息量为：</p>
+<p>${\displaystyle I_{e}=-\log _{2}{1 \over 50}=5.64}$</p>
+<p>而汉字常用的有2500个，假如每个汉字在文章中出现次数平均的话，每个汉字的信息量为：</p>
+<p>$I_{e}=-\log _{2}{1 \over 2500}=11.3$</p>
+<p><em>如果两个系统具有同样大的消息量，如一篇用不同文字写的同一文章，由于汉字的信息量较大，中文文章应用的汉字就比英文文章使用的字母要少。所以汉字印刷的文章要比其他应用总体数量少的字母印刷的文章要短。即使一个汉字占用两个字母的空间，汉字印刷的文章也要比英文字母印刷的用纸少。</em></p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E9%A6%99%E5%86%9C%E7%86%B5" target="_blank" rel="noopener">香农熵</a></cite></footer></blockquote>
+<blockquote><p>在CART（Classification And Regression Tree，即分类回归树算法，简称CART算法，它是决策树的一种实现）算法中, 基尼不纯度表示一个随机选中的样本在子集中被分错的可能性。</p>
+<p>基尼不纯度为这个样本被选中的概率乘以它被分错的概率。当一个节点中所有样本都是一个类时，基尼不纯度为零。</p>
+<p>假设 $y$ 的可能取值为{1, 2, …, m},令 $fi$ 是样本被赋予 $i$ 的概率，则基尼指数可以通过如下计算：</p>
+<p>$I_{G} \left ( f \right )=1- \sum_{i=1}^{m} {f_{i}}^{2} $</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E5%86%B3%E7%AD%96%E6%A0%91%E5%AD%A6%E4%B9%A0#%E5%9F%BA%E5%B0%BC%E4%B8%8D%E7%BA%AF%E5%BA%A6%E6%8C%87%E6%A0%87" target="_blank" rel="noopener">基尼不纯度指标</a></cite></footer></blockquote>
+<p>代码方面介绍了</p>
+<ul>
+<li><a href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html" target="_blank" rel="noopener"><code>sklearn.tree.DecisionTreeClassifier</code></a></li>
+<li><a href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html" target="_blank" rel="noopener"><code>sklearn.neighbors.KNeighborsClassifier</code></a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" target="_blank" rel="noopener"><code>sklearn.ensemble.RandomForestClassifier</code></a></li>
+<li>sklearn.model_selection.GridSearchCV</li>
+<li>sklearn.model_selection.cross_val_score</li>
+<li>sklearn.pipeline.Pipeline</li>
+</ul>
+<p><strong>使用K近邻方式时，大多数这些指标都需要缩放数据。</strong></p>
+<h4 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h4><ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment03_decision_trees.ipynb" target="_blank" rel="noopener">演示 - 带有玩具任务和UCI Adult数据集的决策树</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment03_decision_trees_zh-cn.ipynb" target="_blank" rel="noopener">演示 - 带有玩具任务和UCI Adult数据集的决策树 - 机翻中文</a></li>
+</ul>
+<hr>
+<h3 id="第七周-无监督学习：PCA和聚类"><a href="#第七周-无监督学习：PCA和聚类" class="headerlink" title="第七周 无监督学习：PCA和聚类"></a>第七周 无监督学习：PCA和聚类</h3><blockquote><p><strong>非监督式学习</strong>是一种<a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" target="_blank" rel="noopener">机器学习</a>的方式，并不需要人力来输入标签。它是<a href="https://zh.wikipedia.org/wiki/%E7%9B%A3%E7%9D%A3%E5%BC%8F%E5%AD%B8%E7%BF%92" target="_blank" rel="noopener">监督式学习</a>和<a href="https://zh.wikipedia.org/wiki/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0" target="_blank" rel="noopener">强化学习</a>等策略之外的一种选择。</p>
+<p>在监督式学习中，典型的任务是分类和<a href="https://zh.wikipedia.org/wiki/%E8%BF%B4%E6%AD%B8%E5%88%86%E6%9E%90" target="_blank" rel="noopener">回归分析</a>，且需要使用到人工预先准备好的范例(examples)。</p>
+<p>一个常见的非监督式学习是<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E8%81%9A%E7%B1%BB" target="_blank" rel="noopener">数据聚类</a>。在<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">人工神经网络</a>中，<a href="https://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">生成对抗网络</a>（GAN）、<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%BB%84%E7%BB%87%E6%98%A0%E5%B0%84" target="_blank" rel="noopener">自组织映射</a>（SOM）和<a href="https://zh.wikipedia.org/w/index.php?title=%E9%81%A9%E6%87%89%E6%80%A7%E5%85%B1%E6%8C%AF%E7%90%86%E8%AB%96&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">适应性共振理论</a>（ART）则是最常用的非监督式学习。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E9%9D%9E%E7%9B%A3%E7%9D%A3%E5%BC%8F%E5%AD%B8%E7%BF%92" target="_blank" rel="noopener">非监督式学习</a></cite></footer></blockquote>
+<blockquote><p><strong>无监督式学习网络</strong>(Unsupervised Learning Network)是人工智能网络的一种算法(algorithm)，其目的是去对原始资料进行分类，以便了解资料内部结构。有别于<a href="https://zh.wikipedia.org/wiki/%E7%9B%A3%E7%9D%A3%E5%BC%8F%E5%AD%B8%E7%BF%92%E7%B6%B2%E8%B7%AF" target="_blank" rel="noopener">监督式学习网络</a>，无监督式学习网络在学习时并不知道其分类结果是否正确，亦即没有受到监督式增强(告诉它何种学习是正确的)。其特点是仅对此种网络提供输入范例，而它会自动从这些范例中找出其潜在类别规则。当学习完毕并经测试后，也可以将之应用到新的案例上。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E7%84%A1%E7%9B%A3%E7%9D%A3%E5%BC%8F%E5%AD%B8%E7%BF%92%E7%B6%B2%E8%B7%AF" target="_blank" rel="noopener">无监督式学习网络</a></cite></footer></blockquote>
+<blockquote><p>在多元统计分析中，<strong>主成分分析</strong>（英语：<strong>Principal components analysis</strong>，<strong>PCA</strong>）是一种分析、简化数据集的技术。主成分分析经常用于减少数据集的<a href="https://zh.wikipedia.org/wiki/%E7%BB%B4%E6%95%B0" target="_blank" rel="noopener">维数</a>，同时保持数据集中的对方差贡献最大的特征。这是通过保留低阶主成分，忽略高阶主成分做到的。这样低阶成分往往能够保留住数据的最重要方面。但是，这也不是一定的，要视具体应用而定。由于主成分分析依赖所给数据，所以数据的准确性对分析结果影响很大。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90" target="_blank" rel="noopener">主成分分析</a></cite></footer></blockquote>
+<p><strong>PCA的<a href="http://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues" target="_blank" rel="noopener">问答</a>示例</strong></p>
+<ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic07_unsupervised/topic7_pca_clustering.ipynb" target="_blank" rel="noopener">无监督学习-PCA和群集</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic07_unsupervised/topic7_pca_clustering_zh-cn.ipynb" target="_blank" rel="noopener">无监督学习-PCA和群集 - 机翻中文</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic07_unsupervised/lesson7_part1_PCA.ipynb" target="_blank" rel="noopener">无监督学习-第一部分 主成分分析</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic07_unsupervised/lesson7_part1_PCA_zh-cn.ipynb" target="_blank" rel="noopener">无监督学习-第一部分 主成分分析 - 机翻中文</a></li>
+</ul>
+<ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic07_unsupervised/lesson7_part2_kmeans.ipynb" target="_blank" rel="noopener">无监督学习-第二部分 类聚 K-均值</a></li>
+<li><p><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic07_unsupervised/lesson7_part2_kmeans_zh-cn.ipynb" target="_blank" rel="noopener">无监督学习-第二部分 类聚 K-均值 - 机翻中文</a></p>
+</li>
+<li><p><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_demo/assignment07_unsupervised_learning.ipynb" target="_blank" rel="noopener">无监督学习-作业（demo）</a></p>
+</li>
+<li>[无监督学习-作业（demo） - 机翻中文，包含我自己的答案]</li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/assignments_fall2018/assignment7_pca_clustering.ipynb" target="_blank" rel="noopener">无监督学习-作业-主成分分析和聚类</a></li>
+<li>[无监督学习-作业-主成分分析和聚类 - 机翻中文，包含我自己的答案]</li>
+</ul>
+<h3 id="第八周-使用Vowpal-Wabbit高速学习大规模数据集"><a href="#第八周-使用Vowpal-Wabbit高速学习大规模数据集" class="headerlink" title="第八周 使用Vowpal Wabbit高速学习大规模数据集"></a>第八周 使用Vowpal Wabbit高速学习大规模数据集</h3><p><strong>教程：</strong></p>
+<ul>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic08_sgd_hashing_vowpal_wabbit/topic8_sgd_hashing_vowpal_wabbit.ipynb" target="_blank" rel="noopener">Vowpal Wabbit：学习千兆字节的数据</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/GuQiangJS/mlcourse.ai/blob/master/jupyter_english/topic08_sgd_hashing_vowpal_wabbit/topic8_sgd_hashing_vowpal_wabbit_zh-cn.ipynb" target="_blank" rel="noopener">Vowpal Wabbit：学习千兆字节的数据 机翻中文</a></li>
+</ul>
+<blockquote><p><strong>梯度下降法</strong>（英语：Gradient descent）是一个一阶<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E4%BC%98%E5%8C%96" target="_blank" rel="noopener">最优化</a><a href="https://zh.wikipedia.org/wiki/%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">算法</a>，通常也称为<strong>最速下降法</strong>。 要使用梯度下降法找到一个函数的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%80%BC" target="_blank" rel="noopener">局部极小值</a>，必须向函数上当前点对应<a href="https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6" target="_blank" rel="noopener">梯度</a>（或者是近似梯度）的<em>反方向</em>的规定步长距离点进行<a href="https://zh.wikipedia.org/wiki/%E8%BF%AD%E4%BB%A3" target="_blank" rel="noopener">迭代</a>搜索。如果相反地向梯度<em>正方向</em>迭代进行搜索，则会接近函数的<a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%80%BC" target="_blank" rel="noopener">局部极大值</a>点；这个过程则被称为<strong>梯度上升法</strong>。</p>
+<footer><cite><a href="https://zh.wikipedia.org/zh-hans/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95" target="_blank" rel="noopener">梯度下降法</a></cite></footer></blockquote>
+<blockquote><p>一个不是<a href="https://zh.wikipedia.org/wiki/%E6%9E%81%E5%80%BC" target="_blank" rel="noopener">局部极值点</a>的<a href="https://zh.wikipedia.org/wiki/%E9%A7%90%E9%BB%9E" target="_blank" rel="noopener">驻点</a>称为鞍点。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Saddle_point.png/220px-Saddle_point.png" alt=""></p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E9%9E%8D%E9%BB%9E" target="_blank" rel="noopener">鞍点</a></cite></footer></blockquote>
+<blockquote><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Stationary_vs_inflection_pts.svg/350px-Stationary_vs_inflection_pts.svg.png" alt=""></p>
+<p>$y = x + \sin(2x)$ 的图像<br>驻点（红色）与<a href="https://zh.wikipedia.org/wiki/%E6%8B%90%E7%82%B9" target="_blank" rel="noopener">拐点</a>（蓝色），这图像的驻点都是局部极大值或局部极小值。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E9%A9%BB%E7%82%B9" target="_blank" rel="noopener">驻点</a></cite></footer></blockquote>
+<blockquote><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/X_cubed_%28narrow%29.svg/220px-X_cubed_%28narrow%29.svg.png" alt=""></p>
+<p>$y=x3$的函数图形，原点是其拐点。</p>
+<p><strong>拐点</strong>（Inflection point）或称<strong>反曲点</strong>，是一条可微<a href="https://zh.wikipedia.org/wiki/%E6%9B%B2%E7%BA%BF" target="_blank" rel="noopener">曲线</a>改变<a href="https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%B8%E6%80%A7" target="_blank" rel="noopener">凹凸性</a>的点，或者等价地说，是使<a href="https://zh.wikipedia.org/wiki/%E5%88%87%E7%B7%9A" target="_blank" rel="noopener">切线</a>穿越曲线的点。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E6%8B%90%E7%82%B9" target="_blank" rel="noopener">拐点</a></cite></footer></blockquote>
+<blockquote><p><strong>随机梯度下降</strong>（通常缩短为<strong>SGD</strong>），也称为<strong>增量</strong>梯度下降，是用于<a href="https://en.wikipedia.org/wiki/Mathematical_optimization" target="_blank" rel="noopener">优化</a>可<a href="https://en.wikipedia.org/wiki/Differentiable_function" target="_blank" rel="noopener">微分</a><a href="https://en.wikipedia.org/wiki/Objective_function" target="_blank" rel="noopener">目标函数</a>的<a href="https://en.wikipedia.org/wiki/Iterative_method" target="_blank" rel="noopener">迭代方法</a>，<a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="noopener">梯度下降</a>优化的<a href="https://en.wikipedia.org/wiki/Stochastic_approximation" target="_blank" rel="noopener">随机近似</a>。最近的一篇文章<a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent#cite_note-1" target="_blank" rel="noopener">[1]</a>暗示<a href="https://en.wikipedia.org/wiki/Herbert_Robbins" target="_blank" rel="noopener">Herbert Robbins</a>和Sutton Monro在其1951年题为“随机近似方法”的文章中发展了SGD。有关更多信息，请参阅<a href="https://en.wikipedia.org/wiki/Stochastic_approximation" target="_blank" rel="noopener">随机近似</a>。它被称为<strong>随机的</strong> 因为样本是随机选择（或混洗）而不是作为单个组（如标准<a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="noopener">梯度下降</a>）或按训练集中出现的顺序选择的。</p>
+<footer><cite><a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent" target="_blank" rel="noopener">从英文翻译而来-随机梯度下降</a></cite></footer></blockquote>
+<p>步长（有时称为机器学习中的学习率）</p>
+<blockquote><p><strong>损失函数的公式</strong></p>
+<p>$L=k(y-m)2$</p>
+<ul>
+<li><p>$L$——以美元表示的单位损失（惩罚成本）</p>
+</li>
+<li><p>$y$——质量变量的值</p>
+</li>
+<li><p>$m$——质量变量y的目标值</p>
+</li>
+<li><p>$k$——常数，取决于质量变量在财务上的重要性。</p>
+</li>
+</ul>
+<hr>
+<p><strong>损失函数的相关案例</strong></p>
+<p>　　某匹萨外卖店承诺在接到订单30分钟内<a href="https://wiki.mbalib.com/wiki/%E9%80%81%E8%B4%A7" target="_blank" rel="noopener">送货</a>。如果超过承诺时间10分钟，那么将赔偿金额3美元。送货成本大概是2美元，但是，随着送货时间的推迟，送货成本将以0.15美元/分钟的速度下降。实际送货时间应偏离目标送货时间多长，能使成本最低？</p>
+<p>　　总成本（$N$）=送货成本（$J$）+赔偿成本（$L$）</p>
+<p>　　设实际送货时间为y</p>
+<p>　　送货成本 $J=2-0.15(y-30)$</p>
+<p>　　赔偿成本$L=k(y-30)2$</p>
+<p>　　$N=L+J=k(y-30)2+[2-0.15(y-30)]$</p>
+<p>　　首先求出$k$，再求出$Min(N)$。如何求$k$?</p>
+<p>　　$L=k(y-30)2$</p>
+<p>　　$3=k(10-0)2$</p>
+<p>　　$\frac{3}{10^2}=0.03$</p>
+<p>　　$Min(N)=Min { 0.03(y-30）2+[2-0.15(y-30)]}$</p>
+<p>　　求导，得出$y-30=2.5$,即实际送货时间不偏离目标时间2.5分钟以上。</p>
+<footer><cite><a href="https://wiki.mbalib.com/wiki/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">损失函数</a></cite></footer></blockquote>
+<h3 id="第九周-Python中的时间序列分析"><a href="#第九周-Python中的时间序列分析" class="headerlink" title="第九周 Python中的时间序列分析"></a>第九周 Python中的时间序列分析</h3><blockquote><p><strong>简单移动平均</strong>（英语：simple moving average，<strong>SMA</strong>）是某变数之前<em>n</em>个数值的未作加权<a href="https://zh.wikipedia.org/wiki/%E7%AE%97%E8%A1%93%E5%B9%B3%E5%9D%87" target="_blank" rel="noopener">算术平均</a>。例如，收市价的10日简单移动平均指之前10日收市价的平均数。若设收市价为 $p_{1}$ 至 $p_{n}$，则方程式为：</p>
+<p>$SMA= {p_{1}+p_{2}+p_{n} \over n}$</p>
+<p>当计算连续的数值，一个新的数值加入，同时一个旧数值剔出，所以无需每次都重新逐个数值加起来：</p>
+<p>$SMA_{t1,n}=SMA_{t0,n}-{p_{1} \over n}+{p_{n+1} \over n}$</p>
+<p>在技术分析中，不同的市场对常用天数（<strong>n值</strong>）有不同的需求，例如：某些市场普遍的<strong>n值</strong>为10日、40日、200日；有些则是5日、10日、20日、60日、120日、240日，视乎分析时期长短而定。投资者冀从移动平均线的图表中分辨出支持位或阻力位。</p>
+<hr>
+<p><strong>加权移动平均</strong>（英语：weighted moving average，<strong>WMA</strong>）指计算平均值时将个别数据<a href="https://zh.wikipedia.org/wiki/%E4%B9%98%E6%B3%95" target="_blank" rel="noopener">乘</a>以不同数值，在技术分析中，<em>n</em>日WMA的最近期一个数值乘以<em>n</em>、次近的乘以<em>n-1</em>，如此类推，一直到0：</p>
+<p>$WMA_{M}={np_{M}+(n-1)p_{M-1}+\cdots +2p_{M-n+2}+p_{M-n+1} \over n+(n-1)+\cdots +2+1}$</p>
+<p>由于$WMA_{M+1}$与$WMA_{M}$的分子相差$np_{M+1}-p_{M}-\cdots -p_{M-n+1}$，假设$p_{M}+p_{M-1}+\cdots +p_{M-n+1}$为总和M：</p>
+<p>$总和M+1 {\displaystyle =} =总和M {\displaystyle +p_{M+1}-p_{M-n+1}} +p_{M+1}-p_{M-n+1}$</p>
+<p>$分子M+1 {\displaystyle =N_{M+1}=} =N_{M+1}=分子M {\displaystyle +np_{M+1}-} +np_{M+1}-总和M$</p>
+<p>$WMA_{M+1}={N_{M+1} \over n+(n-1)+\cdots +2+1}$</p>
+<p>留意分母为<a href="https://zh.wikipedia.org/wiki/%E4%B8%89%E8%A7%92%E5%BD%A2%E6%95%B8" target="_blank" rel="noopener">三角形数</a>，方程式为 ${n(n+1) \over 2}$</p>
+<p>下图显示出加权是随日子远离而递减，直至递减至零。</p>
+<p><img src="220px-Weighted_moving_average_weights_N%3D15.png" alt="img"></p>
+<p><strong>指数移动平均</strong>（英语：exponential moving average，<strong>EMA</strong>或<strong>EXMA</strong>）是以<a href="https://zh.wikipedia.org/wiki/%E6%8C%87%E6%95%B0" target="_blank" rel="noopener">指数式</a>递减加权的移动平均。各数值的加权影响力随时间而指数式递减，越近期的数据加权影响力越重，但较旧的数据也给予一定的加权值。右图是一例子。</p>
+<p>加权的程度以常数α决定，α数值介乎0至1。α也可用天数<strong>N</strong>来代表：$\alpha ={2 \over {N+1}}$，所以，N=19天，代表α=0.1。</p>
+<p>设时间<em>t</em>的实际数值为$Y_{t}$，而时间<em>t</em>的EMA则为$S_{t}$；时间<em>t-1</em>的EMA则为，计$S_{t-1}$算时间<em>t≥2</em>是方程式为：</p>
+<p>$S_{t}=\alpha \times Y_{t}+(1-\alpha )\times S_{t-1}$</p>
+<p>设今日（<em>t1</em>）价格为<em>p</em>，则今日（<em>t1</em>）EMA的方程式为：</p>
+<p>${\text{EMA}}<em>{t1}={\text{EMA}}</em>{t0}+\alpha \times (p-{\text{EMA}}_{t0})$</p>
+<p>将${\text{EMA}}_{t0}$分拆开来如下：</p>
+<p>${\text{EMA}}={p_{1}+(1-\alpha )p_{2}+(1-\alpha )^{2}p_{3}+(1-\alpha )^{3}p_{4}+\cdots  \over 1+(1-\alpha )+(1-\alpha )^{2}+(1-\alpha )^{3}+\cdots }$</p>
+<p>理论上这是一个<a href="https://zh.wikipedia.org/wiki/%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0" target="_blank" rel="noopener">无穷级数</a>，但由于1-α少于1，各项的数值会越来越细，可以被忽略。分母方面，若有足够多项，则其数值趋向1/α。即，</p>
+<p>${\text{EMA}}=\alpha \times \left(p_{1}+(1-\alpha )p_{2}+(1-\alpha )^{2}p_{3}+(1-\alpha )^{3}p_{4}+\cdots \right)$</p>
+<p>假设<em>k</em>项及以后的项被忽略，即$\alpha \times \left((1-\alpha )^{k}+(1-\alpha )^{k+1}+\cdots \right)$，重写后可得$\alpha \times (1-\alpha )^{k}\times \left(1+(1-\alpha )+(1-\alpha )^{2}\cdots \right)$，相当于$(1-\alpha )^{k}$。所以，若要包含99.9%的加权，解方程$k={\log(0.001) \over \log(1-\alpha )}$即可得出<em>k</em>。由于当<em>N</em>不断增加，$\log \,(1-\alpha )$将趋向${-2 \over N+1}$，简化后<em>k</em>大约等于$3.45\times (N+1)$。</p>
+<footer><cite><a href="https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87" target="_blank" rel="noopener">移动平均</a></cite></footer></blockquote>
+<p>简单移动平均在遇到有固定的季节性或时效性时，会有固定的误报。这时候需要使用更加复杂的模型，比如加权平均。</p>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="https://tech.meituan.com/order_holtwinter.html" target="_blank" rel="noopener">外卖订单量预测异常报警模型实践 - 美团技术团队</a></li>
+</ol>
+</blockquote>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gu Qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/Study/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/Study/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/Study/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guqiangjs" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一周-使用Pandas进行探索性数据分析"><span class="nav-number">1.</span> <span class="nav-text">第一周 使用Pandas进行探索性数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#教程"><span class="nav-number">1.1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#教程内提供的相关网站链接"><span class="nav-number">1.2.</span> <span class="nav-text">教程内提供的相关网站链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任务"><span class="nav-number">1.3.</span> <span class="nav-text">任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践"><span class="nav-number">1.4.</span> <span class="nav-text">实践</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二周-Python中的可视化数据分析"><span class="nav-number">2.</span> <span class="nav-text">第二周 Python中的可视化数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#教程-1"><span class="nav-number">2.1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#教程内提供的相关网站链接-1"><span class="nav-number">2.2.</span> <span class="nav-text">教程内提供的相关网站链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Seaborn"><span class="nav-number">2.3.</span> <span class="nav-text">Seaborn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Plotly-github"><span class="nav-number">2.4.</span> <span class="nav-text">Plotly github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#任务-1"><span class="nav-number">2.5.</span> <span class="nav-text">任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践-1"><span class="nav-number">2.6.</span> <span class="nav-text">实践</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三周-分类，决策树和k个最近邻居"><span class="nav-number">3.</span> <span class="nav-text">第三周 分类，决策树和k个最近邻居</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#演示"><span class="nav-number">3.1.</span> <span class="nav-text">演示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七周-无监督学习：PCA和聚类"><span class="nav-number">4.</span> <span class="nav-text">第七周 无监督学习：PCA和聚类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八周-使用Vowpal-Wabbit高速学习大规模数据集"><span class="nav-number">5.</span> <span class="nav-text">第八周 使用Vowpal Wabbit高速学习大规模数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九周-Python中的时间序列分析"><span class="nav-number">6.</span> <span class="nav-text">第九周 Python中的时间序列分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gu Qiang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/Study/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/Study/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/Study/js/src/post-details.js?v=6.2.0"></script>
+
+
+	
+	<style type="text/css">
+	  .no-before::before {
+		content: "";
+		padding: 0px;
+	  }
+	  .no-before{
+	  font-weight: bold;
+	  font-style: normal;
+	  }
+	  </style>
+	<script type="text/javascript">
+	$("cite").each(function(index){
+		if($(this).prev().length==0 && $(this)[0].children.length==1)
+		{
+			$(this)[0].className='no-before';
+		}
+	});
+	</script> 
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style type="text/css">.MathJax_Display {display:inline!important;}</style>
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/Study/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Study/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Study/images/icons8-whale-32.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Study/images/icons8-whale-16.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/Study/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Study/',
+    scheme: 'Mist',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="编程,机器学习,TensorFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google机器学习速成课程">
+<meta property="og:url" content="https://guqiangjs.github.io/Study/2019/10/24/Google机器学习速成课程/index.html">
+<meta property="og:site_name" content="大蓝鲸">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-24T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google机器学习速成课程">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guqiangjs.github.io/Study/2019/10/24/Google机器学习速成课程/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Google机器学习速成课程 | 大蓝鲸</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Study/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大蓝鲸</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/Study/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/Study/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/Study/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/Study/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guqiangjs.github.io/Study/Study/2019/10/24/Google机器学习速成课程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gu Qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Study/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大蓝鲸">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Google机器学习速成课程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-25 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-25T00:00:00+08:00">2019-10-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/Study/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description"><!—more—-></div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>课程来源：<a href="https://developers.google.com/machine-learning/crash-course?hl=zh-cn" target="_blank" rel="noopener">https://developers.google.com/machine-learning/crash-course?hl=zh-cn</a></p>
+<h3 id="机器学习主要术语"><a href="#机器学习主要术语" class="headerlink" title="机器学习主要术语"></a>机器学习主要术语</h3><h4 id="机器学习的分类：监督式、非监督式"><a href="#机器学习的分类：监督式、非监督式" class="headerlink" title="机器学习的分类：监督式、非监督式"></a>机器学习的分类：监督式、非监督式</h4><h4 id="标签、特征、样本、模型的定义"><a href="#标签、特征、样本、模型的定义" class="headerlink" title="标签、特征、样本、模型的定义"></a>标签、特征、样本、模型的定义</h4><ul>
+<li><p><strong>标签</strong>是我们要预测的事物，即简单线性回归中的 <code>y</code> 变量。标签可以是小麦未来的价格、图片中显示的动物品种、音频剪辑的含义或任何事物。</p>
+</li>
+<li><p><strong>特征</strong>是输入变量，即简单线性回归中的 <code>x</code> 变量。</p>
+<blockquote>
+<p>在垃圾邮件检测器示例中，特征可能包括：</p>
+<ul>
+<li>电子邮件文本中的字词</li>
+<li>发件人的地址</li>
+<li>发送电子邮件的时段</li>
+<li>电子邮件中包含“一种奇怪的把戏”这样的短语。</li>
+</ul>
+</blockquote>
+</li>
+<li><p><strong>模型</strong>定义了特征与标签之间的关系。例如，垃圾邮件检测模型可能会将某些特征与“垃圾邮件”紧密联系起来。</p>
+</li>
+</ul>
+<h4 id="训练和推断"><a href="#训练和推断" class="headerlink" title="训练和推断"></a>训练和推断</h4><ul>
+<li><p><strong>训练</strong>是指创建或<strong>学习</strong>模型。也就是说，向模型展示有标签样本，让模型逐渐学习特征与标签之间的关系。</p>
+</li>
+<li><p><strong>推断</strong>是指将训练后的模型应用于无标签样本。也就是说，使用经过训练的模型做出有用的预测 (<code>y&#39;</code>)。</p>
+</li>
+</ul>
+<h4 id="回归和分类的区别"><a href="#回归和分类的区别" class="headerlink" title="回归和分类的区别"></a>回归和分类的区别</h4><ul>
+<li><strong>回归</strong>模型可预测连续值。例如，回归模型做出的预测可回答如下问题：</li>
+</ul>
+<blockquote>
+<ul>
+<li>加利福尼亚州一栋房产的价值是多少？</li>
+<li>用户点击此广告的概率是多少？</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>分类</strong>模型可预测离散值。例如，分类模型做出的预测可回答如下问题：</li>
+</ul>
+<blockquote>
+<ul>
+<li>某个指定电子邮件是垃圾邮件还是非垃圾邮件？</li>
+<li>这是一张狗、猫还是仓鼠图片？</li>
+</ul>
+</blockquote>
+<h4 id="问答"><a href="#问答" class="headerlink" title="问答"></a>问答</h4><ul>
+<li><p>假设您想开发一种监督式机器学习模型来预测指定的电子邮件是“垃圾邮件”还是“非垃圾邮件”。以下哪些表述正确？</p>
+<ul>
+<li><p>[ ] 主题标头中的字词适合做标签。</p>
+<blockquote>
+<p>主题标头中的字词可能是优质特征，但不适合做标签。</p>
+</blockquote>
+</li>
+<li><p>[ ] 我们将使用无标签样本来训练模型。</p>
+<blockquote>
+<p>我们将使用<strong>有标签</strong>样本来训练模型。然后，我们可以对无标签样本运行训练后的模型，以推理无标签的电子邮件是垃圾邮件还是非垃圾邮件。</p>
+</blockquote>
+</li>
+<li><p>[x] 未标记为“垃圾邮件”或“非垃圾邮件”的电子邮件是无标签样本。</p>
+<blockquote>
+<p>由于我们的标签由“垃圾邮件”和“非垃圾邮件”这两个值组成，因此任何尚未标记为垃圾邮件或非垃圾邮件的电子邮件都是无标签样本。</p>
+</blockquote>
+</li>
+<li><p>[x] 有些标签可能不可靠。</p>
+<blockquote>
+<p>当然。此数据集的标签可能来自将特定电子邮件标记为垃圾邮件的电子邮件用户。由于很少的用户会将每一封可疑的电子邮件都标记为垃圾邮件，因此我们可能很难知道某封电子邮件是否是垃圾邮件。此外，有些垃圾内容发布者或僵尸网络可能会故意提供错误标签来误导我们的模型。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/Study/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/Study/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/Study/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Study/2018/06/29/python_for_finance/" rel="next" title="Python 金融大数据分析">
+                <i class="fa fa-chevron-left"></i> Python 金融大数据分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Study/2020/01/30/macos下使用tunnelblick链接vpn时自动设置proxy的方法/" rel="prev" title="macos下使用tunnelblick链接vpn时自动设置proxy的方法">
+                macos下使用tunnelblick链接vpn时自动设置proxy的方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gu Qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/Study/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/Study/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/Study/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guqiangjs" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习主要术语"><span class="nav-number">1.</span> <span class="nav-text">机器学习主要术语</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#机器学习的分类：监督式、非监督式"><span class="nav-number">1.1.</span> <span class="nav-text">机器学习的分类：监督式、非监督式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签、特征、样本、模型的定义"><span class="nav-number">1.2.</span> <span class="nav-text">标签、特征、样本、模型的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练和推断"><span class="nav-number">1.3.</span> <span class="nav-text">训练和推断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归和分类的区别"><span class="nav-number">1.4.</span> <span class="nav-text">回归和分类的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问答"><span class="nav-number">1.5.</span> <span class="nav-text">问答</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性回归"><span class="nav-number">2.</span> <span class="nav-text">线性回归</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gu Qiang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/Study/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/Study/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/Study/js/src/post-details.js?v=6.2.0"></script>
+
+
+	
+	<style type="text/css">
+	  .no-before::before {
+		content: "";
+		padding: 0px;
+	  }
+	  .no-before{
+	  font-weight: bold;
+	  font-style: normal;
+	  }
+	  </style>
+	<script type="text/javascript">
+	$("cite").each(function(index){
+		if($(this).prev().length==0 && $(this)[0].children.length==1)
+		{
+			$(this)[0].className='no-before';
+		}
+	});
+	</script> 
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style type="text/css">.MathJax_Display {display:inline!important;}</style>
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

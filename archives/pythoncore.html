@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/Study/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Study/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Study/images/icons8-whale-32.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Study/images/icons8-whale-16.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/Study/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Study/',
+    scheme: 'Mist',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="编程,Python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Python 核心编程">
+<meta property="og:url" content="https://guqiangjs.github.io/Study/archives/pythoncore.html">
+<meta property="og:site_name" content="大蓝鲸">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://guqiangjs.github.io/2018/05/05/pythoncore/pythoncore.png">
+<meta property="og:updated_time" content="2018-05-10T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 核心编程">
+<meta name="twitter:image" content="https://guqiangjs.github.io/2018/05/05/pythoncore/pythoncore.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guqiangjs.github.io/Study/archives/pythoncore.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python 核心编程 | 大蓝鲸</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Study/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大蓝鲸</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/Study/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/Study/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/Study/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives menu-item-active">
+    <a href="/Study/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Python 核心编程</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description"><!—more—-></div>
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><h4 id="re-—-Regular-expression-operations"><a href="#re-—-Regular-expression-operations" class="headerlink" title="re — Regular expression operations"></a><a href="https://docs.python.org/3.5/library/re.html?highlight=re#module-re" target="_blank" rel="noopener"><code>re</code></a> — Regular expression operations</h4><blockquote>
+<p> <a href="https://docs.python.org/3.6/library/re.html?highlight=re#re.compile" target="_blank" rel="noopener"><code>re.compile</code></a> 为正则表达式提供了预编译功能。如果程序在执行过程中需要多次调用到正则表达式对象，那么采用预编译可以提升执行性能。</p>
+</blockquote>
+<p>If you want to locate a match anywhere in <em>string</em>, use <a href="https://docs.python.org/3.6/library/re.html?highlight=re#re.regex.search" target="_blank" rel="noopener"><code>search()</code></a> instead (see also <a href="https://docs.python.org/3.6/library/re.html?highlight=re#search-vs-match" target="_blank" rel="noopener">search() vs. match()</a>).</p>
+<h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h4 id="socket-低级网络接口"><a href="#socket-低级网络接口" class="headerlink" title="socket - 低级网络接口"></a><a href="https://docs.python.org/3.6/library/socket.html?highlight=socket#module-socket" target="_blank" rel="noopener">socket</a> - 低级网络接口</h4><ol>
+<li>基于文件的 Socket：<a href="https://docs.python.org/3.6/library/socket.html?highlight=socket#socket.AF_UNIX" target="_blank" rel="noopener"><code>socket.AF_UNIX</code></a></li>
+<li>基于网络的 Socket：<a href="https://docs.python.org/3.6/library/socket.html?highlight=socket#socket.AF_INET" target="_blank" rel="noopener"><code>socket.AF_INET</code></a></li>
+</ol>
+<ol>
+<li>有链接的Socket(<strong>TCP</strong>)：<a href="https://docs.python.org/3.6/library/socket.html?highlight=socket#socket.SOCK_STREAM" target="_blank" rel="noopener"><code>socket.SOCK_STREAM</code></a></li>
+<li>无链接的Socket(<strong>UDP</strong>)：<a href="https://docs.python.org/3.6/library/socket.html?highlight=socket#socket.SOCK_DGRAM" target="_blank" rel="noopener"><code>socket.SOCK_DGRAM</code></a></li>
+</ol>
+<p><code>tcpSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</code></p>
+<p><a href="https://docs.python.org/3/library/socket.html?highlight=getservbyname#socket.socket.sendall" target="_blank" rel="noopener"><code>socket.sendall(*bytes*[, *flags*])</code></a> 与 <a href="https://docs.python.org/3/library/socket.html?highlight=getservbyname#socket.socket.send" target="_blank" rel="noopener"><code>socket.send(*bytes*[, *flags*])</code></a> 不同，此方法继续从字节发送数据，直到发送所有数据或发生错误。</p>
+<p><a href="https://docs.python.org/3/library/socket.html?highlight=getservbyname#socket.socket.send" target="_blank" rel="noopener"><code>socket.send(*bytes*[, *flags*])</code></a> 返回发送的字节数。由应用程序负责检查所有数据是否已发送;</p>
+<p>TCP服务端和客户端示例**</p>
+<figure class="highlight python"><figcaption><span>服务端 tsTserv3.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</span><br><span class="line"></span><br><span class="line">HOST = <span class="string">''</span></span><br><span class="line">PORT = <span class="number">21567</span></span><br><span class="line">BUFSIZ = <span class="number">1024</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line">tcpSerSock = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">tcpSerSock.bind(ADDR)</span><br><span class="line">tcpSerSock.listen(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    print(<span class="string">'waiting for connection...'</span>)</span><br><span class="line">    tcpCliSock, addr = tcpSerSock.accept()</span><br><span class="line">    print(<span class="string">'...connected from:'</span>, addr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        data = tcpCliSock.recv(BUFSIZ)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="comment">#tcpCliSock.send('[%s] %s' % (bytes(ctime(), 'utf-8'), data))</span></span><br><span class="line">        tcpCliSock.send(bytes(<span class="string">'[%s] %s'</span> % (ctime(), data.decode(<span class="string">'utf-8'</span>)), <span class="string">'utf-8'</span>))</span><br><span class="line">    </span><br><span class="line">    tcpCliSock.close()</span><br><span class="line">tcpSerSock.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>客户端 tsTclnt3.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">HOST = <span class="string">'127.0.0.1'</span></span><br><span class="line">PORT = <span class="number">21567</span></span><br><span class="line">BUFSIZ = <span class="number">1024</span></span><br><span class="line">ADDR = (HOST, PORT)</span><br><span class="line"></span><br><span class="line">tcpCliSock = socket(AF_INET, SOCK_STREAM)</span><br><span class="line">tcpCliSock.connect(ADDR)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    data = input(<span class="string">'&gt; '</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    tcpCliSock.send(bytes(data, <span class="string">'utf-8'</span>))</span><br><span class="line">    data = tcpCliSock.recv(BUFSIZ)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(data.decode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line">tcpCliSock.close()</span><br></pre></td></tr></table></figure>
+<p><strong>执行 TCP 服务端和客户端</strong></p>
+<p>服务端输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">waiting for connection...</span><br><span class="line">...connected from: (&apos;127.0.0.1&apos;, 57223)</span><br></pre></td></tr></table></figure>
+<p>客户端输入及输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; hi</span><br><span class="line">[Mon May  7 20:05:26 2018] hi</span><br><span class="line">&gt; spanish</span><br><span class="line">[Mon May  7 20:05:33 2018] spanish</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="socketserver-网络服务框架"><a href="#socketserver-网络服务框架" class="headerlink" title="socketserver - 网络服务框架"></a><a href="https://docs.python.org/3.6/library/socketserver.html?highlight=socketserver#module-socketserver" target="_blank" rel="noopener"><code>socketserver</code></a> - 网络服务框架</h4><p><strong><a href="https://docs.python.org/3.6/library/socketserver.html?highlight=socketserver#examples" target="_blank" rel="noopener">Examples</a></strong></p>
+<h4 id="asyncore-asynchat-异步-socket-处理器"><a href="#asyncore-asynchat-异步-socket-处理器" class="headerlink" title="asyncore / asynchat - 异步 socket 处理器"></a><a href="https://docs.python.org/3.6/library/asyncore.html?highlight=asyncore#module-asyncore" target="_blank" rel="noopener"><code>asyncore</code></a> / <a href="https://docs.python.org/3.6/library/asynchat.html#module-asynchat" target="_blank" rel="noopener"><code>asynchat</code></a> - 异步 socket 处理器</h4><h4 id="select-selectors"><a href="#select-selectors" class="headerlink" title="select / selectors"></a><a href="https://docs.python.org/3.6/library/select.html?highlight=select#module-select" target="_blank" rel="noopener"><code>select</code></a> / <a href="https://docs.python.org/3.6/library/selectors.html#module-selectors" target="_blank" rel="noopener"><code>selectors</code></a></h4><blockquote>
+<p>Note that on Windows, it only works for sockets;</p>
+<p>The <a href="https://docs.python.org/3.6/library/selectors.html#module-selectors" target="_blank" rel="noopener"><code>selectors</code></a> module allows high-level and efficient I/O multiplexing, built upon the<a href="https://docs.python.org/3.6/library/select.html?highlight=select#module-select" target="_blank" rel="noopener"><code>select</code></a> module primitives. Users are encouraged to use the <a href="https://docs.python.org/3.6/library/selectors.html#module-selectors" target="_blank" rel="noopener"><code>selectors</code></a> module instead</p>
+</blockquote>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><ol>
+<li>实现<code>Python</code>库参考文档中关于<code>socket</code>模块中TCP客户端/服务端程序示例。令其可以识别以下命令。<ol>
+<li><code>date</code> 服务器将返回其当前日期/时间戳，即 <code>time.ctime()</code></li>
+<li><code>os</code> 获取操作系统信息（<code>os.name</code>）</li>
+<li><code>ls</code> 列出当前目录文件清单（<code>os.listdir()</code>列出目录，<code>os.curdir</code>是当前目录）</li>
+</ol>
+</li>
+<li><code>Daytime</code>服务。使用<code>socket.getservbyname()</code>来确定使用UDP协议的<code>daytime</code>服务的端口号。</li>
+</ol>
+<h3 id="因特网客户端编程"><a href="#因特网客户端编程" class="headerlink" title="因特网客户端编程"></a>因特网客户端编程</h3><h4 id="http-—-HTTP-包"><a href="#http-—-HTTP-包" class="headerlink" title="http — HTTP 包"></a><a href="https://docs.python.org/3.5/library/http.html#module-http" target="_blank" rel="noopener"><code>http</code></a> — HTTP 包</h4><blockquote>
+<p>Python3.0起，原 <code>httplib</code> 模块被并入 <code>http</code> 包中。</p>
+</blockquote>
+<ul>
+<li><a href="https://docs.python.org/3.5/library/http.client.html#module-http.client" target="_blank" rel="noopener"><code>http.client</code></a> 低级 HTTP 协议客户端; 高级 HTTP 协议客户端使用 <a href="https://docs.python.org/3.5/library/urllib.request.html#module-urllib.request" target="_blank" rel="noopener"><code>urllib.request</code></a></li>
+<li><a href="https://docs.python.org/3.5/library/http.server.html#module-http.server" target="_blank" rel="noopener"><code>http.server</code></a> 基于 <a href="https://docs.python.org/3.5/library/socketserver.html#module-socketserver" target="_blank" rel="noopener"><code>socketserver</code></a> 的基础 HTTP 服务端类</li>
+<li><a href="https://docs.python.org/3.5/library/http.cookies.html#module-http.cookies" target="_blank" rel="noopener"><code>http.cookies</code></a> 使用cookie实施状态管理的实用程序</li>
+<li><a href="https://docs.python.org/3.5/library/http.cookiejar.html#module-http.cookiejar" target="_blank" rel="noopener"><code>http.cookiejar</code></a> 提供cookie的持久性</li>
+</ul>
+<h4 id="ftplib-FTP-协议客户端"><a href="#ftplib-FTP-协议客户端" class="headerlink" title="ftplib - FTP 协议客户端"></a><a href="https://docs.python.org/3.6/library/ftplib.html?highlight=ftplib#module-ftplib" target="_blank" rel="noopener"><code>ftplib</code></a> - FTP 协议客户端</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; from ftplib import FTP</span><br><span class="line">&gt;&gt;&gt; ftp = FTP(&apos;ftp.debian.org&apos;)     # connect to host, default port</span><br><span class="line">&gt;&gt;&gt; ftp.login()                     # user anonymous, passwd anonymous@</span><br><span class="line">&apos;230 Login successful.&apos;</span><br><span class="line">&gt;&gt;&gt; ftp.cwd(&apos;debian&apos;)               # change into &quot;debian&quot; directory</span><br><span class="line">&gt;&gt;&gt; ftp.retrlines(&apos;LIST&apos;)           # list directory contents</span><br><span class="line">-rw-rw-r--    1 1176     1176         1063 Jun 15 10:18 README</span><br><span class="line">...</span><br><span class="line">drwxr-sr-x    5 1176     1176         4096 Dec 19  2000 pool</span><br><span class="line">drwxr-sr-x    4 1176     1176         4096 Nov 17  2008 project</span><br><span class="line">drwxr-xr-x    3 1176     1176         4096 Oct 10  2012 tools</span><br><span class="line">&apos;226 Directory send OK.&apos;</span><br><span class="line">&gt;&gt;&gt; ftp.retrbinary(&apos;RETR README&apos;, open(&apos;README&apos;, &apos;wb&apos;).write)</span><br><span class="line">&apos;226 Transfer complete.&apos;</span><br><span class="line">&gt;&gt;&gt; ftp.quit()</span><br></pre></td></tr></table></figure>
+<blockquote><p>主动模式要求客户端和服务器端同时打开并且监听一个端口以创建连接。在这种情况下，客户端由于安装了防火墙会产生一些问题。所以，创立了被动模式。被动模式只要求服务器端产生一个监听相应端口的进程，这样就可以绕过客户端安装了防火墙的问题。</p>
+<footer><strong>主动和被动模式</strong><cite><a href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE#%E4%B8%BB%E5%8A%A8%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">文件传输协议</a></cite></footer></blockquote>
+<blockquote>
+<p>从 Python2.1开始，默认为<strong>被动模式</strong>。</p>
+</blockquote>
+<h4 id="nntplib-网络新闻传输协议"><a href="#nntplib-网络新闻传输协议" class="headerlink" title="nntplib - 网络新闻传输协议"></a><a href="https://docs.python.org/3.6/library/nntplib.html?highlight=nntp#module-nntplib" target="_blank" rel="noopener"><code>nntplib</code></a> - <a href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E8%B7%AF%E6%96%B0%E8%81%9E%E5%82%B3%E8%BC%B8%E5%8D%94%E5%AE%9A" target="_blank" rel="noopener">网络新闻传输协议</a></h4><h4 id="smtplib-SMTP-协议客户端"><a href="#smtplib-SMTP-协议客户端" class="headerlink" title="smtplib - SMTP 协议客户端"></a><a href="https://docs.python.org/3.6/library/smtplib.html?highlight=smtplib#module-smtplib" target="_blank" rel="noopener"><code>smtplib</code></a> - SMTP 协议客户端</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; from smtplib import SMTP</span><br><span class="line">&gt;&gt;&gt; with SMTP(&quot;domain.org&quot;) as smtp:</span><br><span class="line">...     smtp.noop()</span><br><span class="line">...</span><br><span class="line">(250, b&apos;Ok&apos;)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://docs.python.org/3.6/library/smtplib.html?highlight=smtplib#smtp-objects" target="_blank" rel="noopener"><code>SMTP Objects</code></a></strong> <a href="https://docs.python.org/3.6/library/smtplib.html?highlight=smtplib#smtp-example" target="_blank" rel="noopener">Example</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prompt</span><span class="params">(prompt)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> input(prompt).strip()</span><br><span class="line"></span><br><span class="line">fromaddr = prompt(<span class="string">"From: "</span>)</span><br><span class="line">toaddrs  = prompt(<span class="string">"To: "</span>).split()</span><br><span class="line">print(<span class="string">"Enter message, end with ^D (Unix) or ^Z (Windows):"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the From: and To: headers at the start!</span></span><br><span class="line">msg = (<span class="string">"From: %s\r\nTo: %s\r\n\r\n"</span></span><br><span class="line">       % (fromaddr, <span class="string">", "</span>.join(toaddrs)))</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        line = input()</span><br><span class="line">    <span class="keyword">except</span> EOFError:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> line:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    msg = msg + line</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Message length is"</span>, len(msg))</span><br><span class="line"></span><br><span class="line">server = smtplib.SMTP(<span class="string">'localhost'</span>)</span><br><span class="line">server.set_debuglevel(<span class="number">1</span>)</span><br><span class="line">server.sendmail(fromaddr, toaddrs, msg)</span><br><span class="line">server.quit()</span><br></pre></td></tr></table></figure>
+<h4 id="郵局協议（Post-Office-Protocol，简称-POP）"><a href="#郵局協议（Post-Office-Protocol，简称-POP）" class="headerlink" title="郵局協议（Post Office Protocol，简称 POP）"></a><a href="https://zh.wikipedia.org/wiki/%E9%83%B5%E5%B1%80%E5%8D%94%E5%AE%9A" target="_blank" rel="noopener">郵局協议（Post Office Protocol，简称 POP）</a></h4><blockquote><p>POP支持离线邮件处理。其具体过程是：邮件发送到服务器上，电子邮件客户端调用邮件客户机程序以连接服务器，并下载所有未阅读的电子邮件。这种离线访问模式是一种存储转发服务，将邮件从邮件服务器端送到个人终端机器上，一般是PC机或MAC。一旦邮件发送到PC机或MAC上，邮件服务器上的邮件将会被删除。但目前的POP3邮件服务器大都可以“只下载邮件，服务器端并不删除”，也就是改进的POP3协议。</p>
+<footer><strong>邮局协议</strong><cite><a href="https://zh.wikipedia.org/wiki/%E9%83%B5%E5%B1%80%E5%8D%94%E5%AE%9A" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E9%83%B5%E5%B1%80%E5%8D%94%E5%AE%9A</a></cite></footer></blockquote>
+<h5 id="poplib-POP3-协议客户端"><a href="#poplib-POP3-协议客户端" class="headerlink" title="poplib - POP3 协议客户端"></a><a href="https://docs.python.org/3.6/library/poplib.html?highlight=poplib#module-poplib" target="_blank" rel="noopener"><code>poplib</code></a> - POP3 协议客户端</h5><p><a href="https://docs.python.org/3.6/library/poplib.html?highlight=poplib#pop3-objects" target="_blank" rel="noopener"><code>POP3 Objects</code></a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> getpass, poplib</span><br><span class="line"></span><br><span class="line">M = poplib.POP3(<span class="string">'localhost'</span>)</span><br><span class="line">M.user(getpass.getuser())</span><br><span class="line">M.pass_(getpass.getpass())</span><br><span class="line">numMessages = len(M.list()[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(numMessages):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> M.retr(i+<span class="number">1</span>)[<span class="number">1</span>]:</span><br><span class="line">        print(j)</span><br></pre></td></tr></table></figure>
+<h4 id="因特网信息访问协议（缩写为-IMAP，以前称作-交互邮件访问协议）"><a href="#因特网信息访问协议（缩写为-IMAP，以前称作-交互邮件访问协议）" class="headerlink" title="因特网信息访问协议（缩写为 IMAP，以前称作 交互邮件访问协议）"></a><a href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E4%BF%A1%E6%81%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">因特网信息访问协议（缩写为 IMAP，以前称作 交互邮件访问协议）</a></h4><blockquote><p>因特网信息访问协议（缩写为IMAP，以前称作交互邮件访问协议）是一个应用层协议，用来从本地邮件客户端（如Microsoft Outlook、Outlook Express、Foxmail、Mozilla Thunderbird）访问远程服务器上的邮件。</p>
+<p>IMAP和POP3（Post Office Protocol - Version 3，邮局协议第三版）是邮件访问最为普遍的Internet标准协议。事实上所有现代的邮件客户端和服务器都对两者给予支持。IMAP现在的版本是“IMAP第四版第一次修订版”（IMAP4rev1），在 RFC 3501 中定义。</p>
+<footer><strong>因特网信息访问协议</strong><cite><a href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E4%BF%A1%E6%81%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E4%BF%A1%E6%81%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE</a></cite></footer></blockquote>
+<h5 id="imaplib-—-IMAP4-协议客户端"><a href="#imaplib-—-IMAP4-协议客户端" class="headerlink" title="imaplib — IMAP4 协议客户端"></a><a href="https://docs.python.org/3.6/library/imaplib.html#module-imaplib" target="_blank" rel="noopener"><code>imaplib</code></a> — IMAP4 协议客户端</h5><p><a href="https://docs.python.org/3.6/library/imaplib.html#imap4-objects" target="_blank" rel="noopener"><code>IMAP4 Objects</code></a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> getpass, imaplib</span><br><span class="line"></span><br><span class="line">M = imaplib.IMAP4()</span><br><span class="line">M.login(getpass.getuser(), getpass.getpass())</span><br><span class="line">M.select()</span><br><span class="line">typ, data = M.search(<span class="keyword">None</span>, <span class="string">'ALL'</span>)</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> data[<span class="number">0</span>].split():</span><br><span class="line">    typ, data = M.fetch(num, <span class="string">'(RFC822)'</span>)</span><br><span class="line">    print(<span class="string">'Message %s\n%s\n'</span> % (num, data[<span class="number">0</span>][<span class="number">1</span>]))</span><br><span class="line">M.close()</span><br><span class="line">M.logout()</span><br></pre></td></tr></table></figure>
+<h4 id="email-An-email-and-MIME-handling-package"><a href="#email-An-email-and-MIME-handling-package" class="headerlink" title="email - An email and MIME handling package"></a><a href="https://docs.python.org/3.6/library/email.html?highlight=email#module-email" target="_blank" rel="noopener"><code>email</code></a> - An email and MIME handling package</h4><h4 id="smtpd-SMTP-服务端"><a href="#smtpd-SMTP-服务端" class="headerlink" title="smtpd - SMTP 服务端"></a><a href="https://docs.python.org/3.6/library/smtpd.html?highlight=smtpd#module-smtpd" target="_blank" rel="noopener"><code>smtpd</code></a> - SMTP 服务端</h4><h4 id="base64-Base16-Base32-Base64-Base85-Data-Encodings"><a href="#base64-Base16-Base32-Base64-Base85-Data-Encodings" class="headerlink" title="base64 - Base16, Base32, Base64, Base85 Data Encodings"></a><a href="https://docs.python.org/3.6/library/base64.html?highlight=base64#module-base64" target="_blank" rel="noopener"><code>base64</code></a> - Base16, Base32, Base64, Base85 Data Encodings</h4><h4 id="mimetypes-Map-filenames-to-MIME-types"><a href="#mimetypes-Map-filenames-to-MIME-types" class="headerlink" title="mimetypes - Map filenames to MIME types"></a><a href="https://docs.python.org/3.6/library/mimetypes.html?highlight=mimetypes#module-mimetypes" target="_blank" rel="noopener"><code>mimetypes</code></a> - Map filenames to MIME types</h4><blockquote><p>互联网媒体类型（Internet media type，也称为MIME类型（MIME type）或内容类型（content type））是给互联网上传输的内容赋予的分类类型。一份内容的互联网媒体类型是由其文件格式与内容决定的。互联网媒体类型与文件拓展名相对应，因此计算机系统常常通过拓展名来确定一个文件的媒体类型并决定与其相关联的软件。互联网媒体类型的分类标准由互联网号码分配局（IANA）发布。1996年十一月，媒体类型在RFC 2045中被最初定义，当时仅被使用在SMTP协议的电子邮件中。现在其他的协议（比如HTTP或者SIP）也都常使用MIME类型。 一个MIME类型至少包括两个部分：一个类型（type）和一个子类型（subtype）。此外，它还可能包括一个或多个可选参数（optional parameter）。比如，HTML文件的互联网媒体类型可能是</p>
+<p>text/html; charset = UTF-8</p>
+<p>在这个例子中，文件类型为text，子类型为html，而charset是一个可选参数，其值为UTF-8。</p>
+<footer><strong>互联网媒体类型</strong><cite><a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B</a></cite></footer></blockquote>
+<h4 id="binascii-Convert-between-binary-and-ASCII"><a href="#binascii-Convert-between-binary-and-ASCII" class="headerlink" title="binascii - Convert between binary and ASCII"></a><a href="https://docs.python.org/3.6/library/binascii.html?highlight=binascii#module-binascii" target="_blank" rel="noopener"><code>binascii</code></a> - Convert between binary and ASCII</h4><h4 id="binhex-Encode-and-decode-binhex4-files"><a href="#binhex-Encode-and-decode-binhex4-files" class="headerlink" title="binhex - Encode and decode binhex4 files"></a><a href="https://docs.python.org/3.6/library/binhex.html?highlight=binhex#module-binhex" target="_blank" rel="noopener"><code>binhex</code></a> - Encode and decode binhex4 files</h4><h4 id="quopri-Encode-and-decode-MIME-quoted-printable-data"><a href="#quopri-Encode-and-decode-MIME-quoted-printable-data" class="headerlink" title="quopri - Encode and decode MIME quoted-printable data"></a><a href="https://docs.python.org/3.6/library/quopri.html#module-quopri" target="_blank" rel="noopener"><code>quopri</code></a> - Encode and decode MIME quoted-printable data</h4><h3 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h3><h4 id="thread-低级线程-API"><a href="#thread-低级线程-API" class="headerlink" title="_thread - 低级线程 API"></a><a href="https://docs.python.org/3.6/library/_thread.html#module-_thread" target="_blank" rel="noopener"><code>_thread</code></a> - 低级线程 API</h4><h4 id="threading-基于-thread-的高级线程接口"><a href="#threading-基于-thread-的高级线程接口" class="headerlink" title="threading - 基于 _thread 的高级线程接口"></a><a href="https://docs.python.org/3.6/library/threading.html#module-threading" target="_blank" rel="noopener"><code>threading</code></a> - 基于 <code>_thread</code> 的高级线程接口</h4><blockquote>
+<p><code>threading</code>模块支持守护线程(<a href="https://docs.python.org/3.6/library/threading.html?highlight=daemon#threading.Thread.daemon" target="_blank" rel="noopener"><code>daemon</code></a> thread)，其工作方式是：守护线程一般是一个等待客户端请求服务的服务器。如果没有客户端请求，守护线程就是空闲的。如果把一个线程设置为守护线程，就表示这个线程是<strong>不重要的</strong>，进程退出时不需要等待这个线程执行完成。</p>
+<p>如果主线程准备退出时，不需要等待某些子线程完成，就可以为这些子线程设置守护线程标记。</p>
+</blockquote>
+<h5 id="创建-Thread-实例，传给它一个函数（多线程模式1）"><a href="#创建-Thread-实例，传给它一个函数（多线程模式1）" class="headerlink" title="创建 Thread 实例，传给它一个函数（多线程模式1）"></a>创建 Thread 实例，传给它一个函数（多线程模式1）</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep, ctime</span><br><span class="line"></span><br><span class="line">loops = [<span class="number">4</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">(nloop, nsec)</span>:</span></span><br><span class="line">    print(<span class="string">'start loop'</span>, nloop, <span class="string">'at:'</span>, ctime())</span><br><span class="line">    sleep(nsec)</span><br><span class="line">    print(<span class="string">'loop'</span>, nloop, <span class="string">'done at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'starting at:'</span>, ctime())</span><br><span class="line">    threads = []</span><br><span class="line">    nloops = list(range(len(loops)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:</span><br><span class="line">        t = threading.Thread(target=loop,</span><br><span class="line">                             args=(i, loops[i]))</span><br><span class="line">        threads.append(t)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:  <span class="comment"># start threads</span></span><br><span class="line">        threads[i].start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:  <span class="comment"># wait for all</span></span><br><span class="line">        threads[i].join()  <span class="comment"># threads to finish</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">'all DONE at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>当所有线程都被分配完毕后，通过调用每个线程的 <code>start()</code> 方法让它们开始执行，而不是在这之前就会执行。</p>
+<p><code>join()</code> 方法将等待线程结束，或者在提供了超时时间的情况下，达到超时时间。一旦线程启动，它们就会一直执行，知道给定的函数完成之后退出。如果主线程还有其他事情要做，而不是等待某些线程完成，就可以不调用 <code>join()</code> 。 <code>join()</code> 方法只有在需要等待线程完成的时候才是有用的。</p>
+<h5 id="创建-Thread-实例，传给它一个可调用的类的实例（多线程模式2）"><a href="#创建-Thread-实例，传给它一个可调用的类的实例（多线程模式2）" class="headerlink" title="创建 Thread 实例，传给它一个可调用的类的实例（多线程模式2）"></a>创建 Thread 实例，传给它一个可调用的类的实例（多线程模式2）</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep, ctime</span><br><span class="line"></span><br><span class="line">loops = [<span class="number">4</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadFunc</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func, args, name=<span class="string">''</span>)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.func = func</span><br><span class="line">        self.args = args</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.func(*self.args)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">(nloop, nsec)</span>:</span></span><br><span class="line">    print(<span class="string">'start loop'</span>, nloop, <span class="string">'at:'</span>, ctime())</span><br><span class="line">    sleep(nsec)</span><br><span class="line">    print(<span class="string">'loop'</span>, nloop, <span class="string">'done at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'starting at:'</span>, ctime())</span><br><span class="line">    threads = []</span><br><span class="line">    nloops = range(len(loops))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:        <span class="comment"># create all threads</span></span><br><span class="line">        t = threading.Thread(</span><br><span class="line">            target=ThreadFunc(loop, (i, loops[i]),</span><br><span class="line">            loop.__name__))</span><br><span class="line">        threads.append(t)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:        <span class="comment"># start all threads</span></span><br><span class="line">        threads[i].start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:        <span class="comment"># wait for completion</span></span><br><span class="line">        threads[i].join()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'all DONE at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>相对于上一个示例，本次主要是添加了<code>ThreadFunc</code>类，并在实例化<code>Thread</code>对象的同时实例化了可调用类<code>ThreadFunc</code>。</p>
+<p>当创建新线程时，<code>Thread</code>类的代码将调用<code>ThreadFunc</code>对象，对此会调用<code>__call__()</code>这个特殊方法。</p>
+<h5 id="派生-Thread-的子类，并创建子类的实例（多线程模式3-推荐方式）"><a href="#派生-Thread-的子类，并创建子类的实例（多线程模式3-推荐方式）" class="headerlink" title="派生 Thread 的子类，并创建子类的实例（多线程模式3 - 推荐方式）"></a>派生 <a href="https://docs.python.org/3/library/threading.html?highlight=threading%20thread#thread-objects" target="_blank" rel="noopener">Thread</a> 的子类，并创建子类的实例（多线程模式3 - 推荐方式）</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep, ctime</span><br><span class="line"></span><br><span class="line">loops = [<span class="number">4</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func, args, name=<span class="string">''</span>)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self, name=name)</span><br><span class="line">        self.func = func</span><br><span class="line">        self.args = args</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.func(*self.args)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">(nloop, nsec)</span>:</span></span><br><span class="line">    print(<span class="string">'start loop'</span>, nloop, <span class="string">'at:'</span>, ctime())</span><br><span class="line">    sleep(nsec)</span><br><span class="line">    print(<span class="string">'loop'</span>, nloop, <span class="string">'done at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'starting at:'</span>, ctime())</span><br><span class="line">    threads = []</span><br><span class="line">    nloops = range(len(loops))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:</span><br><span class="line">        t = MyThread(loop, (i, loops[i]),</span><br><span class="line">            loop.__name__)</span><br><span class="line">        threads.append(t)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:</span><br><span class="line">        threads[i].start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nloops:</span><br><span class="line">        threads[i].join()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'all DONE at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对于多线程来说，相对推荐这个模式，只需要创建 <a href="https://docs.python.org/3/library/threading.html?highlight=threading%20thread#threading.Thread" target="_blank" rel="noopener"><code>Thread</code></a> 的派生类，并重写 <code>__init__()</code> 及 <a href="https://docs.python.org/3/library/threading.html?highlight=threading%20thread#threading.Thread.run" target="_blank" rel="noopener"><code>run()</code></a> 方法即可</p>
+</blockquote>
+<h4 id="多线程实践"><a href="#多线程实践" class="headerlink" title="多线程实践"></a>多线程实践</h4><h5 id="图书排名示例"><a href="#图书排名示例" class="headerlink" title="图书排名示例"></a>图书排名示例</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">from</span> atexit <span class="keyword">import</span> register</span><br><span class="line"><span class="keyword">from</span> re <span class="keyword">import</span> compile</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</span><br><span class="line"></span><br><span class="line">REGEX = compile(<span class="string">'#([\d,]+) in Books '</span>)</span><br><span class="line">AMZN = <span class="string">'https://www.amazon.com/dp/'</span></span><br><span class="line">ISBNs = &#123;</span><br><span class="line">    <span class="string">'0132269937'</span>: <span class="string">'Core Python Programming'</span>,</span><br><span class="line">    <span class="string">'0132356139'</span>: <span class="string">'Python Web Development with Django'</span>,</span><br><span class="line">    <span class="string">'0137143419'</span>: <span class="string">'Python Fundamentals'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getRanking</span><span class="params">(isbn)</span>:</span></span><br><span class="line">    opener = urllib.request.build_opener()</span><br><span class="line">    opener.addheaders = [(<span class="string">'User-agent'</span>, <span class="string">'Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11'</span>)]</span><br><span class="line">    o = opener.open(<span class="string">'&#123;0&#125;&#123;1&#125;'</span>.format(AMZN, isbn))</span><br><span class="line">    data = str(o.read(), <span class="string">'utf-8'</span>)</span><br><span class="line">    opener.close()</span><br><span class="line">    <span class="keyword">return</span> REGEX.findall(data)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_showRanking</span><span class="params">(isbn)</span>:</span></span><br><span class="line">    print(<span class="string">'- %r ranked %s'</span> % (</span><br><span class="line">        ISBNs[isbn], getRanking(isbn)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_main</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'At'</span>, ctime(), <span class="string">'on Amazon...'</span>)</span><br><span class="line">    <span class="keyword">for</span> isbn <span class="keyword">in</span> ISBNs:</span><br><span class="line">        Thread(target=_showRanking, args=(isbn,)).start()  <span class="comment"># _showRanking(isbn)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_atexit</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'all DONE at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    _main()</span><br></pre></td></tr></table></figure>
+<blockquote><p><strong>竞争冒险</strong>（race hazard）又名<strong>竞态条件</strong>、<strong>竞争条件</strong>（race condition），它旨在描述一个系统或者进程的输出依赖于不受控制的事件出现顺序或者出现时机。此词源自于两个信号试着彼此竞争，来影响谁先输出。</p>
+<p>举例来说，如果计算机中的两个<a href="https://zh.wikipedia.org/wiki/%E8%BF%9B%E7%A8%8B" target="_blank" rel="noopener">进程</a>同时试图修改一个共享内存的内容，在没有<a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6" target="_blank" rel="noopener">并发控制</a>的情况下，最后的结果依赖于两个进程的执行顺序与时机。而且如果发生了并发访问冲突，则最后的结果是不正确的。</p>
+<p>竞争冒险常见于不良设计的电子系统，尤其是逻辑电路。但它们在<a href="https://zh.wikipedia.org/wiki/%E8%BB%9F%E9%AB%94" target="_blank" rel="noopener">软件</a>中也比较常见，尤其是有采用<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E7%BA%BF%E7%A8%8B" target="_blank" rel="noopener">多线程</a>技术的软件。</p>
+<footer><strong>竞争冒险</strong><cite><a href="https://zh.wikipedia.org/wiki/%E7%AB%B6%E7%88%AD%E5%8D%B1%E5%AE%B3" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E7%AB%B6%E7%88%AD%E5%8D%B1%E5%AE%B3</a></cite></footer></blockquote>
+<h5 id="Lock-Objects"><a href="#Lock-Objects" class="headerlink" title="Lock Objects"></a><a href="https://docs.python.org/3/library/threading.html?highlight=threading#lock-objects" target="_blank" rel="noopener">Lock Objects</a></h5><p><strong>原始锁定是一种同步原语，在锁定时不属于特定线程</strong>。</p>
+<p><strong>当多个线程在<a href="https://docs.python.org/3/library/threading.html?highlight=threading#threading.Lock.acquire" target="_blank" rel="noopener"><code>acquire()</code></a>等待状态转为解锁状态时被阻塞时，当一个<a href="https://docs.python.org/3/library/threading.html?highlight=threading#threading.Lock.release" target="_blank" rel="noopener"><code>release()</code></a> 呼叫将状态重置为解锁状态时，只有一个线程继续进行; 哪一个等待的线程没有被定义，并且可能会因实现而有所不同。</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> atexit <span class="keyword">import</span> register</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randrange</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread, Lock, currentThread</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep, ctime</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CleanOutputSet</span><span class="params">(set)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">', '</span>.join(x <span class="keyword">for</span> x <span class="keyword">in</span> self)</span><br><span class="line"></span><br><span class="line">lock = Lock()</span><br><span class="line">loops = (randrange(<span class="number">2</span>, <span class="number">5</span>) <span class="keyword">for</span> x <span class="keyword">in</span> range(randrange(<span class="number">3</span>, <span class="number">7</span>)))</span><br><span class="line">remaining = CleanOutputSet()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">(nsec)</span>:</span></span><br><span class="line">    myname = currentThread().name</span><br><span class="line">    lock.acquire()</span><br><span class="line">    remaining.add(myname)</span><br><span class="line">    print(<span class="string">'[%s] Started %s'</span> % (ctime(), myname)) <span class="comment">#print '[&#123;0&#125;] Started &#123;1&#125;'.format(ctime(), myname)</span></span><br><span class="line">    lock.release()</span><br><span class="line">    sleep(nsec)</span><br><span class="line">    lock.acquire()</span><br><span class="line">    remaining.remove(myname)</span><br><span class="line">    print(<span class="string">'[%s] Completed %s (%d secs)'</span> % ( <span class="comment">#print '[&#123;0&#125;] Completed &#123;1&#125; (&#123;2&#125; secs)'.format(</span></span><br><span class="line">        ctime(), myname, nsec))</span><br><span class="line">    print(<span class="string">'    (remaining: %s)'</span> % (remaining <span class="keyword">or</span> <span class="string">'NONE'</span>)) <span class="comment">#print '    (remaining: &#123;0&#125;)'.format(remaining or 'NONE')</span></span><br><span class="line">    lock.release()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> pause <span class="keyword">in</span> loops:</span><br><span class="line">        Thread(target=loop, args=(pause,)).start()</span><br><span class="line"></span><br><span class="line"><span class="meta">@register</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_atexit</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'all DONE at:'</span>, ctime())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    _main()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Thu May 10 15:52:48 2018] Started Thread-1</span><br><span class="line">[Thu May 10 15:52:48 2018] Started Thread-2</span><br><span class="line">[Thu May 10 15:52:48 2018] Started Thread-3</span><br><span class="line">[Thu May 10 15:52:48 2018] Started Thread-4</span><br><span class="line">[Thu May 10 15:52:51 2018] Completed Thread-4 (3 secs)</span><br><span class="line">    (remaining: Thread-1, Thread-3, Thread-2)</span><br><span class="line">[Thu May 10 15:52:51 2018] Completed Thread-2 (3 secs)</span><br><span class="line">    (remaining: Thread-1, Thread-3)</span><br><span class="line">[Thu May 10 15:52:52 2018] Completed Thread-1 (4 secs)</span><br><span class="line">    (remaining: Thread-3)</span><br><span class="line">[Thu May 10 15:52:52 2018] Completed Thread-3 (4 secs)</span><br><span class="line">    (remaining: NONE)</span><br><span class="line">all DONE at: Thu May 10 15:52:52 2018</span><br></pre></td></tr></table></figure>
+<p>以上示例中由于 <code>sleep(nsec)</code> 的存在，才造成了输出后半部分不同线程的结束顺序不同。</p>
+<blockquote>
+<p>个人理解：Lock锁线程后会造成所有线程的阻塞和等待。</p>
+</blockquote>
+<h5 id="上下文管理器-with"><a href="#上下文管理器-with" class="headerlink" title="上下文管理器 with"></a>上下文管理器 <a href="https://docs.python.org/3/library/threading.html?highlight=threading#using-locks-conditions-and-semaphores-in-the-with-statement" target="_blank" rel="noopener">with</a></h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> some_lock:</span><br><span class="line">    <span class="comment"># do something...</span></span><br></pre></td></tr></table></figure>
+<p>与以下代码是等价的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">some_lock.acquire()</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># do something...</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    some_lock.release()</span><br></pre></td></tr></table></figure>
+<h4 id="信号量-Semaphore-Objects"><a href="#信号量-Semaphore-Objects" class="headerlink" title="信号量(Semaphore Objects)"></a>信号量(<a href="https://docs.python.org/3/library/threading.html?highlight=threading#semaphore-objects" target="_blank" rel="noopener">Semaphore Objects</a>)</h4><p>一个信号量管理一个内部计数器，该计数器由每个 <a href="https://docs.python.org/3/library/threading.html?highlight=threading#threading.Semaphore.release" target="_blank" rel="noopener"><code>release()</code></a>调用递减，并由每个<a href="https://docs.python.org/3/library/threading.html?highlight=threading#threading.Semaphore.release" target="_blank" rel="noopener"><code>release()</code></a>调用递增。 柜台不能低于零; 当 <a href="https://docs.python.org/3/library/threading.html?highlight=threading#threading.Semaphore.release" target="_blank" rel="noopener"><code>release()</code></a>发现它为零时，它会阻塞，等待其他线程调用<a href="https://docs.python.org/3/library/threading.html?highlight=threading#threading.Semaphore.release" target="_blank" rel="noopener"><code>release()</code></a>。</p>
+<blockquote>
+<p>信号量通常用于保护容量有限的资源。如果资源的大小是固定的，就应该使用有界的信号量。</p>
+</blockquote>
+<p>主线程中定义信号量</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">maxconnections = <span class="number">5</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line">pool_sema = BoundedSemaphore(value=maxconnections)</span><br></pre></td></tr></table></figure>
+<p>工作线程在需要连接到服务器时调用信号量的获取和释放方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> pool_sema:</span><br><span class="line">    conn = connectdb()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># ... use connection ...</span></span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        conn.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> atexit <span class="keyword">import</span> register</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread, currentThread, BoundedSemaphore</span><br><span class="line"></span><br><span class="line">MAX = <span class="number">2</span></span><br><span class="line">_sem = BoundedSemaphore(MAX)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">op</span><span class="params">(index)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> _sem:</span><br><span class="line">        threadName = currentThread().name</span><br><span class="line">        print(<span class="string">'&#123;1&#125; thread &#123;0&#125; 开始执行.'</span>.format(threadName, time.ctime()))</span><br><span class="line">        sec = random.randint(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">        time.sleep(sec)</span><br><span class="line">        print(<span class="string">'&#123;1&#125; thread &#123;0&#125; 开始完成.'</span>.format(threadName, time.ctime()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_atexit</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'all DONE'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        Thread(target=op, args=(str(i),)).start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    _main()</span><br></pre></td></tr></table></figure>
+<p>输出内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Thu May 10 16:14:10 2018 thread Thread-1 开始执行.</span><br><span class="line">Thu May 10 16:14:10 2018 thread Thread-2 开始执行.</span><br><span class="line">Thu May 10 16:14:15 2018 thread Thread-1 开始完成.</span><br><span class="line">Thu May 10 16:14:15 2018 thread Thread-3 开始执行.</span><br><span class="line">Thu May 10 16:14:20 2018 thread Thread-2 开始完成.</span><br><span class="line">Thu May 10 16:14:20 2018 thread Thread-4 开始执行.</span><br><span class="line">Thu May 10 16:14:21 2018 thread Thread-3 开始完成.</span><br><span class="line">Thu May 10 16:14:21 2018 thread Thread-5 开始执行.</span><br><span class="line">Thu May 10 16:14:28 2018 thread Thread-5 开始完成.</span><br><span class="line">Thu May 10 16:14:29 2018 thread Thread-4 开始完成.</span><br><span class="line">all DONE</span><br></pre></td></tr></table></figure>
+<p>可以看到，开始执行时，最多只执行了 2 个线程，其他线程都在等待。当某一线程执行完成后，剩余线程中的一条开始执行。</p>
+<h4 id="同步队列-queue-—-A-synchronized-queue-class"><a href="#同步队列-queue-—-A-synchronized-queue-class" class="headerlink" title="同步队列 - queue — A synchronized queue class"></a>同步队列 - <a href="https://docs.python.org/3/library/queue.html?highlight=queue#module-queue" target="_blank" rel="noopener"><code>queue</code></a> — A synchronized queue class</h4><p>在多线程之间进行数据交换的利器。</p>
+<p><a href="https://docs.python.org/3/library/queue.html?highlight=queue#queue.Queue" target="_blank" rel="noopener"><code>queue.Queue(*maxsize=0*)</code></a> 创建一个<strong>先入先出</strong>的队列。</p>
+<p><a href=""><code>queue.LifoQueue(maxsize=0)</code></a> 创建一个<strong>后入先出</strong>的队列。</p>
+<p><a href="https://docs.python.org/3/library/queue.html?highlight=queue#queue.PriorityQueue" target="_blank" rel="noopener"><code>queue.PriorityQueue(maxsize=0)</code></a> 创建一个<a href="https://zh.wikipedia.org/wiki/%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97" target="_blank" rel="noopener"><strong>优先队列</strong></a>。</p>
+<blockquote>
+<p><code>maxsize</code>是一个整数，用于设置可以放入队列中的项目数的上限。一旦达到此大小，插入将会阻塞，直到消耗队列项目。如果<code>maxsize</code>小于或等于零，则队列大小是无限的。</p>
+</blockquote>
+<h4 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h4><p>由于 Python 的 GIL 的限制，多线程更适合于 I/O 密集型应用（I/O释放了GIL，可以允许更多的并发），而不是计算密集型应用。对于计算密集型应用，为了实现更好的并行性，需要使用<strong>多进程</strong>，以便让CPU的其他内核来执行。</p>
+<h5 id="subprocess-子进程管理"><a href="#subprocess-子进程管理" class="headerlink" title="subprocess - 子进程管理"></a><a href="https://docs.python.org/3/library/subprocess.html?highlight=subprocess#module-subprocess" target="_blank" rel="noopener"><code>subprocess</code></a> - 子进程管理</h5><h5 id="multiprocessing-并行进程，该模块允许程序员充分利用给定机器上的多个处理器。"><a href="#multiprocessing-并行进程，该模块允许程序员充分利用给定机器上的多个处理器。" class="headerlink" title="multiprocessing - 并行进程，该模块允许程序员充分利用给定机器上的多个处理器。"></a><a href="https://docs.python.org/3/library/multiprocessing.html?highlight=multiprocess#module-multiprocessing" target="_blank" rel="noopener"><code>multiprocessing</code></a> - 并行进程，该模块允许程序员充分利用给定机器上的多个处理器。</h5><h5 id="concurrent-futures-启动并行任务"><a href="#concurrent-futures-启动并行任务" class="headerlink" title="concurrent.futures - 启动并行任务"></a><a href="https://docs.python.org/3/library/concurrent.futures.html?highlight=concurrent%20futures#module-concurrent.futures" target="_blank" rel="noopener"><code>concurrent.futures</code></a> - 启动并行任务</h5><p>Python 3.2 开始提供的一个高级库。可以让开发者不在过分关注同步和线程/进程的管理。</p>
+<p>只需要指定线程池/进程池的最大工作数量，提交任务，然后整理结果即可。</p>
+<h6 id="ThreadPoolExecutor-支持异步调用的线程池"><a href="#ThreadPoolExecutor-支持异步调用的线程池" class="headerlink" title="ThreadPoolExecutor - 支持异步调用的线程池"></a><a href="https://docs.python.org/3/library/concurrent.futures.html?highlight=concurrent%20futures#concurrent.futures.ThreadPoolExecutor" target="_blank" rel="noopener"><code>ThreadPoolExecutor</code></a> - 支持异步调用的线程池</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">URLS = [<span class="string">'http://www.foxnews.com/'</span>,</span><br><span class="line">        <span class="string">'http://www.cnn.com/'</span>,</span><br><span class="line">        <span class="string">'http://europe.wsj.com/'</span>,</span><br><span class="line">        <span class="string">'http://www.bbc.co.uk/'</span>,</span><br><span class="line">        <span class="string">'http://some-made-up-domain.com/'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Retrieve a single page and report the URL and contents</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_url</span><span class="params">(url, timeout)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> urllib.request.urlopen(url, timeout=timeout) <span class="keyword">as</span> conn:</span><br><span class="line">        <span class="keyword">return</span> conn.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># We can use a with statement to ensure threads are cleaned up promptly</span></span><br><span class="line"><span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="number">5</span>) <span class="keyword">as</span> executor:</span><br><span class="line">    <span class="comment"># Start the load operations and mark each future with its URL</span></span><br><span class="line">    future_to_url = &#123;executor.submit(load_url, url, <span class="number">60</span>): url <span class="keyword">for</span> url <span class="keyword">in</span> URLS&#125;</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(future_to_url):</span><br><span class="line">        url = future_to_url[future]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data = future.result()</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> exc:</span><br><span class="line">            print(<span class="string">'%r generated an exception: %s'</span> % (url, exc))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'%r page is %d bytes'</span> % (url, len(data)))</span><br></pre></td></tr></table></figure>
+<h6 id="ProcessPoolExecutor-支持异步调用的进程池"><a href="#ProcessPoolExecutor-支持异步调用的进程池" class="headerlink" title="ProcessPoolExecutor - 支持异步调用的进程池"></a><a href="https://docs.python.org/3/library/concurrent.futures.html?highlight=concurrent%20futures#concurrent.futures.ProcessPoolExecutor" target="_blank" rel="noopener"><code>ProcessPoolExecutor</code></a> - 支持异步调用的进程池</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">PRIMES = [</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">112582705942171</span>,</span><br><span class="line">    <span class="number">112272535095293</span>,</span><br><span class="line">    <span class="number">115280095190773</span>,</span><br><span class="line">    <span class="number">115797848077099</span>,</span><br><span class="line">    <span class="number">1099726899285419</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_prime</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    sqrt_n = int(math.floor(math.sqrt(n)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>, sqrt_n + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> n % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> concurrent.futures.ProcessPoolExecutor() <span class="keyword">as</span> executor:</span><br><span class="line">        <span class="keyword">for</span> number, prime <span class="keyword">in</span> zip(PRIMES, executor.map(is_prime, PRIMES)):</span><br><span class="line">            print(<span class="string">'%d is prime: %s'</span> % (number, prime))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h4><ol>
+<li><p>线程和文件。</p>
+<ol>
+<li>创建一个函数，给出一个字节值和一个文件名，然后显示文件中该字节出现的次数。</li>
+<li>假设输入的文件非常大。该文件允许有多个读者，现在请修改你的解决方案，创建多个线程，使每个线程负责文件某一部分的计数。然后将每个线程的数据进行整合，提供正确的总数。使用 <code>timeit</code> 模块对单线程和多线程方案进行计时。</li>
+</ol>
+<p>EXP：对于此类问题，由于并不是I/O密集型操作（单一文本只读取一次的情况下）。由于多线程需要对文本进行分拆，并且多线程之间的锁定和解锁操作等多余操作，会造成采用多线程的性能会低于单一线程性能。</p>
+</li>
+<li><p>线程、文件和正则表达式。有一个非常大的邮件文件；如果没有（把所有的邮件合并到一个文本文件中）。任务是，使用正则表达式用于识别email地址和web站点的URL。并将其转换为链接形式保存到.html新文件中，当时用Web浏览器打开该文件时，这些链接应该是可以单击的。使用线程对这个大文本文件的转换过程进行分割，最后整合所有结果到一个新的.html文件中。</p>
+</li>
+</ol>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gu Qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/Study/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/Study/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/Study/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guqiangjs" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#re-—-Regular-expression-operations"><span class="nav-number">1.1.</span> <span class="nav-text">re — Regular expression operations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络编程"><span class="nav-number">2.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#socket-低级网络接口"><span class="nav-number">2.1.</span> <span class="nav-text">socket - 低级网络接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#socketserver-网络服务框架"><span class="nav-number">2.2.</span> <span class="nav-text">socketserver - 网络服务框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asyncore-asynchat-异步-socket-处理器"><span class="nav-number">2.3.</span> <span class="nav-text">asyncore / asynchat - 异步 socket 处理器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-selectors"><span class="nav-number">2.4.</span> <span class="nav-text">select / selectors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习"><span class="nav-number">2.5.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因特网客户端编程"><span class="nav-number">3.</span> <span class="nav-text">因特网客户端编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#http-—-HTTP-包"><span class="nav-number">3.1.</span> <span class="nav-text">http — HTTP 包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ftplib-FTP-协议客户端"><span class="nav-number">3.2.</span> <span class="nav-text">ftplib - FTP 协议客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nntplib-网络新闻传输协议"><span class="nav-number">3.3.</span> <span class="nav-text">nntplib - 网络新闻传输协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#smtplib-SMTP-协议客户端"><span class="nav-number">3.4.</span> <span class="nav-text">smtplib - SMTP 协议客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#郵局協议（Post-Office-Protocol，简称-POP）"><span class="nav-number">3.5.</span> <span class="nav-text">郵局協议（Post Office Protocol，简称 POP）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#poplib-POP3-协议客户端"><span class="nav-number">3.5.1.</span> <span class="nav-text">poplib - POP3 协议客户端</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#因特网信息访问协议（缩写为-IMAP，以前称作-交互邮件访问协议）"><span class="nav-number">3.6.</span> <span class="nav-text">因特网信息访问协议（缩写为 IMAP，以前称作 交互邮件访问协议）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#imaplib-—-IMAP4-协议客户端"><span class="nav-number">3.6.1.</span> <span class="nav-text">imaplib — IMAP4 协议客户端</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#email-An-email-and-MIME-handling-package"><span class="nav-number">3.7.</span> <span class="nav-text">email - An email and MIME handling package</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#smtpd-SMTP-服务端"><span class="nav-number">3.8.</span> <span class="nav-text">smtpd - SMTP 服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#base64-Base16-Base32-Base64-Base85-Data-Encodings"><span class="nav-number">3.9.</span> <span class="nav-text">base64 - Base16, Base32, Base64, Base85 Data Encodings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mimetypes-Map-filenames-to-MIME-types"><span class="nav-number">3.10.</span> <span class="nav-text">mimetypes - Map filenames to MIME types</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#binascii-Convert-between-binary-and-ASCII"><span class="nav-number">3.11.</span> <span class="nav-text">binascii - Convert between binary and ASCII</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#binhex-Encode-and-decode-binhex4-files"><span class="nav-number">3.12.</span> <span class="nav-text">binhex - Encode and decode binhex4 files</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#quopri-Encode-and-decode-MIME-quoted-printable-data"><span class="nav-number">3.13.</span> <span class="nav-text">quopri - Encode and decode MIME quoted-printable data</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程编程"><span class="nav-number">4.</span> <span class="nav-text">多线程编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#thread-低级线程-API"><span class="nav-number">4.1.</span> <span class="nav-text">_thread - 低级线程 API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#threading-基于-thread-的高级线程接口"><span class="nav-number">4.2.</span> <span class="nav-text">threading - 基于 _thread 的高级线程接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建-Thread-实例，传给它一个函数（多线程模式1）"><span class="nav-number">4.2.1.</span> <span class="nav-text">创建 Thread 实例，传给它一个函数（多线程模式1）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建-Thread-实例，传给它一个可调用的类的实例（多线程模式2）"><span class="nav-number">4.2.2.</span> <span class="nav-text">创建 Thread 实例，传给它一个可调用的类的实例（多线程模式2）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#派生-Thread-的子类，并创建子类的实例（多线程模式3-推荐方式）"><span class="nav-number">4.2.3.</span> <span class="nav-text">派生 Thread 的子类，并创建子类的实例（多线程模式3 - 推荐方式）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程实践"><span class="nav-number">4.3.</span> <span class="nav-text">多线程实践</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#图书排名示例"><span class="nav-number">4.3.1.</span> <span class="nav-text">图书排名示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lock-Objects"><span class="nav-number">4.3.2.</span> <span class="nav-text">Lock Objects</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上下文管理器-with"><span class="nav-number">4.3.3.</span> <span class="nav-text">上下文管理器 with</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号量-Semaphore-Objects"><span class="nav-number">4.4.</span> <span class="nav-text">信号量(Semaphore Objects)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步队列-queue-—-A-synchronized-queue-class"><span class="nav-number">4.5.</span> <span class="nav-text">同步队列 - queue — A synchronized queue class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多进程"><span class="nav-number">4.6.</span> <span class="nav-text">多进程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#subprocess-子进程管理"><span class="nav-number">4.6.1.</span> <span class="nav-text">subprocess - 子进程管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#multiprocessing-并行进程，该模块允许程序员充分利用给定机器上的多个处理器。"><span class="nav-number">4.6.2.</span> <span class="nav-text">multiprocessing - 并行进程，该模块允许程序员充分利用给定机器上的多个处理器。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#concurrent-futures-启动并行任务"><span class="nav-number">4.6.3.</span> <span class="nav-text">concurrent.futures - 启动并行任务</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#ThreadPoolExecutor-支持异步调用的线程池"><span class="nav-number">4.6.3.1.</span> <span class="nav-text">ThreadPoolExecutor - 支持异步调用的线程池</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ProcessPoolExecutor-支持异步调用的进程池"><span class="nav-number">4.6.3.2.</span> <span class="nav-text">ProcessPoolExecutor - 支持异步调用的进程池</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-1"><span class="nav-number">4.7.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gu Qiang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/Study/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/Study/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/Study/js/src/post-details.js?v=6.2.0"></script>
+
+
+	
+	<style type="text/css">
+	  .no-before::before {
+		content: "";
+		padding: 0px;
+	  }
+	  .no-before{
+	  font-weight: bold;
+	  font-style: normal;
+	  }
+	  </style>
+	<script type="text/javascript">
+	$("cite").each(function(index){
+		if($(this).prev().length==0 && $(this)[0].children.length==1)
+		{
+			$(this)[0].className='no-before';
+		}
+	});
+	</script> 
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

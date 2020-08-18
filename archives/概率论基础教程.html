@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/Study/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Study/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Study/images/icons8-whale-32.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Study/images/icons8-whale-16.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/Study/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Study/',
+    scheme: 'Mist',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="数学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="概率论基础教程">
+<meta property="og:url" content="https://guqiangjs.github.io/Study/archives/概率论基础教程.html">
+<meta property="og:site_name" content="大蓝鲸">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/image-20180722140112814.png">
+<meta property="og:updated_time" content="2018-07-24T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="概率论基础教程">
+<meta name="twitter:image" content="https://guqiangjs.github.io/Study/archives/image-20180722140112814.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guqiangjs.github.io/Study/archives/概率论基础教程.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>概率论基础教程 | 大蓝鲸</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Study/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大蓝鲸</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/Study/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/Study/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/Study/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives menu-item-active">
+    <a href="/Study/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">概率论基础教程</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description"><!—more—-></div>
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h4 id="第一章-组合分析"><a href="#第一章-组合分析" class="headerlink" title="第一章 组合分析"></a>第一章 组合分析</h4><h5 id="1-2-计数基本法则"><a href="#1-2-计数基本法则" class="headerlink" title="1.2 计数基本法则"></a>1.2 计数基本法则</h5><p>有两个实验，其中实验一有 $m$ 种可能发生的结果，对应于实验一的每一个结果，实验二有 $n$ 中可能发生的结果，则对于这两个实验来说，一共有 $m\times$$n$ 中可能的结果。</p>
+<p><em>推广的计数基本法则：</em></p>
+<p>一共有 $r$ 个实验。第一个实验有 $n_1$ 种可能结果；对应于第一个实验的每一种结果，第二个实验有 $n_2$ 种可能的结果；对应于头两个实验的每一种实验结果，第三个实验有 $n_3$ 种可能的结果；等等。那么，这 $r$ 个实验一共有 $n_1,n_2,\cdots,n_n$ 种可能结果。</p>
+<blockquote>
+<p>例：车牌号是7位的，如果要求前3个位置必须是字母，后4个必须是数字，一共有多少种编排车牌号的方式？</p>
+<p>​    26$\times$26$\times$26$\times$10$\times$10$\times$10$\times$10$=$17576000</p>
+</blockquote>
+<h5 id="1-3-排列"><a href="#1-3-排列" class="headerlink" title="1.3 排列"></a>1.3 排列</h5><p>按随意顺序来排列字母 a,b,c，一共有多少种排列方式？通过推广的计数基本法则得到：在排列中的第一个位置可供选择的元素有 3 个，第二个位置是剩下的两个，第三个位置只能选择剩下的一个元素，因此一共有 3*2*1=6 种可能的排列。</p>
+<p>假设有 n 个元素，那么用上述类似的方法，可知一共有 <code>n(n-1)(n-2)=n!</code> 种不同的排列方式。</p>
+<blockquote>
+<p>例：一个垒球队共有 9 名队员，问一共有多少种击球顺序？</p>
+<p>​    9! = 362880</p>
+<p>例：把10本书放到书架上，其中4本数学书、3本化学书、2本历史书和1本语文书。现在要求相同类别的书必须紧挨着放，问一共有多少种放法？</p>
+<p>​    如果数学书放在最前面，接下来放化学书，再下来放历史书，最后放语文书，那么一共有 <code>4!3!2!1!</code> 种排列方式。而这4种书的顺序又是 <code>4!</code> ，因此，答案应该是 <code>4!4!3!2!1!=6912</code></p>
+</blockquote>
+<p>接下来讨论如果有 $n$ 个元素，其中有些是不可区分的，这种排列数如何计算？</p>
+<p>$n$ 个元素，如果其中 $n_1$ 个元素彼此不可区分，另 $n_2$ 个彼此不可区分，$n_r$ 个彼此不可区分，那么一共有 $\frac {n!}{n_1!n_2!…n_r!} $ 中排列方式。</p>
+<blockquote>
+<p>例：一个棋类比赛一共有 10 个选手，其中 4 个来自俄罗斯，3个来自美国，2个来自英国，另一个来自巴西。如果比赛结果只记录选手的国籍，那么一共有多少种可能？</p>
+<p>​        $\frac{10!}{4!3!2!1!}  = 12600$</p>
+</blockquote>
+<h5 id="1-4-组合"><a href="#1-4-组合" class="headerlink" title="1.4 组合"></a>1.4 组合</h5><p>从 $n$ 个元素中取 $r$ 个，一共有多少种取法？比如，从A,B,C,D,E这5个元素中选取3个组成一组，一共有多少种取法？解答如下：取第一个有5种取法，取第二个有4中取法，取第三个有3种取法，所以，如果考虑顺序的话，那么一共有5*4*3种取法。但是，每一个包含3个元素的组都被计算了6此（ABC,ACB,BAC,BCA,CAB,CBA)。所以，如果考虑顺序的话组成方法数为：$\frac{5\times4\times3}{3\times2\times1}=10$，定义$\binom{r}{n}$如下：$\binom{r}{n}=\frac{n!}{(n-r)!r!}$ 并且说 $\binom{r}{n}$ 表示了从 n 个元素中一次取 r 个可能组合数。</p>
+<blockquote>
+<p>例：从 20 人中选择 3 人组成委员会，一共有多少种取法？</p>
+<p>一共有 $\binom{20}{3}=\frac{20\times19\times18}{3\times2\times1}=1140$种</p>
+<p>例：有 12 人组成的团体，其中 5 位女士，7位男士，现从中选取2位女士，3位男士组成委员会，问有多少种取法？</p>
+<p>有 $\binom{5}{2}$种方式选取女士，有$\binom{7}{2}$中方式选取男士。根据基本计数法则一共有$\binom{5}{2}\binom{7}{2}=\frac{5\times4}{2\times1}\times\frac{7\times6\times5}{3\times2\times1}=350$种方式选取2位女士3位男士。</p>
+<p>例：如果其中有2位男士之间有矛盾，并且坚决拒绝一起工作，那么又有多少种取法？</p>
+<p>有$\binom{2}{2}\binom{5}{1}=5$种可能会同时包含该两位男士，所以一共有35-5种选取方法不同时包含那两位有矛盾的男士；另外，选取女士的方法仍然是$\binom{5}{2}=10$种，所以一共有 $30\times10=300$种选取方式。</p>
+</blockquote>
+<h5 id="1-5多项式系数"><a href="#1-5多项式系数" class="headerlink" title="1.5多项式系数"></a>1.5多项式系数</h5><p>有 $n$ 个不同的元素，分成 $r$ 组，每组分别有 $n_1,n_2,\cdots,n_r$ 个元素，其中$\sum_{i=1}^r n_i=n$，一共有多少种分法？</p>
+<p>根据推广的计数基本法则，将 $n$ 个元素分成 $r$ 组的分法总数一共是<br>$$<br>\begin{align}<br>&amp;\binom{n}{n_1}\binom{n-n_1}{n2}\cdots\binom{n-n_1-n_2-\cdots-n_{r-1}}{n_r} \\<br>&amp;=\frac{n!}{(n-n_1)!n_1!}\times\frac{(n-n_1)!}{(n-n_1-n_2)!n_2!}\cdots\frac{(n-n_1-n_2-\cdots-n_{r-1})!}{0!n_r!} \\<br>&amp;=\frac{n!}{n_1!n_2! \cdots n_r!}<br>\end{align}<br>$$</p>
+<blockquote>
+<p>例： 某城市的警察局有 10 名警察，其中需要 5 名警察在接到巡逻，2 名警察在局里值班，另 3 名留在局里待命。问把 10 名警察分成这样的三组有多少种分法？</p>
+<p>一共有 $\frac{10!}{5!2!3!}=2520$种解法</p>
+<p>例：10个小孩要分成A,B两队，每队5人。A队取参加一场比赛，B队取参加另一场比赛，一共有多少种分法？</p>
+<p>一共有 $\frac{10!}{5!5!}=252$种分法。</p>
+</blockquote>
+<h4 id="第二章-概率论公理化"><a href="#第二章-概率论公理化" class="headerlink" title="第二章 概率论公理化"></a>第二章 概率论公理化</h4><h5 id="2-2-样本空间和事件"><a href="#2-2-样本空间和事件" class="headerlink" title="2.2 样本空间和事件"></a>2.2 样本空间和事件</h5><p>样本空间是包含了所有可能的结果的集合。</p>
+<blockquote>
+<p>若考察新生儿的性别，那么所有可能结果的集合是 $S={g,b}$ 就是一个空间样本，其中 $g$ 表示女孩，$b$ 表示男孩。</p>
+<p>赛马比赛中一共有7匹马参赛，这7匹马分别标以 1,2,3,4,5,6,7。考察比赛结果，所有可能的比赛结果的集合 $S={(1,2,3,4,5,6,7)的所有7!种排列}$就是一个空间样本。比如(2,3,1,6,5,4,7)就表示2号马跑第一，3号马跑第二，接下来是一号码……这是比赛的一种可能结果。</p>
+<p>掷两枚硬币，考察哪一面朝上，那么样本空间一共包含如下四种结果： $S={(H,H),(H,T),(T,H),(T,T)}$。</p>
+<p>掷两枚骰子，考察两枚骰子的点数，那么样本空间包含 $36$ 个结果：$S={(i,j):i,j=1,2,3,4,5,6}$</p>
+<p>考察一个晶体管的寿命（小时），那么样本空间是所有的非负实数，即 $S={x:0 \leq x&lt;\infty}$</p>
+</blockquote>
+<p>样本空间的任一自己 $E$ 称为事件(event)，事件是由实验的某些可能结果组成的一个集合。如果实验结果包含在 $E$ 中，那么就称 $E$ 发生了。</p>
+<blockquote>
+<p>接上面的例子：</p>
+<p>令 $E={g}$ ，那么 $E$ 就表示 “婴儿是个女孩” 这个事件；</p>
+<p>如果 $E={所有以3开头的排列}$，那么 $E$ 就表示 “3号马获得了第一”。</p>
+<p>如果 $E={(H,H),(H,T)}$，那么 $E$ 就表示 “第一枚硬币正面朝上”。</p>
+<p>如果 $E={(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)}$，那么 $E$ 就表示 “两个骰子点数之和为 $7$”。</p>
+<p>如果 $S={x:0 \leq x \leq 5}$，那么就表示 “晶体管的寿命不超过 $5$ 个小时”</p>
+</blockquote>
+<p><strong>$E \cup F$</strong> -&gt; <strong>并集</strong></p>
+<p><strong>$E \cap F$</strong> -&gt; <strong>交集</strong></p>
+<p><img src="image-20180722140112814.png" alt="image-20180722140112814"></p>
+<h5 id="2-3-概率论公理"><a href="#2-3-概率论公理" class="headerlink" title="2.3 概率论公理"></a>2.3 概率论公理</h5>
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gu Qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/Study/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/Study/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/Study/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guqiangjs" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一章-组合分析"><span class="nav-number">1.</span> <span class="nav-text">第一章 组合分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-计数基本法则"><span class="nav-number">1.1.</span> <span class="nav-text">1.2 计数基本法则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-排列"><span class="nav-number">1.2.</span> <span class="nav-text">1.3 排列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-组合"><span class="nav-number">1.3.</span> <span class="nav-text">1.4 组合</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5多项式系数"><span class="nav-number">1.4.</span> <span class="nav-text">1.5多项式系数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二章-概率论公理化"><span class="nav-number">2.</span> <span class="nav-text">第二章 概率论公理化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-样本空间和事件"><span class="nav-number">2.1.</span> <span class="nav-text">2.2 样本空间和事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-概率论公理"><span class="nav-number">2.2.</span> <span class="nav-text">2.3 概率论公理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gu Qiang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/Study/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/Study/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/Study/js/src/post-details.js?v=6.2.0"></script>
+
+
+	
+	<style type="text/css">
+	  .no-before::before {
+		content: "";
+		padding: 0px;
+	  }
+	  .no-before{
+	  font-weight: bold;
+	  font-style: normal;
+	  }
+	  </style>
+	<script type="text/javascript">
+	$("cite").each(function(index){
+		if($(this).prev().length==0 && $(this)[0].children.length==1)
+		{
+			$(this)[0].className='no-before';
+		}
+	});
+	</script> 
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style type="text/css">.MathJax_Display {display:inline!important;}</style>
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

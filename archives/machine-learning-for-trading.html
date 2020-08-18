@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/Study/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Study/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Study/images/icons8-whale-32.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Study/images/icons8-whale-16.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/Study/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Study/',
+    scheme: 'Mist',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="编程,Python,金融,股票">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Machine Learning for Trading">
+<meta property="og:url" content="https://guqiangjs.github.io/Study/archives/machine-learning-for-trading.html">
+<meta property="og:site_name" content="大蓝鲸">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1531304006175.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1531383436936.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1531384011994.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1531465284221.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1531632440578.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1531634310060.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1531635134977.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532508260900.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532508276951.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532570705884.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532570720355.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532571574686.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532675498707.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532660052844.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532677939302.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1532678552063.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1533869822902.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1533883675299.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1533886709495.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1533890419564.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/image-20180811213410404.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1534238787357.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1535439244770.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/1536045019373.png">
+<meta property="og:updated_time" content="2018-09-02T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning for Trading">
+<meta name="twitter:image" content="https://guqiangjs.github.io/Study/archives/1531304006175.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guqiangjs.github.io/Study/archives/machine-learning-for-trading.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Machine Learning for Trading | 大蓝鲸</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Study/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大蓝鲸</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/Study/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/Study/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/Study/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives menu-item-active">
+    <a href="/Study/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Machine Learning for Trading</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description"><!—more—-></div>
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <p>教程Youtube链接:<a href="https://www.youtube.com/playlist?list=PLAwxTw4SYaPnIRwl6rad_mYwEk4Gmj7Mx" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLAwxTw4SYaPnIRwl6rad_mYwEk4Gmj7Mx</a></p>
+<h3 id="单一股票收益"><a href="#单一股票收益" class="headerlink" title="单一股票收益"></a>单一股票收益</h3><h4 id="The-Data-介绍CSV文件"><a href="#The-Data-介绍CSV文件" class="headerlink" title="The Data (介绍CSV文件)"></a>The Data (介绍CSV文件)</h4><h4 id="Our-Stock-Data-介绍股票每日成交汇总数据格式"><a href="#Our-Stock-Data-介绍股票每日成交汇总数据格式" class="headerlink" title="Our Stock Data (介绍股票每日成交汇总数据格式)"></a>Our Stock Data (介绍股票每日成交汇总数据格式)</h4><ul>
+<li>Date</li>
+<li>Open</li>
+<li>High</li>
+<li>Low</li>
+<li>Close</li>
+<li>Volume -&gt; 成交量</li>
+<li>Adj Close -&gt; 调整收盘价（除权除息价）</li>
+</ul>
+<h4 id="Pandas-Dataframe"><a href="#Pandas-Dataframe" class="headerlink" title="Pandas Dataframe"></a>Pandas Dataframe</h4><h4 id="Actual-CSV"><a href="#Actual-CSV" class="headerlink" title="Actual CSV"></a>Actual CSV</h4><h4 id="Interesting-Stuff"><a href="#Interesting-Stuff" class="headerlink" title="Interesting Stuff"></a>Interesting Stuff</h4><p>切片：取 <code>Dataframe</code> 中的部分数据</p>
+<p><a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.loc.html#pandas.DataFrame.loc" target="_blank" rel="noopener">pandas.DataFrame.loc</a></p>
+<h4 id="Compute-max-closing-price"><a href="#Compute-max-closing-price" class="headerlink" title="Compute max closing price"></a>Compute max closing price</h4><p><a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.max.html#pandas-series-max" target="_blank" rel="noopener">pandas.Series.max</a></p>
+<h4 id="Plotting-stock-price-data-绘图"><a href="#Plotting-stock-price-data-绘图" class="headerlink" title="Plotting stock price data (绘图)"></a>Plotting stock price data (绘图)</h4><h4 id="Plot-two-columns-绘制多个数据"><a href="#Plot-two-columns-绘制多个数据" class="headerlink" title="Plot two columns (绘制多个数据)"></a>Plot two columns (绘制多个数据)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> finance_datareader_py.eastmoney.daily <span class="keyword">import</span> EastMoneyDailyReader</span><br><span class="line"></span><br><span class="line">df1 = EastMoneyDailyReader(<span class="string">'601398'</span>).read()</span><br><span class="line">df2 = EastMoneyDailyReader(<span class="string">'601398'</span>, type=<span class="string">'ba'</span>).read()</span><br><span class="line">df = pd.DataFrame()</span><br><span class="line">df[<span class="string">'Close'</span>] = pd.to_numeric(df1[<span class="string">'Close'</span>])</span><br><span class="line">df[<span class="string">'Adj Close'</span>] = pd.to_numeric(df2[<span class="string">'Close'</span>])</span><br><span class="line">print(df.tail())</span><br><span class="line">df.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1531304006175.png" alt="1531304006175"></p>
+<h4 id="Pandas-dataframe-recap"><a href="#Pandas-dataframe-recap" class="headerlink" title="Pandas dataframe recap"></a>Pandas dataframe recap</h4><h4 id="Problems-to-Solve"><a href="#Problems-to-Solve" class="headerlink" title="Problems to Solve"></a>Problems to Solve</h4><h5 id="Data-ranges-使用日期索引取值"><a href="#Data-ranges-使用日期索引取值" class="headerlink" title="Data ranges(使用日期索引取值)"></a>Data ranges(使用日期索引取值)</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from finance_datareader_py.eastmoney.daily import EastMoneyDailyReader</span><br><span class="line">df = EastMoneyDailyReader(&apos;601398&apos;).read()</span><br><span class="line">df.tail()</span><br><span class="line">Out[4]: </span><br><span class="line">            Open Close  High   Low   交易量(手)   成交金额     振幅   换手率</span><br><span class="line">日期                                                             </span><br><span class="line">2018-07-05  5.17  5.23  5.29  5.16  1865183  9.72亿  2.52%  0.07</span><br><span class="line">2018-07-06  5.23  5.29  5.34  5.18  1925444  10.1亿  3.06%  0.07</span><br><span class="line">2018-07-09  5.31  5.53  5.54  5.31  2155458  11.7亿  4.35%  0.08</span><br><span class="line">2018-07-10  5.56  5.52  5.57  5.46  1289900  7.10亿  1.99%  0.05</span><br><span class="line">2018-07-11  5.41  5.48  5.52  5.39  1520449  8.31亿  2.36%  0.06</span><br><span class="line"></span><br><span class="line">df[&apos;2017-01-01&apos;:&apos;2017-12-31&apos;].tail()</span><br><span class="line">Out[6]: </span><br><span class="line">            Open Close  High   Low   交易量(手)   成交金额     振幅   换手率</span><br><span class="line">日期                                                             </span><br><span class="line">2017-12-25  5.93  6.00  6.03  5.93  2396364  14.4亿  1.69%  0.09</span><br><span class="line">2017-12-26  6.00  6.08  6.10  5.98  2165329  13.1亿     2%  0.08</span><br><span class="line">2017-12-27  6.09  6.05  6.15  6.02  2151401  13.1亿  2.14%  0.08</span><br><span class="line">2017-12-28  6.03  6.14  6.14  6.02  2100886  12.8亿  1.98%  0.08</span><br><span class="line">2017-12-29  6.13  6.20  6.22  6.12  2168998  13.4亿  1.63%  0.08</span><br></pre></td></tr></table></figure>
+<p>取沪深300指数（399300）+单个股票数据。</p>
+<p>取沪深300指数的意义在于，只要开市，那么指数就肯定有数据，而不像其他单一股票可能会出现不定期停牌的情况。</p>
+<p>看下面的数据：</p>
+<ol>
+<li>2005年，300027还没有上市，所以数值为 <code>NaN</code>。</li>
+<li>2018-07-07、2018-07-08两天是休息日，不开市。这时不会有数据。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from finance_datareader_py.eastmoney.daily import EastMoneyDailyReader</span><br><span class="line">df1 = EastMoneyDailyReader(&apos;399300&apos;).read()</span><br><span class="line">df2 = EastMoneyDailyReader(&apos;300027&apos;).read()</span><br><span class="line">df = pd.DataFrame()</span><br><span class="line">df[&apos;399300&apos;] = df1[&apos;Close&apos;]</span><br><span class="line">df[&apos;300027&apos;] = df2[&apos;Close&apos;]</span><br><span class="line"></span><br><span class="line">df.head()</span><br><span class="line">Out[4]: </span><br><span class="line">            399300 300027</span><br><span class="line">日期                       </span><br><span class="line">2005-01-04  982.79    NaN</span><br><span class="line">2005-01-05  992.56    NaN</span><br><span class="line">2005-01-06  983.17    NaN</span><br><span class="line">2005-01-07  983.96    NaN</span><br><span class="line">2005-01-10  993.88    NaN</span><br><span class="line"></span><br><span class="line">df.tail()</span><br><span class="line">Out[3]: </span><br><span class="line">             399300 300027</span><br><span class="line">日期                        </span><br><span class="line">2018-07-05  3342.44   6.08</span><br><span class="line">2018-07-06  3365.12   6.09</span><br><span class="line">2018-07-09  3459.18   6.12</span><br><span class="line">2018-07-10  3467.52   6.03</span><br><span class="line">2018-07-11  3407.53   5.96</span><br></pre></td></tr></table></figure>
+<h4 id="Create-an-exmpty-data-frame"><a href="#Create-an-exmpty-data-frame" class="headerlink" title="Create an exmpty data frame"></a>Create an exmpty data frame</h4><h4 id="Join-SPY-data-使用Join关联数据，使用dropna丢弃空数据"><a href="#Join-SPY-data-使用Join关联数据，使用dropna丢弃空数据" class="headerlink" title="Join SPY data (使用Join关联数据，使用dropna丢弃空数据)"></a>Join SPY data (使用Join关联数据，使用dropna丢弃空数据)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from finance_datareader_py.eastmoney.daily import EastMoneyDailyReader</span><br><span class="line">df1 = EastMoneyDailyReader(&apos;399300&apos;).read()</span><br><span class="line">dates = pd.date_range(&apos;2010-01-01&apos;, &apos;2010-01-05&apos;)</span><br><span class="line"># 创建空白DataFrame</span><br><span class="line">df = pd.DataFrame(index=dates)</span><br><span class="line">df = df.join(df1)</span><br><span class="line"></span><br><span class="line">df[&apos;Close&apos;].head()</span><br><span class="line">Out[3]: </span><br><span class="line">2010-01-01        NaN</span><br><span class="line">2010-01-02        NaN</span><br><span class="line">2010-01-03        NaN</span><br><span class="line">2010-01-04    3535.23</span><br><span class="line">2010-01-05    3564.04</span><br><span class="line">Freq: D, Name: Close, dtype: object</span><br><span class="line"></span><br><span class="line">df[&apos;Close&apos;].head().dropna()</span><br><span class="line">Out[4]: </span><br><span class="line">2010-01-04    3535.23</span><br><span class="line">2010-01-05    3564.04</span><br><span class="line">Freq: D, Name: Close, dtype: object</span><br></pre></td></tr></table></figure>
+<h4 id="Read-in-more-stocks-重命名，一个dataframe中不能出现同名的列"><a href="#Read-in-more-stocks-重命名，一个dataframe中不能出现同名的列" class="headerlink" title="Read in more stocks(重命名，一个dataframe中不能出现同名的列)"></a>Read in more stocks(重命名，一个dataframe中不能出现同名的列)</h4><h4 id="Slicing-数据切片"><a href="#Slicing-数据切片" class="headerlink" title="Slicing (数据切片)"></a>Slicing (数据切片)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> finance_datareader_py.eastmoney.daily <span class="keyword">import</span> EastMoneyDailyReader</span><br><span class="line"></span><br><span class="line">symbols = [<span class="string">'399300'</span>, <span class="string">'300027'</span>, <span class="string">'601398'</span>]</span><br><span class="line"></span><br><span class="line">dates = pd.date_range(<span class="string">'2010-01-01'</span>, <span class="string">'2010-01-05'</span>)</span><br><span class="line"><span class="comment"># 创建空白DataFrame</span></span><br><span class="line">df = pd.DataFrame(index=dates)</span><br><span class="line"><span class="keyword">for</span> symbol <span class="keyword">in</span> symbols:</span><br><span class="line">    df_temp = EastMoneyDailyReader(symbol).read()</span><br><span class="line">    df_temp = df_temp.rename(columns=&#123;<span class="string">'Close'</span>: symbol&#125;)</span><br><span class="line">    df = df.join(df_temp[symbol])</span><br><span class="line"></span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">'------------------------'</span>)</span><br><span class="line">print(df.dropna())</span><br><span class="line">print(<span class="string">'------------------------'</span>)</span><br><span class="line">print(df.loc[<span class="string">'2010-01-04'</span>:<span class="string">'2010-01-04'</span>,[<span class="string">'000002'</span>, <span class="string">'601398'</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">             399300 300027 601398</span><br><span class="line">2010-01-01      NaN    NaN    NaN</span><br><span class="line">2010-01-02      NaN    NaN    NaN</span><br><span class="line">2010-01-03      NaN    NaN    NaN</span><br><span class="line">2010-01-04  3535.23  55.53   5.35</span><br><span class="line">2010-01-05  3564.04  55.09   5.40</span><br><span class="line">------------------------</span><br><span class="line">             399300 300027 601398</span><br><span class="line">2010-01-04  3535.23  55.53   5.35</span><br><span class="line">2010-01-05  3564.04  55.09   5.40</span><br><span class="line">------------------------</span><br><span class="line">             399300 300027</span><br><span class="line">2010-01-04  3535.23  55.53</span><br></pre></td></tr></table></figure>
+<h4 id="Problems-with-Plotting-判断时股价起点不同，很难在同一层面观察"><a href="#Problems-with-Plotting-判断时股价起点不同，很难在同一层面观察" class="headerlink" title="Problems with Plotting (判断时股价起点不同，很难在同一层面观察)"></a>Problems with Plotting (判断时股价起点不同，很难在同一层面观察)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> finance_datareader_py.eastmoney.daily <span class="keyword">import</span> EastMoneyDailyReader</span><br><span class="line"></span><br><span class="line">symbols = [<span class="string">'600519'</span>, <span class="string">'000002'</span>, <span class="string">'601398'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建空白DataFrame</span></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line"><span class="keyword">for</span> symbol <span class="keyword">in</span> symbols:</span><br><span class="line">    df_temp = EastMoneyDailyReader(symbol).read()</span><br><span class="line">    df[symbol] = df_temp[<span class="string">'Close'</span>]</span><br><span class="line"></span><br><span class="line">df = df.dropna()</span><br><span class="line">df.loc[<span class="string">'2017-01-01'</span>:<span class="string">'2017-12-31'</span>].plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1531383436936.png" alt="1531383436936"></p>
+<h4 id="Normalizing-数据归一化"><a href="#Normalizing-数据归一化" class="headerlink" title="Normalizing (数据归一化)"></a>Normalizing (数据归一化)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def normalize_data(df):</span><br><span class="line">    return df / df.iloc[0]</span><br><span class="line"></span><br><span class="line">normalize_data(df.loc[&apos;2017-01-01&apos;:&apos;2017-12-31&apos;]).plot()</span><br></pre></td></tr></table></figure>
+<p>让Dataframe的每一行数据除以第一行的值，从而使所有数据从1开始。</p>
+<p><img src="1531384011994.png" alt="1531384011994"></p>
+<h4 id="What-is-NumPy"><a href="#What-is-NumPy" class="headerlink" title="What is NumPy"></a>What is NumPy</h4><h4 id="Relationship-to-Pandas-numpy与Pandas的关系"><a href="#Relationship-to-Pandas-numpy与Pandas的关系" class="headerlink" title="Relationship to Pandas (numpy与Pandas的关系)"></a>Relationship to Pandas (numpy与Pandas的关系)</h4><h4 id="Compute-global-statistics"><a href="#Compute-global-statistics" class="headerlink" title="Compute global statistics"></a>Compute global statistics</h4><p><a href="https://zh.wikipedia.org/wiki/%E6%A8%99%E6%BA%96%E5%B7%AE" target="_blank" rel="noopener">标准差</a></p>
+<blockquote>
+<p>例如，两组数的集合{0, 5, 9, 14}和{5, 6, 8, 9}其平均值都是7，但第二个集合具有较小的标准差。 </p>
+</blockquote>
+<h4 id="Rolling-statistics"><a href="#Rolling-statistics" class="headerlink" title="Rolling statistics"></a>Rolling statistics</h4><h4 id="Bollinger-Bands"><a href="#Bollinger-Bands" class="headerlink" title="Bollinger Bands"></a>Bollinger Bands</h4><p><a href="https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97%E5%B8%A6" target="_blank" rel="noopener">布林带</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame()</span><br><span class="line">df[<span class="string">'Close'</span>] = EastMoneyDailyReader(<span class="string">'601398'</span>).read()[<span class="string">'Close'</span>]</span><br><span class="line">df[<span class="string">'rol_30'</span>] = pd.rolling_mean(df[<span class="string">'Close'</span>], window=<span class="number">30</span>)</span><br><span class="line">df.head(<span class="number">100</span>).plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1531465284221.png" alt="1531465284221"></p>
+<h4 id="Daily-returns-日收益"><a href="#Daily-returns-日收益" class="headerlink" title="Daily returns (日收益)"></a>Daily returns (日收益)</h4><p>日收益基本上是围绕0上下浮动。</p>
+<p><code>daily_ret[t]=(price[t]/price[t-1])-1</code></p>
+<p><code>(110/100)-1=1.1-1=0.1=10%</code></p>
+<h4 id="Cumulative-returns-累计收益"><a href="#Cumulative-returns-累计收益" class="headerlink" title="Cumulative returns (累计收益)"></a>Cumulative returns (累计收益)</h4><p>累积收益和数据归一化在计算中的意思基本一致。</p>
+<h4 id="A-closer-look-at-daily-returns"><a href="#A-closer-look-at-daily-returns" class="headerlink" title="A closer look at daily returns"></a>A closer look at daily returns</h4><p>使用直方图展示日收益率的分布情况</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%B3%B0%E5%BA%A6" target="_blank" rel="noopener">峰度</a></p>
+<blockquote>
+<p>峰度高就意味着方差增大是由低频度的大于或小于平均值的极端差值引起的。 </p>
+</blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%82%A5%E5%B0%BE%E5%88%86%E5%B8%83" target="_blank" rel="noopener">肥尾分布</a></p>
+<h4 id="Computing-rolling-statistics"><a href="#Computing-rolling-statistics" class="headerlink" title="Computing rolling statistics"></a>Computing rolling statistics</h4><p>20日移动平均线</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = EastMoneyDailyReader(<span class="string">'601398'</span>).read().tail(<span class="number">200</span>)</span><br><span class="line">ax = df[<span class="string">'Close'</span>].plot(title=<span class="string">'601398 rolling mean'</span>)</span><br><span class="line">rm = pd.rolling_mean(df[<span class="string">'Close'</span>], window=<span class="number">20</span>)</span><br><span class="line">rm.plot(label=<span class="string">'Rolling mean'</span>, ax=ax)</span><br><span class="line"></span><br><span class="line">ax.set_xlabel(<span class="string">'Date'</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">'Price'</span>)</span><br><span class="line">ax.legend(loc=<span class="string">'upper left'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1531632440578.png" alt="1531632440578"></p>
+<h4 id="Using-fillna-数据市场是不完整的，需要补齐"><a href="#Using-fillna-数据市场是不完整的，需要补齐" class="headerlink" title="Using fillna() (数据市场是不完整的，需要补齐)"></a>Using fillna() (数据市场是不完整的，需要补齐)</h4><h4 id="Histogram-of-daily-returns-使用直方图来查看每日收益"><a href="#Histogram-of-daily-returns-使用直方图来查看每日收益" class="headerlink" title="Histogram of daily returns (使用直方图来查看每日收益)"></a>Histogram of daily returns (使用直方图来查看每日收益)</h4><h4 id="How-to-plot-a-histogram-如何绘制直方图"><a href="#How-to-plot-a-histogram-如何绘制直方图" class="headerlink" title="How to plot a histogram (如何绘制直方图)"></a>How to plot a histogram (如何绘制直方图)</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_daily_returns</span><span class="params">(df)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> df[:<span class="number">-1</span>].values / df[<span class="number">1</span>:] - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = EastMoneyDailyReader(<span class="string">'601398'</span>).read()</span><br><span class="line">daily_returns = compute_daily_returns(df[<span class="string">'Close'</span>])</span><br><span class="line">daily_returns.hist(bins=<span class="number">50</span>)</span><br><span class="line">print(daily_returns.tail(<span class="number">100</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1531634310060.png" alt="1531634310060"></p>
+<p><a href="https://www.ricequant.com/community/topic/126/" target="_blank" rel="noopener">关于证券收益分布原因的讨论</a></p>
+<h4 id="绘制平均值和标准差"><a href="#绘制平均值和标准差" class="headerlink" title="绘制平均值和标准差"></a>绘制平均值和标准差</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mean = daily_returns.mean()</span><br><span class="line">print(<span class="string">"mean="</span>, mean)</span><br><span class="line">std = daily_returns.std()</span><br><span class="line">print(<span class="string">'std='</span>, std)</span><br><span class="line">plt.axvline(mean, color=<span class="string">'g'</span>)</span><br><span class="line">plt.axvline(std, color=<span class="string">'r'</span>, linestyle=<span class="string">'dashed'</span>)</span><br><span class="line">plt.axvline(-std, color=<span class="string">'r'</span>, linestyle=<span class="string">'dashed'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1531635134977.png" alt="1531635134977"></p>
+<h4 id="计算峰度"><a href="#计算峰度" class="headerlink" title="计算峰度"></a>计算峰度</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(daily_returns.kurtosis())</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">7.34265127165</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在机率论中，*肥尾分布**（英语：Fat-tailed distribution）是一种<a href="https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%88%86%E5%B8%83" target="_blank" rel="noopener">机率分布</a>模型。它是一种<a href="https://zh.wikipedia.org/wiki/%E9%87%8D%E5%B0%BE%E5%88%86%E5%B8%83" target="_blank" rel="noopener">重尾分布</a>，但是它的<a href="https://zh.wikipedia.org/wiki/%E5%81%8F%E5%BA%A6" target="_blank" rel="noopener">偏度</a>或<a href="https://zh.wikipedia.org/wiki/%E5%B3%B0%E5%BA%A6" target="_blank" rel="noopener">峰度</a>极端的大。与无所不在的<a href="https://zh.wikipedia.org/wiki/%E5%B8%B8%E6%85%8B%E5%88%86%E5%B8%83" target="_blank" rel="noopener">正态分布</a>作比较，<a href="https://zh.wikipedia.org/wiki/%E5%B8%B8%E6%85%8B%E5%88%86%E5%B8%83" target="_blank" rel="noopener">正态分布</a>属于一种细尾分布，或<a href="https://zh.wikipedia.org/wiki/%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83" target="_blank" rel="noopener">指数分布</a>。 </p>
+</blockquote>
+<h5 id="Plot-two-histograms-together-合并绘制两个直方图"><a href="#Plot-two-histograms-together-合并绘制两个直方图" class="headerlink" title="Plot two histograms together (合并绘制两个直方图)"></a>Plot two histograms together (合并绘制两个直方图)</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> finance_datareader_py.eastmoney.daily <span class="keyword">import</span> EastMoneyDailyReader</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_daily_returns</span><span class="params">(df)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> df[:<span class="number">-1</span>].values / df[<span class="number">1</span>:] - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line">df[<span class="string">'601398'</span>] = EastMoneyDailyReader(<span class="string">'601398'</span>).read()[<span class="string">'Close'</span>]</span><br><span class="line">df[<span class="string">'601939'</span>] = EastMoneyDailyReader(<span class="string">'601939'</span>).read()[<span class="string">'Close'</span>]</span><br><span class="line"><span class="comment"># 计算日收益率</span></span><br><span class="line">daily_returns = compute_daily_returns(df)</span><br><span class="line"><span class="comment"># 绘制直方图</span></span><br><span class="line">daily_returns.hist()</span><br><span class="line"><span class="comment"># 绘图</span></span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并绘制两个直方图</span></span><br><span class="line">daily_returns[<span class="string">'601398'</span>].hist(label=<span class="string">'601398'</span>)</span><br><span class="line">daily_returns[<span class="string">'601939'</span>].hist(label=<span class="string">'601939'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'upper right'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1532508260900.png" alt="1532508260900"></p>
+<p><img src="1532508276951.png" alt="1532508276951"></p>
+<p>股票和市场的日收益分布和高斯分布非常相似。这个性质对 <em>日收益、月收益、年收益</em> 来说同样适用。</p>
+<p>如果它们真的是高斯分布，那么我们就可以说它们是正态分布。</p>
+<p><strong>但是假定收益是正态分布的，却是非常危险的。因为它忽略了峰度或者尾部。</strong> <em>正是因为这样才造成了08年的金融风暴。</em></p>
+<h4 id="Scatterplots-散点图"><a href="#Scatterplots-散点图" class="headerlink" title="Scatterplots (散点图)"></a>Scatterplots (散点图)</h4><p>这是区分各支股票日收益的另一种方法。</p>
+<p>线性但离散的特点。</p>
+<blockquote><p>贝他值（ $\beta$ 值）：<br>用以衡量基金之市场风险，或称系统性风险。其计算的方式为以过去12个月或24个月之基金月报酬率对同期市场月报酬率做回归，估计斜率系数而得，当 $\beta$ &gt;1（$\beta$ &lt; -1），表示基金坡动度较指数为大，当指数上扬 10%（下跌10%），基金会上扬超过 10%（下跌超过10%）；当 $\beta$ = 1，表示指数涨跌多少，基金就跟着变动多少。</p>
+<footer><strong>Beta系数</strong><cite><a href="https://zh.wikipedia.org/wiki/Beta%E7%B3%BB%E6%95%B0" target="_blank" rel="noopener">zh.wikipedia.org/wiki/Beta%E7%B3%BB%E6%95%B0</a></cite></footer></blockquote>
+<blockquote><p>阿尔法系数（ $\alpha$）是基金的实际收益和按照β系数计算的期望收益之间的差额。其计算方法如下：超额收益是基金的收益减去无风险投资收益（在中国为1年期银行定期存款收益）；期望收益是贝塔系数 $\beta$ 和市场收益的乘积，反映基金由于市场整体变动而获得的收益；超额收益和期望收益的差额即 $\alpha$ 系数。该系数越大越好。</p>
+<footer><strong>阿尔法系数</strong><cite><a href="https://zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E9%98%BF%E5%B0%94%E6%B3%95%E7%B3%BB%E6%95%B0" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E8%AF%81%E5%88%B8%E6%8A%95%E8%B5%84%E5%9F%BA%E9%87%91#%E9%98%BF%E5%B0%94%E6%B3%95%E7%B3%BB%E6%95%B0</a></cite></footer></blockquote>
+<h5 id="Slope-does-not-equal-correlation-斜率-beta-系数与数据的相关性-拟合度无关"><a href="#Slope-does-not-equal-correlation-斜率-beta-系数与数据的相关性-拟合度无关" class="headerlink" title="Slope does not equal correlation (斜率 $\beta$ 系数与数据的相关性/拟合度无关)"></a>Slope does not equal correlation (斜率 $\beta$ 系数与数据的相关性/拟合度无关)</h5><p>可能有很低的斜率，但是数据拟合度非常高。反之亦然。</p>
+<h5 id="Scatterplots-in-python-散点图"><a href="#Scatterplots-in-python-散点图" class="headerlink" title="Scatterplots in python (散点图)"></a>Scatterplots in python (散点图)</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame()</span><br><span class="line">df[<span class="string">'000300'</span>] = SohuDailyReader(<span class="string">'000300'</span>, prefix=<span class="string">'zs_'</span>).read()[<span class="string">'Close'</span>]</span><br><span class="line">df[<span class="string">'601398'</span>] = SohuDailyReader(<span class="string">'601398'</span>).read()[<span class="string">'Close'</span>]</span><br><span class="line">df[<span class="string">'601939'</span>] = SohuDailyReader(<span class="string">'601939'</span>).read()[<span class="string">'Close'</span>]</span><br><span class="line"><span class="comment"># 计算日收益率</span></span><br><span class="line">daily_returns = compute_daily_returns(df)</span><br><span class="line"><span class="comment"># 绘制 601398 相对于 000300 的散点图</span></span><br><span class="line">daily_returns.plot(kind=<span class="string">'scatter'</span>, x=<span class="string">'000300'</span>, y=<span class="string">'601398'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 绘制 601939 相对于 000300 的散点图</span></span><br><span class="line">daily_returns.plot(kind=<span class="string">'scatter'</span>, x=<span class="string">'000300'</span>, y=<span class="string">'601939'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1532570705884.png" alt="1532570705884"></p>
+<p><img src="1532570720355.png" alt="1532570720355"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># beta系数和alpha系数</span></span><br><span class="line">beta, alpha = np.polyfit(daily_returns[<span class="string">'000300'</span>], daily_returns[<span class="string">'601939'</span>], <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">daily_returns.plot(kind=<span class="string">'scatter'</span>, x=<span class="string">'000300'</span>, y=<span class="string">'601939'</span>)</span><br><span class="line"><span class="comment"># 绘制拟合线</span></span><br><span class="line">plt.plot(daily_returns[<span class="string">'000300'</span>], beta * daily_returns[<span class="string">'000300'</span>] + alpha, <span class="string">'-'</span>,</span><br><span class="line">         color=<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br><span class="line">print(<span class="string">'beta='</span> + str(beta))</span><br><span class="line">print(<span class="string">'alpha='</span> + str(alpha))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">beta=0.590256550806</span><br><span class="line">alpha=-0.000246730309092</span><br></pre></td></tr></table></figure>
+<p><img src="1532571574686.png" alt="1532571574686"></p>
+<h3 id="投资组合"><a href="#投资组合" class="headerlink" title="投资组合"></a>投资组合</h3><h4 id="Daily-portfolio-values"><a href="#Daily-portfolio-values" class="headerlink" title="Daily portfolio values"></a>Daily portfolio values</h4><p><a href="https://youtu.be/UweF-2-Tr9Y" target="_blank" rel="noopener">https://youtu.be/UweF-2-Tr9Y</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">投资组合假设：</span><br><span class="line">start_val = 1000000 # 初始投资总额</span><br><span class="line">start_date = 2011-01-01 # 初始投资日期</span><br><span class="line">end_date = 2011-12-31 # 结束投资日期</span><br><span class="line"># 投资组合：贵州茅台、中国平安、招商银行、格力电器</span><br><span class="line">symbols = [&apos;600519&apos;,&apos;601318&apos;,&apos;600036&apos;,&apos;000651&apos;] </span><br><span class="line"># 比率分配</span><br><span class="line">allocs = [0.4,0.4,0.1,0.1]</span><br></pre></td></tr></table></figure>
+<h4 id="如何计算投资组合每日的总价值"><a href="#如何计算投资组合每日的总价值" class="headerlink" title="如何计算投资组合每日的总价值"></a>如何计算投资组合每日的总价值</h4><p><a href="https://youtu.be/UweF-2-Tr9Y" target="_blank" rel="noopener">https://youtu.be/UweF-2-Tr9Y</a></p>
+<ol>
+<li>从价格 <code>DataFrame</code> 开始。</li>
+<li>价格归一化（<code>normed=prices/prices[0]</code>）。开始日期的数据始终为1.0。</li>
+<li>使用归一化以后的值乘以每支股票分配的资金比例（<code>alloced=normed*allocs</code>）。</li>
+<li>使用初始投资总额乘以3的结果（<code>pos_vals=alloced*start_val</code>）</li>
+<li>每一天的总价值：<code>port_val=pos_vals.sum(axis=1)</code></li>
+</ol>
+<p><img src="1532675498707.png" alt="1532675498707"></p>
+<p>计算后的每日收益的第一天的收益始终为 <em>0</em>，所以应该去除。 <code>daily_returns=daily_returns[1:]</code> </p>
+<p>有了每日收益之后可以计算很多有趣的数据。<strong>评估投资组合时的常用数据</strong>：</p>
+<ul>
+<li><code>cum_ret</code> 累计收益 <code>(port_val[-1]/port_val[0])-1</code></li>
+<li><code>avg_daily_ret</code> 平均收益 <code>daily_rets.mean()</code></li>
+<li><code>std_daily_ret</code> 每日收益标准差 <code>daily_rets.std()</code></li>
+<li><code>sharpe_ratio</code> 夏普比率</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> finance_datareader_py.sohu.daily <span class="keyword">import</span> SohuDailyReader</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_daily_returns</span><span class="params">(df)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> df[:<span class="number">-1</span>].values / df[<span class="number">1</span>:] - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">SYMBOLS = [<span class="string">'600519'</span>, <span class="string">'601318'</span>, <span class="string">'600036'</span>, <span class="string">'000651'</span>]</span><br><span class="line">ALLOCS = [<span class="number">0.4</span>, <span class="number">0.4</span>, <span class="number">0.1</span>, <span class="number">0.1</span>]</span><br><span class="line">START = datetime.date(<span class="number">2009</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">END = datetime.date(<span class="number">2011</span>, <span class="number">12</span>, <span class="number">31</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_datas</span><span class="params">(symbols, start, end)</span>:</span></span><br><span class="line">    df = pd.DataFrame()</span><br><span class="line">    df[<span class="string">'000300'</span>] = SohuDailyReader(<span class="string">'000300'</span>, prefix=<span class="string">'zs_'</span>, start=start,</span><br><span class="line">                                   end=end).read()[<span class="string">'Close'</span>]</span><br><span class="line">    <span class="keyword">for</span> symbol <span class="keyword">in</span> symbols:</span><br><span class="line">        df1 = SohuDailyReader(symbol, start=start, end=end).read()</span><br><span class="line">        df1 = df1.rename(columns=&#123;<span class="string">'Close'</span>: symbol&#125;)</span><br><span class="line">        df = df.join(df1[symbol])</span><br><span class="line">    <span class="keyword">return</span> df.fillna(method=<span class="string">'bfill'</span>)  <span class="comment"># 因为是倒序排序，所以使用bfill</span></span><br><span class="line"></span><br><span class="line">df = get_datas(SYMBOLS, START, END)</span><br><span class="line">df_ret = compute_daily_returns(df)</span><br><span class="line">print(df)</span><br><span class="line">print(df_ret)</span><br><span class="line">print(<span class="string">'-----------------'</span>)</span><br><span class="line">print(<span class="string">'平均收益:'</span>)</span><br><span class="line">print(df_ret.mean())</span><br><span class="line">print(<span class="string">'-----------------'</span>)</span><br><span class="line">print(<span class="string">'每日收益标准差:'</span>)</span><br><span class="line">print(df_ret.std())</span><br><span class="line">print(<span class="string">'-----------------'</span>)</span><br><span class="line">print(<span class="string">'累计收益:'</span>)</span><br><span class="line">print(df.iloc[<span class="number">0</span>] / df.iloc[<span class="number">-1</span>] - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除指数列，并按照比率分配</span></span><br><span class="line">alloced = df_nor.copy().drop(<span class="string">'000300'</span>, axis=<span class="number">1</span>) * ALLOCS</span><br><span class="line"><span class="comment"># 按照比率分配后的各支股票的每日价值</span></span><br><span class="line">pos_vals = alloced * START_VALS</span><br><span class="line"><span class="comment"># 投资组合的每日价值</span></span><br><span class="line">port_val = pos_vals.sum(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-----------------</span><br><span class="line">平均收益:</span><br><span class="line">000300    0.000443</span><br><span class="line">600519    0.000973</span><br><span class="line">601318    0.000508</span><br><span class="line">600036    0.000162</span><br><span class="line">000651    0.000445</span><br><span class="line">dtype: float64</span><br><span class="line">-----------------</span><br><span class="line">每日收益标准差:</span><br><span class="line">000300    0.016803</span><br><span class="line">600519    0.018983</span><br><span class="line">601318    0.023065</span><br><span class="line">600036    0.021895</span><br><span class="line">000651    0.031399</span><br><span class="line">dtype: float64</span><br><span class="line">-----------------</span><br><span class="line">累计收益:</span><br><span class="line">000300    0.245773</span><br><span class="line">600519    0.783539</span><br><span class="line">601318    0.193761</span><br><span class="line">600036   -0.057188</span><br><span class="line">000651   -0.074906</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h4 id="Sharpe-ratio-夏普比率"><a href="#Sharpe-ratio-夏普比率" class="headerlink" title="Sharpe ratio (夏普比率)"></a>Sharpe ratio (夏普比率)</h4><p><a href="https://youtu.be/5cqstpRndtI" target="_blank" rel="noopener">https://youtu.be/5cqstpRndtI</a></p>
+<blockquote><p>　　现代投资理论的研究表明,风险的大小在决定组合的表现上具有基础性的作用。风险调整后的收益率就是一个可以同时对收益与风险加以考虑的综合指标,以期能够排除风险因素对绩效评估的不利影响。夏普比率就是一个可以同时对收益与风险加以综合考虑的三大经典指标之一。</p>
+<p>　　投资中有一个常规的特点，即投资标的的预期报酬越高，投资人所能忍受的波动风险越高；反之，预期报酬越低，波动风险也越低。所以理性的投资人选择投资标的与投资组合的主要目的为：在固定所能承受的风险下，追求最大的报酬；或在固定的预期报酬下，追求最低的风险。</p>
+<p>　　夏普比率计算公式：＝[E(Rp)－Rf]/σp</p>
+<p>　　其中E(Rp)：投资组合预期报酬率</p>
+<p>　　Rf：无风险利率</p>
+<p>　　σp：投资组合的标准差</p>
+<p>　　目的是计算投资组合每承受一单位总风险，会产生多少的超额报酬。比率依据资本市场线(Capital Market Line,CML)的观念而来，是市场上最常见的衡量比率。当投资组合内的资产皆为风险性资产时，适用夏普比率。夏普指数代表投资人每多承担一分风险，可以拿到几分报酬；若为正值，代表基金报酬率高过波动风险；若为负值，代表基金操作风险大过于报酬率。这样一来，每个投资组合都可以计算Sharpe Ratio,即投资回报与多冒风险的比例，这个比例越高，投资组合越佳。</p>
+<p>　　举例而言，假如国债的回报是3%，而您的投资组合预期回报是15%，您的投资组合的标准偏差是6%，那么用15%－3%,可以得出12%（代表您超出无风险投资的回报），再用12%÷6%＝2，代表投资者风险每增长1%，换来的是2%的多余收益。</p>
+<footer><strong>夏普比率</strong><cite><a href="http://wiki.mbalib.com/wiki/%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87" target="_blank" rel="noopener">wiki.mbalib.com/wiki/%E5%A4%8F%E6%99%AE%E6%AF%94%E7%8E%87</a></cite></footer></blockquote>
+<h5 id="以下计算夏普比率的公式使用："><a href="#以下计算夏普比率的公式使用：" class="headerlink" title="以下计算夏普比率的公式使用："></a>以下计算夏普比率的公式使用：</h5><p><code>日收益 减去 日化无风险收益率 的均值 / 日收益 减去 日化无风险收益率 的标准差</code></p>
+<p><code>S = mean(daily_rets - daily_rf) / std(daily_rets - daily_rf)</code></p>
+<p>什么是日化无风险收益率？视频中采用了 <em>伦敦银行同业拆放利率、3月期国债利率、0%</em>。</p>
+<p>如何计算日化收益率？假设年收益为10%，每年有252个交易日。那么日收益率：</p>
+<p>daily_rf = $\sqrt[252]{1.0+0.1}-1$</p>
+<p>将 daily_rf 视为一个常数时（和将常数视作0的效果一样），可以将计算公式改为：</p>
+<p><code>S = mean(daily_rets - daily_rf) / std(daily_rets)</code></p>
+<blockquote>
+<p>夏普比率对于相同资产可以有相当大的变化。<strong>取决于采样的频繁度</strong></p>
+<p>如果每年采样股票价格，并且基于年化统计量计算，会得到一个数字；如果每月采样，会得到不同的数字；如果改成每日采样，又会得到另一个数字。</p>
+<p><strong>最初版本的夏普比率是一个年化的测量值。所以如果需要以非年化的采样来计算，那么需要加上一个调整因子来使其正常工作。</strong></p>
+<p><code>SRannualized = K * SR</code></p>
+<p>调整因子（K）是每年的采样数量值的平方根。</p>
+<p>假设使用的是每日采样，一年共有252个交易日。daily K = $\sqrt{252}$</p>
+<p>假设使用的是每周采样，一年共有52个交易周。daily K = $\sqrt{52}$</p>
+<p>假设使用的是每月采样，一年共有12个交易月。daily K = $\sqrt{12}$</p>
+<p><strong>即便某支股票一年只交易了80天，在以每日采样计算调整因子时，还是应该是用252来进行计算</strong></p>
+</blockquote>
+<h4 id="What-is-an-optimizer（优化器）"><a href="#What-is-an-optimizer（优化器）" class="headerlink" title="What is an optimizer（优化器）"></a>What is an optimizer（优化器）</h4><ul>
+<li>用来寻找函数最小值</li>
+<li>从数据中查找并建立参数化模型（从实验数据中找到一个多项式来拟合实验数据）</li>
+<li>使用优化器来改善股票投资组合中的分配方式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy.optimize <span class="keyword">as</span> spo</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(X)</span>:</span></span><br><span class="line">    Y = (X - <span class="number">1.5</span>) ** <span class="number">2</span> + <span class="number">0.5</span></span><br><span class="line">    print(<span class="string">"X=&#123;0&#125;,Y=&#123;1&#125;"</span>.format(X, Y))</span><br><span class="line">    <span class="keyword">return</span> Y</span><br><span class="line"></span><br><span class="line">Xguess = <span class="number">2.0</span></span><br><span class="line">min_result = spo.minimize(f, Xguess, method=<span class="string">'SLSQP'</span>, options=&#123;<span class="string">'disp'</span>: <span class="keyword">True</span>&#125;)</span><br><span class="line">print(<span class="string">'Minima found at:'</span>)</span><br><span class="line">print(<span class="string">"X=&#123;0&#125;,Y=&#123;1&#125;"</span>.format(min_result.x, min_result.fun))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">X=[ 2.],Y=[ 0.75]</span><br><span class="line">X=[ 2.],Y=[ 0.75]</span><br><span class="line">X=[ 2.00000001],Y=[ 0.75000001]</span><br><span class="line">X=[ 0.99999999],Y=[ 0.75000001]</span><br><span class="line">X=[ 1.5],Y=[ 0.5]</span><br><span class="line">X=[ 1.5],Y=[ 0.5]</span><br><span class="line">X=[ 1.50000001],Y=[ 0.5]</span><br><span class="line">Optimization terminated successfully.    (Exit mode 0)</span><br><span class="line">            Current function value: 0.5</span><br><span class="line">            Iterations: 2</span><br><span class="line">            Function evaluations: 7</span><br><span class="line">            Gradient evaluations: 2</span><br><span class="line">Minima found at:</span><br><span class="line">X=[ 1.5],Y=0.5</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Xplot = np.linspace(<span class="number">0.5</span>, <span class="number">2.5</span>, <span class="number">21</span>)</span><br><span class="line">Yplot = f(Xplot)</span><br><span class="line">plt.plot(Xplot, Yplot)</span><br><span class="line">plt.plot(min_result.x, min_result.fun, <span class="string">'ro'</span>)</span><br><span class="line">plt.title(<span class="string">'Minima of an objective function'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1532660052844.png" alt="1532659982849"></p>
+<h4 id="Convex-Problems-凸问题"><a href="#Convex-Problems-凸问题" class="headerlink" title="Convex Problems (凸问题)"></a>Convex Problems (凸问题)</h4><p><strong>凸集必定有局部最小值，同时这个局部最小值也就是全局最小值。</strong></p>
+<h4 id="构建参数化模型"><a href="#构建参数化模型" class="headerlink" title="构建参数化模型"></a>构建参数化模型</h4><p>什么是参数化模型？<code>f(x) = mx+b</code>这是个关于 x 的函数，它有两个参数 m 和 b。</p>
+<p>优化器就是通过不断的修改参数值并迭代函数，来找到函数的最优解。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_portfoilo</span><span class="params">(symbols, start, end, allocs, start_values)</span>:</span></span><br><span class="line">    <span class="string">"""获取投资组合与沪深300指数的收益比较</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param symbols: 投资组合</span></span><br><span class="line"><span class="string">    :param start: 开始日期</span></span><br><span class="line"><span class="string">    :param end: 结束日期</span></span><br><span class="line"><span class="string">    :param allocs: 投资组合比率</span></span><br><span class="line"><span class="string">    :param start_values: 初始总投资额</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    df = get_datas(symbols, start, end)</span><br><span class="line">    normed = normalization(df)</span><br><span class="line">    alloced = normed.copy().drop(<span class="string">'000300'</span>, axis=<span class="number">1</span>) * allocs</span><br><span class="line">    pos_vals = alloced * start_values</span><br><span class="line">    port_val = pos_vals.sum(axis=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> normalization(pd.DataFrame(port_val.copy(),</span><br><span class="line">                                      columns=[<span class="string">'Portfoilo'</span>]).join(df[<span class="string">'000300'</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 投资组合一年的表现与沪深300指数的比较</span></span><br><span class="line">portpoilo = get_portfoilo(SYMBOLS, START, END, ALLOCS, START_VALS)</span><br><span class="line">portpoilo.show()</span><br><span class="line">plt.grid()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1532677939302.png" alt="1532677809156"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 修改投资比率</span></span><br><span class="line">portpoilo = get_portfoilo(SYMBOLS, START, END, [<span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>], START_VALS)</span><br><span class="line">portpoilo.plot()</span><br><span class="line">plt.grid()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="1532678552063.png" alt="1532678552063"></p>
+<p>优化器的作用就在于确定如何找到最优的投资比率和股票组合。</p>
+<h3 id="Types-of-funds（基金类型）"><a href="#Types-of-funds（基金类型）" class="headerlink" title="Types of funds（基金类型）"></a>Types of funds（基金类型）</h3><ul>
+<li>ETF <a href="https://zh.wikipedia.org/wiki/ETF" target="_blank" rel="noopener">交易所交易基金、交易所买卖基金</a></li>
+<li>Mutual Fund <a href="https://zh.wikipedia.org/wiki/%E5%85%B1%E5%90%8C%E5%9F%BA%E9%87%91" target="_blank" rel="noopener">共同基金</a></li>
+<li>Hedge Fund <a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91" target="_blank" rel="noopener">对冲基金</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Hedge Fund</strong></th>
+<th><strong>Mutual Fund</strong></th>
+<th><strong>ETF</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Return</strong></td>
+<td><em>Absolute return</em></td>
+<td><em>Relative return</em></td>
+<td><em>Relative return</em></td>
+</tr>
+<tr>
+<td><strong>Management</strong></td>
+<td><em>Actively managed</em></td>
+<td><em>Comparatively less actively managed</em></td>
+<td><em>Passively managed</em></td>
+</tr>
+<tr>
+<td><strong>Fees</strong></td>
+<td><em>Performance based fee</em></td>
+<td><em>Percentage of assets managed fees</em></td>
+<td><em>–</em></td>
+</tr>
+<tr>
+<td><strong>Transaction Price</strong></td>
+<td><em>–</em></td>
+<td><em>NAV</em></td>
+<td><em>Quoted price</em></td>
+</tr>
+<tr>
+<td><strong>Transparency</strong></td>
+<td><em>Information disclosed to investors only</em></td>
+<td><em>Annually published reports and disclosure</em></td>
+<td><em>Daily disclosure of holdings</em></td>
+</tr>
+<tr>
+<td><strong>Regulation</strong></td>
+<td><em>Less regulation</em></td>
+<td><em>Regulated by SEBI</em></td>
+<td><em>Regulated by Securities and Exchange Commission</em></td>
+</tr>
+<tr>
+<td><strong>Liquidity</strong></td>
+<td><em>Low</em></td>
+<td><em>High</em></td>
+<td><em>High</em></td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td><em>–</em></td>
+<td><em>High average expense ratio</em></td>
+<td><em>Low average expense ratio</em></td>
+</tr>
+<tr>
+<td><strong>Investor Type</strong></td>
+<td><em>High net worth individuals</em></td>
+<td><em>Retail investors</em></td>
+<td><em>Retail investors</em></td>
+</tr>
+<tr>
+<td><strong>Fractional Shares</strong></td>
+<td><em>No</em></td>
+<td><em>Yes</em></td>
+<td><em>No</em></td>
+</tr>
+<tr>
+<td><strong>Ownership of Fund Manager</strong></td>
+<td><em>Substantial ownership</em></td>
+<td><em>Non substantial ownership</em></td>
+<td><em>–</em></td>
+</tr>
+<tr>
+<td><strong>Owners</strong></td>
+<td><em>Few owners</em></td>
+<td><em>Many owners</em></td>
+<td><em>–</em></td>
+</tr>
+<tr>
+<td><strong>Minimum amount to be invested</strong></td>
+<td><em>High</em></td>
+<td><em>Low</em></td>
+<td><em>Low</em></td>
+</tr>
+<tr>
+<td><strong>Tax</strong></td>
+<td><em>–</em></td>
+<td><em>High percentage of tax levied on capital gains</em></td>
+<td><em>Comparatively lower tax percentages are levied</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="如何计算估值"><a href="#如何计算估值" class="headerlink" title="如何计算估值"></a>如何计算估值</h3><blockquote><p>金钱的未来终值（future value）应大于现值（present value）</p>
+<footer><strong>金钱的时间价值</strong><cite><a href="https://zh.wikipedia.org/wiki/%E9%87%91%E9%8C%A2%E7%9A%84%E6%99%82%E9%96%93%E5%83%B9%E5%80%BC" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E9%87%91%E9%8C%A2%E7%9A%84%E6%99%82%E9%96%93%E5%83%B9%E5%80%BC</a></cite></footer></blockquote>
+<p><strong>计算:</strong></p>
+<p>假设某人以利率 $i$ （$i=5\%$与$i=0.05$等同）借出或借入一笔款项，期限为 $t$ 年，则 $t$ 年后的 $C$ 个货币单位现值表达为：$C_{t}=\frac{C}{(1+i)^{t}}$</p>
+<p>$t$ 年后的 $C$ 个莫比单位现时购买力也可以用上式计算，此时 $i$ 表示 <em>通货膨胀率</em>。</p>
+<p>同一组现金流可能根据利率的不同被分为数个时段，例如，从此时算起的第一年内的利率为 $i_1$ ，第二年的利率为 $i_2$ ，那么两年后的 $C$ 个货币单位的现值表达式为：$PV=\frac{C}{(1+i_1)(1+i_2)}$</p>
+<ul>
+<li><strong>内在价值</strong></li>
+<li><strong>账面价值</strong>：$总资产-无形资产-负债$</li>
+<li><strong>市值</strong></li>
+</ul>
+<h3 id="资本资产定价模型-（CAPM）"><a href="#资本资产定价模型-（CAPM）" class="headerlink" title="资本资产定价模型 （CAPM）"></a>资本资产定价模型 （CAPM）</h3><blockquote><p>资本资产定价模型（英语：Capital Asset Pricing Model, CAPM）是由美国学者威廉·夏普（William Sharpe）、林特尔（John Lintner）、特里诺（Jack Treynor）和莫辛（Jan Mossin）等人在现代投资组合理论的基础上发展起来的，是现代金融市场价格理论的支柱，广泛应用于投资决策和公司理财领域。资本资产定价模型中，所谓资本资产主要指的是股票资产，而定价则试图解释资本市场如何决定股票收益率，进而决定股票价格。</p>
+<p>根据资本资产定价模型，对于一个给定的资产 $i$，它的期望收益率和市场投资组合的期望收益率之间的关系可以表示为：</p>
+<p>$E(r_i)=r_f+\beta_im[E(r_m)-r_f]]$</p>
+<p>其中：</p>
+<ul>
+<li>$E(r_i)$是资产 $i$ 的期望收益率（或普通股的资本成本率）</li>
+<li>$r_f$ 是无风险收益率，通常以短期国债的利率来近似替代</li>
+<li>$\beta_{im}$ 是资产 $i$ 的系统性风险系数，$\beta_{im}={\frac{Cov(r_i,r_m)}{Var(r_m)}}$ </li>
+<li>$E(r_{m})$市场投资组合 $m$ 的期望收益率，通常用股票价格指数收益率的平均值或所有股票的平均收益率来代替</li>
+<li>$E(r_{m})-r_{f}$市场风险溢价（英语：Market Risk Premium），即市场投资组合的期望收益率与无风险收益率之差</li>
+</ul>
+<p>CAPM模型是建立在一系列假设的基础上的，其中主要包括：</p>
+<ul>
+<li>所有投资者均追求单期财富的期望效用最大化，并以各备选组合的期望收益和标准差为基础进行组合选择。</li>
+<li>所有投资者均可以无风险利率无限制地借入或贷出资金。</li>
+<li>所有投资者拥有同样预期，即对所有资产收益的均值、方差和协方差等，投资者均有完全相同的主观估计。</li>
+<li>所有资产均可被完全细分，拥有充分的流动性且没有交易成本。</li>
+</ul>
+<p>没有税金。</p>
+<ul>
+<li>所有投资者均为价格接受者。即任何一个投资者的买卖行为都不会对股票价格产生影响。</li>
+<li>所有资产的数量是给定的和固定不变的。</li>
+</ul>
+<p>近年的实证研究表明，CAPM模型在实际中并不能验证历史的投资收益，由此Roll在1977年提出了两种可能：一种是CAPM模型在市场上是无效的，一种是CAPM理论存在模型的设定误差；基于后一种可能，APT理论和不少多因子模型不断诞生——例如FAMA-FRENCH的三因子模型。但是由于CAPM的简单和便于理解，在业界运用非常广泛，特别是在估值分析中确定必要报酬率（英语：Required Return of Equity）。</p>
+<footer><strong>资本资产定价模型</strong><cite><a href="https://zh.wikipedia.org/wiki/%E8%B5%84%E6%9C%AC%E8%B5%84%E4%BA%A7%E5%AE%9A%E4%BB%B7%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E8%B5%84%E6%9C%AC%E8%B5%84%E4%BA%A7%E5%AE%9A%E4%BB%B7%E6%A8%A1%E5%9E%8B</a></cite></footer></blockquote>
+<p><img src="1533869822902.png" alt="1533869822902"></p>
+<h3 id="套利定价理论（APT）"><a href="#套利定价理论（APT）" class="headerlink" title="套利定价理论（APT）"></a>套利定价理论（APT）</h3><p><a href="https://youtu.be/yMMoukwU87I" target="_blank" rel="noopener">https://youtu.be/yMMoukwU87I</a></p>
+<p><a href="http://wiki.mbalib.com/wiki/%E5%A5%97%E5%88%A9%E5%AE%9A%E4%BB%B7%E7%90%86%E8%AE%BA" target="_blank" rel="noopener">套利定价理论-MBAlib</a></p>
+<h3 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h3><h4 id="技术分析的特征"><a href="#技术分析的特征" class="headerlink" title="技术分析的特征"></a>技术分析的特征</h4><ul>
+<li>只关注历史价格和成交量</li>
+<li>在时间序列中计算统计数据称为指标</li>
+<li>指标是启发式的</li>
+</ul>
+<h4 id="使技术分析有价值的因素"><a href="#使技术分析有价值的因素" class="headerlink" title="使技术分析有价值的因素"></a>使技术分析有价值的因素</h4><ul>
+<li>个别指标具有弱预测性，但结合多个指标可以增加价值</li>
+<li>寻找对比（单个股票 VS 市场）（找到比市场收益更好的单个或组合）</li>
+<li>在短时间内比在较长时间内工作得更有效</li>
+</ul>
+<blockquote>
+<p>持有时间越长，价值分析越重要，需要作出判断的时间越长，判断复杂度越高。（更适合人类进行分析）</p>
+<p>反之，持有时间越短，技术分析越重要，需要作出判断的时间越短，判断复杂度越低。（更适合计算机做高频分析）</p>
+</blockquote>
+<p><img src="1533883675299.png" alt="1533883675299"></p>
+<h4 id="部分技术分析的指标"><a href="#部分技术分析的指标" class="headerlink" title="部分技术分析的指标"></a>部分技术分析的指标</h4><ul>
+<li><p>动量（momentum）</p>
+<blockquote><p>$MO_t=(P_t/P_{t-n})*100$<br>其中 $n$ 為天數，$P_t$ 為當日股價，$P_{t-n} $ 為  $n$ 日前的股價</p>
+<ol>
+<li>MO&gt;100时，表示目前股价行情较N日前偏多看待，相对该股票市场行情反应较为热络。</li>
+<li>MO&lt;100时，表示目前股价行情较N日前偏空看待，相对该股票行情市场反应较为冷淡。</li>
+<li>MO由正转负，表示目前股价行情已转为偏空看待，多方投资人需要注意。</li>
+<li>MO由负转正，表示目前股价行情已转为偏多看待，空方投资人需要注意。</li>
+</ol>
+<footer><strong>运动量震荡指标</strong><cite><a href="https://zh.wikipedia.org/wiki/%E9%81%8B%E5%8B%95%E9%87%8F%E9%9C%87%E7%9B%AA%E6%8C%87%E6%A8%99" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E9%81%8B%E5%8B%95%E9%87%8F%E9%9C%87%E7%9B%AA%E6%8C%87%E6%A8%99</a></cite></footer></blockquote>
+</li>
+<li><p>移动平均线（SMA）</p>
+<blockquote>
+<ol>
+<li><p>寻找价格穿过简单移动平均线的点。</p>
+<p>momentum+SMA cross可能会是买入或卖出的指标。</p>
+</li>
+<li><p>可以将移动平均线看成是一个时间段上的公司价值。股价会在移动平均线上下波动。</p>
+</li>
+</ol>
+</blockquote>
+<p><img src="1533886709495.png" alt="1533886709495"></p>
+<blockquote><ul>
+<li><p><strong>简单移动平均</strong>（英语：simple moving average，SMA）是某变数之前 $n$ 个数值的未作加权算术平均。例如，收市价的10日简单移动平均指之前10日收市价的平均数。若设收市价为 $p_{1}$至 $p_{n}$，则方程式为：</p>
+<p>$SMA={p_{1}+p_{2}+\cdots +p_{n} \over n}$<br>当计算连续的数值，一个新的数值加入，同时一个旧数值剔出，所以无需每次都重新逐个数值加起来：</p>
+<p>$SMA_{t1,n}=SMA_{t0,n}-{p_{1} \over n}+{p_{n+1} \over n}$<br>在技术分析中，不同的市场对常用天数（$n$值）有不同的需求，例如：某些市场普遍的$n$值为10日、40日、200日；有些则是5日、10日、20日、60日、120日、240日，视乎分析时期长短而定。投资者冀从移动平均线的图表中分辨出支持位或阻力位。</p>
+</li>
+<li><p><strong>指数移动平均</strong>（英语：exponential moving average，EMA或EWMA）是以指数式递减加权的移动平均。各数值的加权影响力随时间而指数式递减，越近期的数据加权影响力越重，但较旧的数据也给予一定的加权值。右图是一例子。</p>
+<p>加权的程度以常数 $α$ 决定，$α$ 数值介乎0至1。$α$ 也可用天数 $N$ 来代表： $\alpha ={2 \over {N+1}}$，所以，$N$=19天，代表$α=0.1$。</p>
+<p>设时间 $t$ 的实际数值为$Y_t$，而时间 $t$ 的EMA则为$S_t$；时间 $t-1$ 的EMA则为$S_{t-1}$，计算时间 $t≥2$ 是方程式为：</p>
+<p>$S_{t}=\alpha <em> Y_{t}+(1-\alpha )</em> S_{t-1}$<br>设今日（$t1$）价格为 $p$，则今日（$t1$）EMA的方程式为：</p>
+<p>$EMA_{t1}={\text{EMA}}<em>{t0}+\alpha \times (p-{\text{EMA}}</em>{t0})$<br>将 ${\text{EMA}}_{t0}$分拆开来如下：</p>
+<p>${\text{EMA}}={p_{1}+(1-\alpha )p_{2}+(1-\alpha )^{2}p_{3}+(1-\alpha )^{3}p_{4}+\cdots \over 1+(1-\alpha )+(1-\alpha )^{2}+(1-\alpha )^{3}+\cdots }$<br>理论上这是一个无穷级数，但由于 $1-α$ 少于1，各项的数值会越来越细，可以被忽略。分母方面，若有足够多项，则其数值趋向 $1/α$。即，</p>
+<p>${\text{EMA}}=\alpha \times \left(p_{1}+(1-\alpha )p_{2}+(1-\alpha )^{2}p_{3}+(1-\alpha )^{3}p_{4}+\cdots \right)$<br>假设 $k$ 项及以后的项被忽略，即 $\alpha \times \left((1-\alpha )^{k}+(1-\alpha )^{k+1}+\cdots \right)$，重写后可得$\alpha \times (1-\alpha )^{k}\times \left(1+(1-\alpha )+(1-\alpha )^{2}\cdots \right)$，相当于 $(1-\alpha )^{k}$。所以，若要包含99.9%的加权，解方程 $k={\log(0.001) \over \log(1-\alpha )}$即可得出$k$。由于当$N$不断增加， $\log \,(1-\alpha )$将趋向 $-2 \over N+1$，简化后k大约等于 $3.45\times (N+1)$。</p>
+</li>
+<li><p><strong>加权移动平均</strong>（英语：weighted moving average，WMA）指计算平均值时将个别数据乘以不同数值，在技术分析中，$n$日WMA的最近期一个数值乘以$n$、次近的乘以$n-1$，如此类推，一直到0：</p>
+<p>$WMA_{M}={np_{M}+(n-1)p_{M-1}+\cdots +2p_{M-n+2}+p_{M-n+1} \over n+(n-1)+\cdots +2+1}$</p>
+<p>由于 $WMA_{M+1}$与 $WMA_{M}$的分子相差 $np_{M+1}-p_{M}-\cdots -p_{M-n+1}$，假设 $p_{M}+p_{M-1}+\cdots +p_{M-n+1}$为总和$M$：</p>
+<p>$总和<em>{M+1} =总和</em>{M}+p_{M+1}-p_{M-n+1}$<br>$分子<em>{M+1}=N</em>{M+1}=分子<em>M+np</em>{M+1}-总和<em>M$<br>$WMA</em>{M+1}={N_{M+1} \over n+(n-1)+\cdots +2+1}$<br>留意分母为三角形数，方程式为 $n(n+1) \over 2$</p>
+<p>右图显示出加权是随日子远离而递减，直至递减至零。</p>
+</li>
+</ul>
+<footer><strong>移动平均</strong><cite><a href="https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87</a></cite></footer></blockquote>
+</li>
+<li><p><a href="https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97%E5%B8%A6" target="_blank" rel="noopener">布林带</a> </p>
+<blockquote><p>“布林带”是这样定义的：</p>
+<p>中轨 = $N$ 时间段的简单移动平均线<br>上轨 = 中轨 + $K × N$时间段的标准差<br>下轨 = 中轨 − $K × N$时间段的标准差<br>一般情况下，设定N=20和K=2，这两个数值也是在布林带当中使用最多的。在日线图里，N=20其实就是“月均线”（MA20）。依照正态分布规则，约有95%的数值会分布在距离平均值有正负2个标准差（ $\pm 2\sigma$ ）的范围内。</p>
+<footer><strong>移动平均</strong><cite><a href="https://zh.wikipedia.org/wiki/%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87</a></cite></footer></blockquote>
+<p><img src="1533890419564.png" alt="1533890419564"></p>
+</li>
+</ul>
+<blockquote>
+<p><strong>单纯使用穿越布林带上轨和下轨来作为买入卖出依据虽然看上去很美，但是个人认为并不能作为唯一条件。</strong></p>
+<p>以 2017-01-01 ~ 2017-12-31 日之间的 600016 交易数据判断。</p>
+<p><em>模拟操作为 一次购买机会买入100股，每遇到一次卖出机会卖出持有的所有股份。</em></p>
+<p>在模拟日期间共出现 7 次购买机会，前六次购买后卖出时亏损了360元。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;             Close_Adj   mean_20         top   ...    Rate      C     Sum</span><br><span class="line">&gt; Date                                          ...                       </span><br><span class="line">&gt; 2017-02-20     157.27  157.5570  159.230044   ...    0.53 -100.0  -914.0</span><br><span class="line">&gt; 2017-03-06     154.61  156.3465  158.153251   ...    0.20 -100.0  -896.0</span><br><span class="line">&gt; 2017-03-13     153.14  155.4830  158.303460   ...    0.15 -100.0  -886.0</span><br><span class="line">&gt; 2017-03-23     149.15  153.3205  157.689392   ...    0.34 -100.0  -859.0</span><br><span class="line">&gt; 2017-04-17     143.84  147.8400  152.270060   ...    0.51 -100.0  -823.0</span><br><span class="line">&gt; 2017-04-21     138.97  145.6275  152.778017   ...    0.31 -100.0  -790.0</span><br><span class="line">&gt; 2017-05-26     140.60  138.2060  141.390432   ...    0.71  600.0  4806.0</span><br><span class="line">&gt; 2017-06-29     144.14  141.6690  144.347758   ...    0.26    NaN     NaN</span><br><span class="line">&gt; 2017-07-18     151.00  144.9020  151.131555   ...    0.65    NaN     NaN</span><br><span class="line">&gt; 2017-07-20     151.88  145.9120  153.310778   ...    0.45    NaN     NaN</span><br><span class="line">&gt; 2017-08-15     146.28  150.4675  155.338483   ...    0.32 -100.0  -823.0</span><br><span class="line">&gt; 2017-11-01     148.20  146.5935  148.700933   ...    0.27  100.0   824.0</span><br><span class="line">&gt; 2017-11-09     150.11  147.4940  150.556908   ...    0.29    NaN     NaN</span><br><span class="line">&gt; 2017-11-27     161.03  152.3635  161.544288   ...    0.76    NaN     NaN</span><br><span class="line">&gt; </span><br><span class="line">&gt; [14 rows x 16 columns]</span><br><span class="line">&gt; 600016 : -361.0/0</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>从图中可以看出 2017-02-17，2017-03-03 分别给出了从 布林带下方穿越布林带的信号，但是结果却非常不理想。</p>
+<p><img src="image-20180811213410404.png" alt="image-20180811213410404"></p>
+<p>对于上证50指数的所有股票进行 2017-01-01 ~ 2017-12-31 期间的数据模拟，效果依然不是很理想。去年盈利10000+，但是截至 2017-12-31 却持有价值 80000+ 的股票。</p>
+<p><strong>应该参考之前的 “投资组合” 选出合适的能够跑赢指数均值的组合 和其他分析指标共同分析。</strong></p>
+<p>代码：<a href="https://github.com/GuQiangJS/studySource/blob/master/codes/python/machine-learning-for-trading/tests/test_plot_bbands.py" target="_blank" rel="noopener">https://github.com/GuQiangJS/studySource/blob/master/codes/python/machine-learning-for-trading/tests/test_plot_bbands.py</a></p>
+</blockquote>
+<h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><h4 id="Survior-bias"><a href="#Survior-bias" class="headerlink" title="Survior bias"></a>Survior bias</h4><p><a href="https://youtu.be/RCB2hkiwqnA" target="_blank" rel="noopener">https://youtu.be/RCB2hkiwqnA</a></p>
+<blockquote>
+<p> 使用同样的时间间隔分析同一成分股集合时，选取成分股集合的时间点会造成不同的结果。采用分析时间结束时的成分股集合时会得到更加漂亮、诱人、但不真实的结果。<strong>应该选取分析时间开始时的集合</strong>。</p>
+</blockquote>
+<p><img src="1534238787357.png" alt="1534238787357"></p>
+<h4 id="效率市场假说"><a href="#效率市场假说" class="headerlink" title="效率市场假说"></a>效率市场假说</h4><blockquote><ul>
+<li><p>弱式效率（Weak Form Efficiency）</p>
+<p>目前股票价格已充分反映了过去股票价格所提供的各项情报。所以，投资人无法再运用各种方法对过去股票价格进行分析，再利用分析结果来预测未来股票价格，基于随机游走假说，未来消息是随机而来的。意即投资者无法再利用过去资讯来获得高额报酬。所以，弱势效率越高，若以过去价量为基础的技术分析来进行预测效果将会十分不准确。</p>
+<blockquote>
+<p>留下了可以从事基本面分析的口子。</p>
+</blockquote>
+</li>
+<li><p>半强式效率（Semi-Strong Form Efficiency）</p>
+<p>目前股票价格已充分反应了所有公开资讯，所以，投资者无法利用情报分析结果来进行股票价格预测而获取高额报酬。因此，半强式效率越高，依赖公开的财务报表、经济情况及政治情势来进行基本面分析，然后再预测股票价格是徒劳无功。</p>
+<blockquote>
+<p>连基本面分析都不行了。只能通过内幕交易了。</p>
+</blockquote>
+</li>
+<li><p>强式效率（Strong Form Efficiency）</p>
+<p>目前股票价格充分反应了所有已公开和未公开之所有情报。虽然情报未公开，但投资者能利用各种管道来获得资讯，所以，所谓未公开的消息，实际上是已公开的资讯且已反应于股票价格上。此种情形下，投资者也无法因拥有某些股票内幕消息而获取高额报酬。 </p>
+<blockquote>
+<p>连内部交易都没机会了。</p>
+</blockquote>
+</li>
+</ul>
+<footer><strong>效率市场假说</strong><cite><a href="https://zh.wikipedia.org/wiki/%E6%95%88%E7%8E%87%E5%B8%82%E5%A0%B4%E5%81%87%E8%AA%AA" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E6%95%88%E7%8E%87%E5%B8%82%E5%A0%B4%E5%81%87%E8%AA%AA</a></cite></footer></blockquote>
+<h4 id="Grinold’s-fundamental-law"><a href="#Grinold’s-fundamental-law" class="headerlink" title="Grinold’s fundamental law"></a>Grinold’s fundamental law</h4><p><a href="https://youtu.be/W6yUgs1OLx0" target="_blank" rel="noopener">https://youtu.be/W6yUgs1OLx0</a></p>
+<p>$performance=Skill \times \sqrt{breadth}$</p>
+<h4 id="通过协方差构建投资组合（获得相同回报，但降低波动性）"><a href="#通过协方差构建投资组合（获得相同回报，但降低波动性）" class="headerlink" title="通过协方差构建投资组合（获得相同回报，但降低波动性）"></a>通过协方差构建投资组合（获得相同回报，但降低波动性）</h4><p><a href="https://zh.wikipedia.org/wiki/%E7%8E%B0%E4%BB%A3%E6%8A%95%E8%B5%84%E7%BB%84%E5%90%88%E7%90%86%E8%AE%BA" target="_blank" rel="noopener">现代投资组合理论</a></p>
+<h3 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h3><h4 id="监督回归学习"><a href="#监督回归学习" class="headerlink" title="监督回归学习"></a>监督回归学习</h4><ul>
+<li>线性回归（参数式）</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E8%BF%91%E9%84%B0%E5%B1%85%E6%B3%95" target="_blank" rel="noopener">最近邻居法</a>（实例式）</li>
+<li>决策树</li>
+<li>决策森林</li>
+</ul>
+<h4 id="Price-forecasting-demo"><a href="#Price-forecasting-demo" class="headerlink" title="Price forecasting demo"></a>Price forecasting demo</h4><p><a href="https://youtu.be/GVOEnkjmBZU" target="_blank" rel="noopener">https://youtu.be/GVOEnkjmBZU</a></p>
+<p><img src="1535439244770.png" alt="1535439244770"></p>
+<h4 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h4><h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><h4 id="集成学习-Ensemble-learning"><a href="#集成学习-Ensemble-learning" class="headerlink" title="集成学习 (Ensemble learning)"></a>集成学习 (<a href="https://en.wikipedia.org/wiki/Ensemble_learning" target="_blank" rel="noopener">Ensemble learning</a>)</h4><p><img src="1536045019373.png" alt="1536045019373"></p>
+<h4 id="Bagging算法-Bootstrap-aggregating"><a href="#Bagging算法-Bootstrap-aggregating" class="headerlink" title="Bagging算法(Bootstrap aggregating)"></a>Bagging算法(<a href="https://zh.wikipedia.org/wiki/Bagging%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">Bootstrap aggregating</a>)</h4><h4 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a><a href="https://zh.wikipedia.org/wiki/AdaBoost" target="_blank" rel="noopener">AdaBoost</a></h4><p><a href="https://www.youtube.com/watch?v=GM3CDQfQ4sw&amp;list=PLAwxTw4SYaPnIRwl6rad_mYwEk4Gmj7Mx&amp;index=194" target="_blank" rel="noopener">https://www.youtube.com/watch?v=GM3CDQfQ4sw&amp;list=PLAwxTw4SYaPnIRwl6rad_mYwEk4Gmj7Mx&amp;index=194</a></p>
+<h3 id="数据特征缩放"><a href="#数据特征缩放" class="headerlink" title="数据特征缩放"></a>数据特征缩放</h3><p><strong>标准化：</strong> $normed={values-mean \over values.std()}$</p>
+<p>标准化后，数据均值为0，数值将在 -1 和 1 之间变化。</p>
+<blockquote><p>最简单的方式是重新缩放特征的范围到[0, 1]或[-1, 1]， 依据原始的资料选择目标范围，通式如下：$ x’={x-min(x) \over max(x)-min(x)}$</p>
+<p>$x$ 是原始的值，$x’$ 是被标准化后的值。例如，假设我们有学生的体重资料，范围落在[160磅, 200磅]，为了重新缩放这个资料，我们会先将每个学生的体重减掉160，接着除与40(最大体重与最小体重的差值) </p>
+<footer><strong>重新缩放</strong><cite><a href="https://zh.wikipedia.org/wiki/%E7%89%B9%E5%BE%B5%E7%B8%AE%E6%94%BE" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E7%89%B9%E5%BE%B5%E7%B8%AE%E6%94%BE</a></cite></footer></blockquote>
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gu Qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/Study/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/Study/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/Study/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guqiangjs" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一股票收益"><span class="nav-number">1.</span> <span class="nav-text">单一股票收益</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Data-介绍CSV文件"><span class="nav-number">1.1.</span> <span class="nav-text">The Data (介绍CSV文件)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Our-Stock-Data-介绍股票每日成交汇总数据格式"><span class="nav-number">1.2.</span> <span class="nav-text">Our Stock Data (介绍股票每日成交汇总数据格式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pandas-Dataframe"><span class="nav-number">1.3.</span> <span class="nav-text">Pandas Dataframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Actual-CSV"><span class="nav-number">1.4.</span> <span class="nav-text">Actual CSV</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interesting-Stuff"><span class="nav-number">1.5.</span> <span class="nav-text">Interesting Stuff</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Compute-max-closing-price"><span class="nav-number">1.6.</span> <span class="nav-text">Compute max closing price</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Plotting-stock-price-data-绘图"><span class="nav-number">1.7.</span> <span class="nav-text">Plotting stock price data (绘图)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Plot-two-columns-绘制多个数据"><span class="nav-number">1.8.</span> <span class="nav-text">Plot two columns (绘制多个数据)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pandas-dataframe-recap"><span class="nav-number">1.9.</span> <span class="nav-text">Pandas dataframe recap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Problems-to-Solve"><span class="nav-number">1.10.</span> <span class="nav-text">Problems to Solve</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Data-ranges-使用日期索引取值"><span class="nav-number">1.10.1.</span> <span class="nav-text">Data ranges(使用日期索引取值)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-an-exmpty-data-frame"><span class="nav-number">1.11.</span> <span class="nav-text">Create an exmpty data frame</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Join-SPY-data-使用Join关联数据，使用dropna丢弃空数据"><span class="nav-number">1.12.</span> <span class="nav-text">Join SPY data (使用Join关联数据，使用dropna丢弃空数据)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Read-in-more-stocks-重命名，一个dataframe中不能出现同名的列"><span class="nav-number">1.13.</span> <span class="nav-text">Read in more stocks(重命名，一个dataframe中不能出现同名的列)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Slicing-数据切片"><span class="nav-number">1.14.</span> <span class="nav-text">Slicing (数据切片)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Problems-with-Plotting-判断时股价起点不同，很难在同一层面观察"><span class="nav-number">1.15.</span> <span class="nav-text">Problems with Plotting (判断时股价起点不同，很难在同一层面观察)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Normalizing-数据归一化"><span class="nav-number">1.16.</span> <span class="nav-text">Normalizing (数据归一化)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-NumPy"><span class="nav-number">1.17.</span> <span class="nav-text">What is NumPy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Relationship-to-Pandas-numpy与Pandas的关系"><span class="nav-number">1.18.</span> <span class="nav-text">Relationship to Pandas (numpy与Pandas的关系)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Compute-global-statistics"><span class="nav-number">1.19.</span> <span class="nav-text">Compute global statistics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Rolling-statistics"><span class="nav-number">1.20.</span> <span class="nav-text">Rolling statistics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bollinger-Bands"><span class="nav-number">1.21.</span> <span class="nav-text">Bollinger Bands</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Daily-returns-日收益"><span class="nav-number">1.22.</span> <span class="nav-text">Daily returns (日收益)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cumulative-returns-累计收益"><span class="nav-number">1.23.</span> <span class="nav-text">Cumulative returns (累计收益)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A-closer-look-at-daily-returns"><span class="nav-number">1.24.</span> <span class="nav-text">A closer look at daily returns</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Computing-rolling-statistics"><span class="nav-number">1.25.</span> <span class="nav-text">Computing rolling statistics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-fillna-数据市场是不完整的，需要补齐"><span class="nav-number">1.26.</span> <span class="nav-text">Using fillna() (数据市场是不完整的，需要补齐)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Histogram-of-daily-returns-使用直方图来查看每日收益"><span class="nav-number">1.27.</span> <span class="nav-text">Histogram of daily returns (使用直方图来查看每日收益)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-plot-a-histogram-如何绘制直方图"><span class="nav-number">1.28.</span> <span class="nav-text">How to plot a histogram (如何绘制直方图)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制平均值和标准差"><span class="nav-number">1.29.</span> <span class="nav-text">绘制平均值和标准差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算峰度"><span class="nav-number">1.30.</span> <span class="nav-text">计算峰度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Plot-two-histograms-together-合并绘制两个直方图"><span class="nav-number">1.30.1.</span> <span class="nav-text">Plot two histograms together (合并绘制两个直方图)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scatterplots-散点图"><span class="nav-number">1.31.</span> <span class="nav-text">Scatterplots (散点图)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Slope-does-not-equal-correlation-斜率-beta-系数与数据的相关性-拟合度无关"><span class="nav-number">1.31.1.</span> <span class="nav-text">Slope does not equal correlation (斜率 $\beta$ 系数与数据的相关性/拟合度无关)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Scatterplots-in-python-散点图"><span class="nav-number">1.31.2.</span> <span class="nav-text">Scatterplots in python (散点图)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#投资组合"><span class="nav-number">2.</span> <span class="nav-text">投资组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Daily-portfolio-values"><span class="nav-number">2.1.</span> <span class="nav-text">Daily portfolio values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何计算投资组合每日的总价值"><span class="nav-number">2.2.</span> <span class="nav-text">如何计算投资组合每日的总价值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sharpe-ratio-夏普比率"><span class="nav-number">2.3.</span> <span class="nav-text">Sharpe ratio (夏普比率)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#以下计算夏普比率的公式使用："><span class="nav-number">2.3.1.</span> <span class="nav-text">以下计算夏普比率的公式使用：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-an-optimizer（优化器）"><span class="nav-number">2.4.</span> <span class="nav-text">What is an optimizer（优化器）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Convex-Problems-凸问题"><span class="nav-number">2.5.</span> <span class="nav-text">Convex Problems (凸问题)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建参数化模型"><span class="nav-number">2.6.</span> <span class="nav-text">构建参数化模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-funds（基金类型）"><span class="nav-number">3.</span> <span class="nav-text">Types of funds（基金类型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何计算估值"><span class="nav-number">4.</span> <span class="nav-text">如何计算估值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#资本资产定价模型-（CAPM）"><span class="nav-number">5.</span> <span class="nav-text">资本资产定价模型 （CAPM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#套利定价理论（APT）"><span class="nav-number">6.</span> <span class="nav-text">套利定价理论（APT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术分析"><span class="nav-number">7.</span> <span class="nav-text">技术分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#技术分析的特征"><span class="nav-number">7.1.</span> <span class="nav-text">技术分析的特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使技术分析有价值的因素"><span class="nav-number">7.2.</span> <span class="nav-text">使技术分析有价值的因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部分技术分析的指标"><span class="nav-number">7.3.</span> <span class="nav-text">部分技术分析的指标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据分析"><span class="nav-number">8.</span> <span class="nav-text">数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Survior-bias"><span class="nav-number">8.1.</span> <span class="nav-text">Survior bias</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效率市场假说"><span class="nav-number">8.2.</span> <span class="nav-text">效率市场假说</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Grinold’s-fundamental-law"><span class="nav-number">8.3.</span> <span class="nav-text">Grinold’s fundamental law</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过协方差构建投资组合（获得相同回报，但降低波动性）"><span class="nav-number">8.4.</span> <span class="nav-text">通过协方差构建投资组合（获得相同回报，但降低波动性）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机器学习"><span class="nav-number">9.</span> <span class="nav-text">机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#监督回归学习"><span class="nav-number">9.1.</span> <span class="nav-text">监督回归学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Price-forecasting-demo"><span class="nav-number">9.2.</span> <span class="nav-text">Price forecasting demo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#强化学习"><span class="nav-number">9.3.</span> <span class="nav-text">强化学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过拟合"><span class="nav-number">10.</span> <span class="nav-text">过拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成学习-Ensemble-learning"><span class="nav-number">10.1.</span> <span class="nav-text">集成学习 (Ensemble learning)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bagging算法-Bootstrap-aggregating"><span class="nav-number">10.2.</span> <span class="nav-text">Bagging算法(Bootstrap aggregating)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AdaBoost"><span class="nav-number">10.3.</span> <span class="nav-text">AdaBoost</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据特征缩放"><span class="nav-number">11.</span> <span class="nav-text">数据特征缩放</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gu Qiang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/Study/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/Study/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/Study/js/src/post-details.js?v=6.2.0"></script>
+
+
+	
+	<style type="text/css">
+	  .no-before::before {
+		content: "";
+		padding: 0px;
+	  }
+	  .no-before{
+	  font-weight: bold;
+	  font-style: normal;
+	  }
+	  </style>
+	<script type="text/javascript">
+	$("cite").each(function(index){
+		if($(this).prev().length==0 && $(this)[0].children.length==1)
+		{
+			$(this)[0].className='no-before';
+		}
+	});
+	</script> 
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style type="text/css">.MathJax_Display {display:inline!important;}</style>
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

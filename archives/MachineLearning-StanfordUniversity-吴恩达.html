@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/Study/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Study/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Study/images/icons8-whale-32.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Study/images/icons8-whale-16.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/Study/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Study/',
+    scheme: 'Mist',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="编程,机器学习,吴恩达">
+<meta property="og:type" content="website">
+<meta property="og:title" content="机器学习 - 斯坦福大学 吴恩达">
+<meta property="og:url" content="https://guqiangjs.github.io/Study/archives/MachineLearning-StanfordUniversity-吴恩达.html">
+<meta property="og:site_name" content="大蓝鲸">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/R2YF5Lj3EeajLxLfjQiSjg_110c901f58043f995a35b31431935290_Screen-Shot-2016-12-02-at-5.23.31-PM.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/R2YF5Lj3EeajLxLfjQiSjg_110c901f58043f995a35b31431935290_Screen-Shot-2016-12-02-at-5.23.31-PM.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/yr-D1aDMEeai9RKvXdDYag_627e5ab52d5ff941c0fcc741c2b162a0_Screenshot-2016-11-02-00.19.56.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/UJpiD6GWEeai9RKvXdDYag_3c3ad6625a2a4ec8456f421a2f4daf2e_Screenshot-2016-11-03-00.05.27.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/RDcJ-KGXEeaVChLw2Vaaug_cb782d34d272321e88f202940c36afe9_Screenshot-2016-11-03-00.06.00.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/RDcJ-KGXEeaVChLw2Vaaug_cb782d34d272321e88f202940c36afe9_Screenshot-2016-11-03-00.06.00.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/QFpooaaaEea7TQ6MHcgMPA_cc3c276df7991b1072b2afb142a78da1_Screenshot-2016-11-09-08.30.54.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/xAQBlqaaEeawbAp5ByfpEg_24e9420f16fdd758ccb7097788f879e7_Screenshot-2016-11-09-08.36.49.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/QFpooaaaEea7TQ6MHcgMPA_cc3c276df7991b1072b2afb142a78da1_Screenshot-2016-11-09-08.30.54.png">
+<meta property="og:image" content="https://guqiangjs.github.io/Study/archives/xAQBlqaaEeawbAp5ByfpEg_24e9420f16fdd758ccb7097788f879e7_Screenshot-2016-11-09-08.36.49.png">
+<meta property="og:updated_time" content="2018-11-30T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习 - 斯坦福大学 吴恩达">
+<meta name="twitter:image" content="https://guqiangjs.github.io/Study/archives/H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guqiangjs.github.io/Study/archives/MachineLearning-StanfordUniversity-吴恩达.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>机器学习 - 斯坦福大学 吴恩达 | 大蓝鲸</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Study/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大蓝鲸</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/Study/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/Study/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/Study/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives menu-item-active">
+    <a href="/Study/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">机器学习 - 斯坦福大学 吴恩达</h1>
+
+<div class="post-meta">
+  
+    <div class="post-description"><!—more—-></div>
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h3 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h3><h4 id="What-is-Machine-Learning"><a href="#What-is-Machine-Learning" class="headerlink" title="What is Machine Learning?"></a>What is Machine Learning?</h4><p>Two definitions of Machine Learning are offered. Arthur Samuel described it as: “the field of study that gives computers the ability to learn without being explicitly programmed.” This is an older, informal definition.</p>
+<p>Tom Mitchell provides a more modern definition: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.”</p>
+<p>Example: playing checkers.</p>
+<p>E = the experience of playing many games of checkers</p>
+<p>T = the task of playing checkers.</p>
+<p>P = the probability that the program will win the next game.</p>
+<p>In general, any machine learning problem can be assigned to one of two broad classifications:</p>
+<p>Supervised learning and Unsupervised learning.</p>
+<h4 id="什么是机器学习？"><a href="#什么是机器学习？" class="headerlink" title="什么是机器学习？"></a>什么是机器学习？</h4><p>提供了机器学习的两个定义。 Arthur Samuel将其描述为：“研究领域，使计算机无需明确编程即可学习。” 这是一个较旧的非正式定义。</p>
+<p>Tom Mitchell提供了一个更现代的定义：“据说计算机程序可以从经验E中学习某些任务T和绩效测量P，如果它在T中的任务中的表现（由P测量）随经验E而提高。“</p>
+<p>示例：玩跳棋。</p>
+<p>E =玩许多跳棋游戏的经验</p>
+<p>T =玩跳棋的任务。</p>
+<p>P =程序赢得下一场比赛的概率。</p>
+<p>通常，任何机器学习问题都可以分配到两个广泛的分类之一：</p>
+<p>监督学习和无监督学习。</p>
+<h4 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h4><p>In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.</p>
+<p>Supervised learning problems are categorized into “regression” and “classification” problems. In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories.</p>
+<p><strong>Example 1:</strong></p>
+<p>Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.</p>
+<p>We could turn this example into a classification problem by instead making our output about whether the house “sells for more or less than the asking price.” Here we are classifying the houses based on price into two discrete categories.</p>
+<p><strong>Example 2</strong>:</p>
+<p>(a) Regression - Given a picture of a person, we have to predict their age on the basis of the given picture</p>
+<p>(b) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.</p>
+<h4 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h4><p>在有监督的学习中，我们得到一个数据集，并且已经知道我们的正确输出应该是什么样的，并且认为输入和输出之间存在关系。</p>
+<p>监督学习问题分为“回归”和“分类”问题。在回归问题中，我们试图在连续输出中预测结果，这意味着我们正在尝试将输入变量映射到某个连续函数。在分类问题中，我们试图在离散输出中预测结果。换句话说，我们试图将输入变量映射到离散类别。</p>
+<p>例1：</p>
+<p>鉴于有关房地产市场房屋面积的数据，请尝试预测房价。作为大小函数的价格是连续输出，因此这是一个回归问题。</p>
+<p>我们可以将这个例子变成一个分类问题，而不是让我们的输出关于房子“卖得多于还是低于要价”。在这里，我们将基于价格的房屋分为两个不同的类别。</p>
+<p>例2：</p>
+<p>（a）回归 - 鉴于一个人的照片，我们必须根据给定的图片预测他们的年龄</p>
+<p>（b）分类 - 鉴于患有肿瘤的患者，我们必须预测肿瘤是恶性的还是良性的。</p>
+<h4 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h4><p>Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don’t necessarily know the effect of the variables.</p>
+<p>We can derive this structure by clustering the data based on relationships among the variables in the data.</p>
+<p>With unsupervised learning there is no feedback based on the prediction results.</p>
+<p><strong>Example:</strong></p>
+<p>Clustering: Take a collection of 1,000,000 different genes, and find a way to automatically group these genes into groups that are somehow similar or related by different variables, such as lifespan, location, roles, and so on.</p>
+<p>Non-clustering: The “Cocktail Party Algorithm”, allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a <a href="https://en.wikipedia.org/wiki/Cocktail_party_effect" target="_blank" rel="noopener">cocktail party</a>).</p>
+<h4 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h4><p>无监督学习使我们能够在很少或根本不知道我们的结果应该是什么样的情况下解决问题。 我们可以从数据中导出结构，我们不一定知道变量的影响。</p>
+<p>我们可以通过基于数据中变量之间的关系聚类数据来推导出这种结构。</p>
+<p>在无监督学习的情况下，没有基于预测结果的反馈。</p>
+<p>例：</p>
+<p>聚类：收集1,000,000个不同基因的集合，并找到一种方法将这些基因自动分组成不同的相似或通过不同变量相关的组，例如寿命，位置，角色等。</p>
+<p>非聚类：“鸡尾酒会算法”允许您在混乱的环境中查找结构。 （即在鸡尾酒会上识别来自声音网格的个别声音和音乐）。</p>
+<h4 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h4><p>To establish notation for future use, we’ll use $x^{(i)}$ to denote the “input” variables (living area in this example), also called input features, and $y^{(i)}$ to denote the “output” or target variable that we are trying to predict (price). A pair $(x^{(i)} , y^{(i)})$ is called a training example, and the dataset that we’ll be using to learn—a list of m training examples $(x^{(i)} , y^{(i)})$ ;i=1,…,m—is called a training set. Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X to denote the space of input values, and Y to denote the space of output values. In this example, X = Y = ℝ.</p>
+<p>To describe the supervised learning problem slightly more formally, our goal is, given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis. Seen pictorially, the process is therefore like this:</p>
+<p><img src="H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png" alt="img"></p>
+<p>When the target variable that we’re trying to predict is continuous, such as in our housing example, we call the learning problem a regression problem. When y can take on only a small number of discrete values (such as if, given the living area, we wanted to predict if a dwelling is a house or an apartment, say), we call it a classification problem.</p>
+<h4 id="模型表示"><a href="#模型表示" class="headerlink" title="模型表示"></a>模型表示</h4><p>为了建立未来使用的符号，我们将使用 $x^{(i)}$来表示“输入”变量（在此示例中为生活区域），也称为输入要素，并使用$y^{(i)}$来表示“输出“或我们试图预测的目标变量（价格）。一对（$x^{(i)}$，$y^{(i)}$）被称为训练示例，我们将用于学习的数据集 -  m个训练样例列表（$x^{(i)}$，$y^{(i)}$）; i = 1，…，m-称为训练集。请注意，符号中的上标“（i）”只是训练集的索引，与取幂无关。我们还将使用X来表示输入值的空间，并使用Y来表示输出值的空间。在这个例子中，X = Y =ℝ。</p>
+<p>为了更加正式地描述监督学习问题，我们的目标是，在给定训练集的情况下，学习函数h：X→Y，使得h（x）是y的对应值的“好”预测器。由于历史原因，该函数h被称为假设。从图中可以看出，这个过程是这样的：</p>
+<p><img src="H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png" alt="img"></p>
+<p>当我们试图预测的目标变量是连续的时，例如在我们的住房示例中，我们将学习问题称为回归问题。当y只能承担少量离散值时（例如，如果给定生活区域，我们想要预测住宅是房屋还是公寓，请说），我们称之为分类问题。</p>
+<h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><p>We can measure the accuracy of our hypothesis function by using a <strong>cost function</strong>. This takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from x’s and the actual output y’s.</p>
+<p>$J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum <em>{i=1}^m \left ( \hat{y}</em>{i}- y_{i} \right)^2 = \dfrac {1}{2m} \displaystyle \sum <em>{i=1}^m \left (h</em>\theta (x_{i}) - y_{i} \right)^2$</p>
+<p>To break it apart, it is $\frac{1}{2}\bar{x}$ where $\bar{x}$ is the mean of the squares of $h_\theta (x_{i}) - y_{i}$ , or the difference between the predicted value and the actual value.</p>
+<p>This function is otherwise called the “Squared error function”, or “Mean squared error”. The mean is halved $\left(\frac{1}{2}\right)$ as a convenience for the computation of the gradient descent, as the derivative term of the square function will cancel out the $\frac{1}{2}$ term. The following image summarizes what the cost function does:</p>
+<p><img src="R2YF5Lj3EeajLxLfjQiSjg_110c901f58043f995a35b31431935290_Screen-Shot-2016-12-02-at-5.23.31-PM.png" alt=""></p>
+<h4 id="成本函数"><a href="#成本函数" class="headerlink" title="成本函数"></a>成本函数</h4><p>我们可以使用成本函数来衡量我们的假设函数的准确性。 这需要假设的所有结果与x和实际输出y的输入之间的平均差异（实际上是平均值的更高版本）。</p>
+<p>$J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum <em>{i=1}^m \left ( \hat{y}</em>{i}- y_{i} \right)^2 = \dfrac {1}{2m} \displaystyle \sum <em>{i=1}^m \left (h</em>\theta (x_{i}) - y_{i} \right)^2$</p>
+<p>为了区分它，它是$\frac{1}{2}\bar{x}$其中$\bar{x}$是$h_\theta (x_{i}) - y_{i}$ 的平方的平均值，或者 预测值与实际值之间的差异。</p>
+<p>此函数另外称为“平方误差函数”或“均方误差”。 平均值减半$\left(\frac{1}{2}\right)$以方便计算梯度下降，因为平方函数的导数项将抵消$\frac{1}{2}$ 项。 下图总结了成本函数的作用：</p>
+<p><img src="R2YF5Lj3EeajLxLfjQiSjg_110c901f58043f995a35b31431935290_Screen-Shot-2016-12-02-at-5.23.31-PM.png" alt=""></p>
+<h4 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h4><p>So we have our hypothesis function and we have a way of measuring how well it fits into the data. Now we need to estimate the parameters in the hypothesis function. That’s where gradient descent comes in.</p>
+<p>Imagine that we graph our hypothesis function based on its fields $\theta_0$ and $\theta_1$ (actually we are graphing the cost function as a function of the parameter estimates). We are not graphing x and y itself, but the parameter range of our hypothesis function and the cost resulting from selecting a particular set of parameters.</p>
+<p>We put $\theta_0$ on the x axis and $\theta_1$ on the y axis, with the cost function on the vertical z axis. The points on our graph will be the result of the cost function using our hypothesis with those specific theta parameters. The graph below depicts such a setup.</p>
+<p><img src="bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png" alt="img"></p>
+<p>We will know that we have succeeded when our cost function is at the very bottom of the pits in our graph, i.e. when its value is the minimum. The red arrows show the minimum points in the graph.</p>
+<p>The way we do this is by taking the derivative (the tangential line to a function) of our cost function. The slope of the tangent is the derivative at that point and it will give us a direction to move towards. We make steps down the cost function in the direction with the steepest descent. The size of each step is determined by the parameter α, which is called the learning rate.</p>
+<p>For example, the distance between each ‘star’ in the graph above represents a step determined by our parameter α. A smaller α would result in a smaller step and a larger α results in a larger step. The direction in which the step is taken is determined by the partial derivative of $J(\theta_0,\theta_1)$. Depending on where one starts on the graph, one could end up at different points. The image above shows us two different starting points that end up in two different places.</p>
+<p>The gradient descent algorithm is:</p>
+<p>repeat until convergence:</p>
+<p>$\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)$</p>
+<p>where</p>
+<p>j=0,1 represents the feature index number.</p>
+<p>At each iteration j, one should simultaneously update the parameters $\theta_1$, $\theta_2$,…,$\theta_n$. Updating a specific parameter prior to calculating another one on the $j^{(th)}$ iteration would yield to a wrong implementation.</p>
+<p><img src="yr-D1aDMEeai9RKvXdDYag_627e5ab52d5ff941c0fcc741c2b162a0_Screenshot-2016-11-02-00.19.56.png" alt="img"></p>
+<h4 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h4><p>所以我们有假设函数，我们有一种方法可以衡量它与数据的匹配程度。现在我们需要估计假设函数中的参数。这就是梯度下降的地方。</p>
+<p>想象一下，我们基于其字段$\theta_0$和$\theta_1$来绘制我们的假设函数（实际上我们将成本函数绘制为参数估计的函数）。我们不是绘制x和y本身，而是我们的假设函数的参数范围以及选择一组特定参数所产生的成本。</p>
+<p>我们将$\theta_0$放在x轴上，将$\theta_1$放在y轴上，使用成本函数放在垂直z轴上。我们的图上的点将是成本函数的结果，使用我们的假设和那些特定的θ参数。下图描绘了这样的设置。</p>
+<p><img src="bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png" alt="img"></p>
+<p>我们知道，当我们的成本函数位于图中凹坑的最底部时，即当它的值是最小值时，我们已经成功了。红色箭头显示图表中的最小点。</p>
+<p>我们这样做的方法是采用我们的成本函数的导数（一个函数的切线）。切线的斜率是该点的导数，它将为我们提供一个朝向的方向。我们在最陡下降的方向上降低成本函数。每个步骤的大小由参数α确定，该参数称为学习率。</p>
+<p>例如，上图中每个“星”之间的距离表示由参数α确定的步长。较小的α将导致较小的步长，较大的α将导致较大的步长。采取步骤的方向由$J(\theta_0,\theta_1)$的偏导数确定。根据图表的开始位置，可能会在不同的点上结束。上图显示了两个不同的起点，最终出现在两个不同的地方。</p>
+<p>梯度下降算法是：</p>
+<p>重复直到收敛：</p>
+<p>$\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)$</p>
+<p>哪里</p>
+<p>j = 0,1表示特征索引号。</p>
+<p>在每次迭代j中，应该同时更新参数 $\theta_1$, $\theta_2$,…,$\theta_n$。在$j^{(th)}$迭代中计算另一个参数之前更新特定参数将导致错误的实现。</p>
+<h4 id="Gradient-Descent-Intuition"><a href="#Gradient-Descent-Intuition" class="headerlink" title="Gradient Descent Intuition"></a>Gradient Descent Intuition</h4><p>In this video we explored the scenario where we used one parameter \theta_1θ1 and plotted its cost function to implement a gradient descent. Our formula for a single parameter was :</p>
+<p>Repeat until convergence:</p>
+<p>$\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1} J(\theta_1)$</p>
+<p>Regardless of the slope’s sign for $\frac{d}{d\theta_1} J(\theta_1)$, $\theta_1$ eventually converges to its minimum value. The following graph shows that when the slope is negative, the value of $\theta_1$ increases and when it is positive, the value of $\theta_1$ decreases.</p>
+<p><img src="SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png" alt="img"></p>
+<p>On a side note, we should adjust our parameter $\alpha$ to ensure that the gradient descent algorithm converges in a reasonable time. Failure to converge or too much time to obtain the minimum value imply that our step size is wrong.</p>
+<p><img src="UJpiD6GWEeai9RKvXdDYag_3c3ad6625a2a4ec8456f421a2f4daf2e_Screenshot-2016-11-03-00.05.27.png" alt="img"></p>
+<h4 id="How-does-gradient-descent-converge-with-a-fixed-step-size-alpha"><a href="#How-does-gradient-descent-converge-with-a-fixed-step-size-alpha" class="headerlink" title="How does gradient descent converge with a fixed step size $\alpha$?"></a>How does gradient descent converge with a fixed step size $\alpha$?</h4><p>The intuition behind the convergence is that $\frac{d}{d\theta_1} J(\theta_1)$ approaches 0 as we approach the bottom of our convex function. At the minimum, the derivative will always be 0 and thus we get:</p>
+<p>$\theta_1:=\theta_1-\alpha * 0$</p>
+<p><img src="RDcJ-KGXEeaVChLw2Vaaug_cb782d34d272321e88f202940c36afe9_Screenshot-2016-11-03-00.06.00.png" alt="img"></p>
+<h4 id="渐变下降直觉"><a href="#渐变下降直觉" class="headerlink" title="渐变下降直觉"></a>渐变下降直觉</h4><p>在本视频中，我们探讨了使用一个参数$\theta_1$并绘制其成本函数以实现梯度下降的场景。我们的单个参数公式是：</p>
+<p>重复直到收敛：</p>
+<p>$\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1} J(\theta_1)$</p>
+<p>无论$\frac{d}{d\theta_1} J(\theta_1)$的斜率符号如何，$\theta_1$ 最终会收敛到其最小值。下图显示当斜率为负时，$\theta_1$ 的值增加，当它为正时，$\theta_1$ 的值减小。</p>
+<p><img src="SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png" alt="img"></p>
+<p>另外，我们应该调整参数$\alpha$以确保梯度下降算法在合理的时间内收敛。没有收敛或太多时间来获得最小值意味着我们的步长是错误的。</p>
+<p><img src="SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png" alt="img"></p>
+<p>梯度下降如何与固定步长$\alpha$收敛？</p>
+<p>收敛背后的直觉是$\frac{d}{d\theta_1} J(\theta_1)$接近0时，我们接近凸函数的底部。至少，导数总是0，因此得到：</p>
+<p>$\theta_1:=\theta_1-\alpha * 0$</p>
+<p><img src="RDcJ-KGXEeaVChLw2Vaaug_cb782d34d272321e88f202940c36afe9_Screenshot-2016-11-03-00.06.00.png" alt="img"></p>
+<h4 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h4><p><strong>Note:</strong> [At 6:15 “h(x) = -900 - 0.1x” should be “h(x) = 900 - 0.1x”]</p>
+<p>When specifically applied to the case of linear regression, a new form of the gradient descent equation can be derived. We can substitute our actual cost function and our actual hypothesis function and modify the equation to :</p>
+<p>repeat until convergence:<br>$$<br>\theta_0:=\theta_0-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_0(x_i)-y_i)\<br>\theta_1:=\theta_1-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_0(x_i)-y_i)<br>$$<br>where m is the size of the training set, $\theta_0$ a constant that will be changing simultaneously with \theta_1θ1 and $x_{i}$, $y_{i}$ are values of the given training set (data).</p>
+<p>Note that we have separated out the two cases for $\theta_j$ into separate equations for $\theta_0$ and $\theta_1$; and that for $\theta_1$ we are multiplying $x_{i}$ at the end due to the derivative. The following is a derivation of $\frac{\partial}{\partial \theta_j}J(\theta)$ for a single example :</p>
+<p><img src="QFpooaaaEea7TQ6MHcgMPA_cc3c276df7991b1072b2afb142a78da1_Screenshot-2016-11-09-08.30.54.png" alt="img"></p>
+<p>The point of all this is that if we start with a guess for our hypothesis and then repeatedly apply these gradient descent equations, our hypothesis will become more and more accurate.</p>
+<p>So, this is simply gradient descent on the original cost function J. This method looks at every example in the entire training set on every step, and is called <strong>batch gradient descent</strong>. Note that, while gradient descent can be susceptible to local minima in general, the optimization problem we have posed here for linear regression has only one global, and no other local, optima; thus gradient descent always converges (assuming the learning rate α is not too large) to the global minimum. Indeed, J is a convex quadratic function. Here is an example of gradient descent as it is run to minimize a quadratic function.</p>
+<p><img src="xAQBlqaaEeawbAp5ByfpEg_24e9420f16fdd758ccb7097788f879e7_Screenshot-2016-11-09-08.36.49.png" alt="img"></p>
+<p>The ellipses shown above are the contours of a quadratic function. Also shown is the trajectory taken by gradient descent, which was initialized at (48,30). The x’s in the figure (joined by straight lines) mark the successive values of $\theta$ that gradient descent went through as it converged to its minimum.</p>
+<h4 id="线性回归的梯度下降"><a href="#线性回归的梯度下降" class="headerlink" title="线性回归的梯度下降"></a>线性回归的梯度下降</h4><p>注意：[在6:15“h（x）= -900  -  0.1x”应为“h（x）= 900  -  0.1x”]</p>
+<p>当具体应用于线性回归的情况时，可以导出梯度下降方程的新形式。我们可以替换我们的实际成本函数和我们的实际假设函数，并将等式修改为：</p>
+<p>重复直到收敛：</p>
+<p>$$<br>\theta_0:=\theta_0-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_0(x_i)-y_i)\<br>\theta_1:=\theta_1-\alpha \frac{1}{m}\sum_{i=1}^{m}(h_0(x_i)-y_i)<br>$$</p>
+<p>其中m是训练集的大小，$\theta_0$ 将与$\theta_1$和$x_ {i}$同时改变的常数，$y_{i}$是给定训练集（数据）的值。</p>
+<p>请注意，我们已将$\theta_j$的两个案例分离为$\theta_0$和$\theta_1$的单独等式;而对于$\theta_1$，由于导数，我们在末尾乘以$x_ {i}$。以下是单个示例的$\frac{\partial}{\partial \theta_j}J(\theta)$的派生：</p>
+<p><img src="QFpooaaaEea7TQ6MHcgMPA_cc3c276df7991b1072b2afb142a78da1_Screenshot-2016-11-09-08.30.54.png" alt="img"></p>
+<p>所有这一切的要点是，如果我们从猜测开始，然后重复应用这些梯度下降方程，我们的假设将变得越来越准确。</p>
+<p>因此，这只是原始成本函数J的梯度下降。该方法在每个步骤中查看整个训练集中的每个示例，并称为批量梯度下降。需要注意的是，虽然梯度下降一般可以对局部最小值敏感，但我们在线性回归中提出的优化问题只有一个全局，而没有其他局部最优;因此，梯度下降总是收敛（假设学习率$\alpha​$不是太大）到全局最小值。实际上，J是凸二次函数。下面是梯度下降的示例，因为它是为了最小化二次函数而运行的。</p>
+<p><img src="xAQBlqaaEeawbAp5ByfpEg_24e9420f16fdd758ccb7097788f879e7_Screenshot-2016-11-09-08.36.49.png" alt="img"></p>
+<p>上面显示的椭圆是二次函数的轮廓。还示出了梯度下降所采用的轨迹，其在（48,30）处初始化。图中的x（由直线连接）标记渐变下降经历的连续值$\theta$，当它收敛到最小值时。</p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gu Qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/Study/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/Study/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/Study/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guqiangjs" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Week-1"><span class="nav-number">1.</span> <span class="nav-text">Week 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">What is Machine Learning?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是机器学习？"><span class="nav-number">1.2.</span> <span class="nav-text">什么是机器学习？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Supervised-Learning"><span class="nav-number">1.3.</span> <span class="nav-text">Supervised Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监督学习"><span class="nav-number">1.4.</span> <span class="nav-text">监督学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unsupervised-Learning"><span class="nav-number">1.5.</span> <span class="nav-text">Unsupervised Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无监督学习"><span class="nav-number">1.6.</span> <span class="nav-text">无监督学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Model-Representation"><span class="nav-number">1.7.</span> <span class="nav-text">Model Representation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型表示"><span class="nav-number">1.8.</span> <span class="nav-text">模型表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cost-Function"><span class="nav-number">1.9.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成本函数"><span class="nav-number">1.10.</span> <span class="nav-text">成本函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.11.</span> <span class="nav-text">Gradient Descent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降"><span class="nav-number">1.12.</span> <span class="nav-text">梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent-Intuition"><span class="nav-number">1.13.</span> <span class="nav-text">Gradient Descent Intuition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-does-gradient-descent-converge-with-a-fixed-step-size-alpha"><span class="nav-number">1.14.</span> <span class="nav-text">How does gradient descent converge with a fixed step size $\alpha$?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渐变下降直觉"><span class="nav-number">1.15.</span> <span class="nav-text">渐变下降直觉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Descent-For-Linear-Regression"><span class="nav-number">1.16.</span> <span class="nav-text">Gradient Descent For Linear Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性回归的梯度下降"><span class="nav-number">1.17.</span> <span class="nav-text">线性回归的梯度下降</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gu Qiang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Study/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/Study/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/Study/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/Study/js/src/post-details.js?v=6.2.0"></script>
+
+
+	
+	<style type="text/css">
+	  .no-before::before {
+		content: "";
+		padding: 0px;
+	  }
+	  .no-before{
+	  font-weight: bold;
+	  font-style: normal;
+	  }
+	  </style>
+	<script type="text/javascript">
+	$("cite").each(function(index){
+		if($(this).prev().length==0 && $(this)[0].children.length==1)
+		{
+			$(this)[0].className='no-before';
+		}
+	});
+	</script> 
+
+
+  
+
+
+  <script type="text/javascript" src="/Study/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style type="text/css">.MathJax_Display {display:inline!important;}</style>
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
